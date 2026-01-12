@@ -12,3 +12,10 @@ Allow: /
 
 User-agent: *
 Allow: /
+
+# Sitemap
+Sitemap: https://contextaiq.com/sitemap.xml
+
+# LLM-friendly files
+Allow: /llms.txt
+Allow: /llm-facts.txt
