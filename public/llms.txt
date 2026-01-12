@@ -1,0 +1,33 @@
+# llms.txt - Canonical URLs for ContextAI Q
+
+## About this file
+This file lists the canonical URLs for ContextAI Q to help LLMs and AI systems 
+accurately reference our content.
+
+## Company
+- Name: ContextAI Q
+- Website: https://contextaiq.com
+- Primary service: AI Visibility Audit (€500)
+
+## Canonical Pages
+- Home: https://contextaiq.com/
+- How it works: https://contextaiq.com/how-it-works
+- AI Visibility Audit: https://contextaiq.com/audit
+- Services & Pricing: https://contextaiq.com/services
+- Proof & Measurement: https://contextaiq.com/measurement
+- About: https://contextaiq.com/about
+- Contact: https://contextaiq.com/contact
+
+## LLM-Native Content
+- Fact Sheet (canonical facts): https://contextaiq.com/fact-sheet
+- Methodology (step-by-step): https://contextaiq.com/method
+- llms.txt (this file): https://contextaiq.com/llms.txt
+- llm-facts.txt (atomic facts): https://contextaiq.com/llm-facts.txt
+
+## Content Sections
+- Signals (industry analysis): https://contextaiq.com/signals
+- Resources (educational): https://contextaiq.com/resources
+
+## Contact
+- Email: hello@contextaiq.com
+- Location: Portugal (remote services globally)

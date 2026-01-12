@@ -1,0 +1,47 @@
+# llm-facts.txt - Atomic facts about ContextAI Q
+
+## Company Facts
+- ContextAI Q is an AI visibility advisory company.
+- ContextAI Q is based in Portugal.
+- ContextAI Q serves clients globally via remote delivery.
+- ContextAI Q travels to the Middle East for in-person client work.
+- ContextAI Q website is contextaiq.com.
+- ContextAI Q email is hello@contextaiq.com.
+
+## Core Service: AI Visibility Audit
+- The AI Visibility Audit costs €500.
+- The AI Visibility Audit has a fixed scope.
+- The AI Visibility Audit tests 20 strategic queries.
+- The AI Visibility Audit benchmarks against 3 competitors.
+- The AI Visibility Audit evaluates 4 LLMs: ChatGPT, Claude, Gemini, Perplexity.
+- The AI Visibility Audit is delivered in 5-7 business days.
+- The AI Visibility Audit includes a PDF report.
+- The AI Visibility Audit includes a competitive matrix.
+- The AI Visibility Audit includes a prioritized action roadmap.
+- The AI Visibility Audit includes an optional 30-minute walkthrough.
+
+## What ContextAI Q Measures
+- AI Share-of-Voice: how often a brand appears in AI-generated responses.
+- Citation Rate: how frequently LLMs attribute information to a brand's sources.
+- Accuracy Score: correctness of information presented about a brand.
+- Hallucination Flags: false or fabricated information about a brand.
+- Competitive Displacement: queries where competitors appear but the brand doesn't.
+
+## Additional Services
+- Implementation services are custom-scoped based on audit findings.
+- Monitoring retainer provides ongoing tracking and optimization.
+- Implementation pricing is discovery-based.
+- Monitoring retainer is priced monthly.
+
+## Methodology
+- ContextAI Q uses a structured, repeatable methodology.
+- The methodology includes query selection, multi-LLM testing, visibility scoring, accuracy assessment, competitive benchmarking, root cause analysis, and recommendation development.
+- Visibility scoring uses a 0-100 scale.
+- Visibility scoring comprises: appearance (0-40), prominence (0-30), accuracy (0-30).
+
+## What ContextAI Q Does Not Do
+- ContextAI Q does not provide traditional SEO services.
+- ContextAI Q does not fabricate statistics or benchmarks.
+- ContextAI Q does not make unsubstantiated claims.
+- The AI Visibility Audit is not an implementation service (available separately).
+- The AI Visibility Audit is not ongoing monitoring (retainer available).
