@@ -76,7 +76,7 @@ export function OrganizationSchema() {
     "@type": "Organization",
     name: "ContextAI Q",
     url: "https://contextaiq.com",
-    logo: "https://contextaiq.com/contextaiq_logo_bw.png",
+    logo: "https://contextaiq.com/contextaiq_logo_bw.svg",
     description: "Making brands visible and accurately represented in AI-generated answers.",
     address: {
       "@type": "PostalAddress",
