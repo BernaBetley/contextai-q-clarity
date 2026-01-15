@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, Check, Clock } from "lucide-react";
+import { CheckoutButton } from "./CheckoutButton";
 
 export const metadata: Metadata = {
   title: "AI Visibility Audit — €500",
@@ -44,7 +45,6 @@ function ServiceSchema() {
 }
 
 export default function AuditPage() {
-  const stripeCheckoutUrl = process.env.NEXT_PUBLIC_STRIPE_CHECKOUT_URL;
   const intakeUrl = process.env.NEXT_PUBLIC_AUDIT_INTAKE_URL;
 
   return (
@@ -71,12 +71,8 @@ export default function AuditPage() {
                 <span>Delivered in 5–7 business days</span>
               </div>
 
-              {stripeCheckoutUrl ? (
-                <a href={stripeCheckoutUrl} target="_blank" rel="noopener noreferrer">
-                  <span className="inline-flex items-center justify-center gap-2 rounded-md bg-primary px-8 py-6 text-base font-medium text-primary-foreground shadow-elevated transition-all duration-200 hover:shadow-prominent hover:-translate-y-0.5 active:translate-y-0">
-                    Purchase Audit <ArrowRight size={18} />
-                  </span>
-                </a>
+              {process.env.STRIPE_AUDIT_PRICE_ID ? (
+                <CheckoutButton label="Purchase Audit" />
               ) : (
                 <Link
                   href="/contact"
@@ -179,12 +175,10 @@ export default function AuditPage() {
         <div className="container-wide text-center">
           <h2 className="mb-6">Ready to see where you stand?</h2>
           <p className="lead max-w-xl mx-auto mb-10">€500. Fixed scope. Delivered in 5–7 business days.</p>
-          {stripeCheckoutUrl ? (
-            <a href={stripeCheckoutUrl} target="_blank" rel="noopener noreferrer">
-              <span className="inline-flex items-center justify-center gap-2 rounded-md bg-primary px-8 py-6 text-base font-medium text-primary-foreground shadow-elevated transition-all duration-200 hover:shadow-prominent hover:-translate-y-0.5 active:translate-y-0">
-                Start your audit <ArrowRight size={18} />
-              </span>
-            </a>
+          {process.env.STRIPE_AUDIT_PRICE_ID ? (
+            <div className="flex justify-center">
+              <CheckoutButton label="Start your audit" />
+            </div>
           ) : (
             <Link
               href="/contact"

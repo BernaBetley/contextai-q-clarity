@@ -17,9 +17,14 @@ npm run dev
 ## Environment variables
 
 - `NEXT_PUBLIC_GA4_MEASUREMENT_ID`: Enables GA4 pageview tracking in Next.js
-- `NEXT_PUBLIC_STRIPE_CHECKOUT_URL`: Audit checkout link
 - `NEXT_PUBLIC_AUDIT_INTAKE_URL`: Intake form link shown after purchase
 - `NEXT_PUBLIC_CALENDLY_URL`: Scheduling link on Contact
+- `NEXT_PUBLIC_SITE_URL`: Canonical origin for server redirects (fallback is `https://contextaiq.com`)
+
+### Stripe (server-side)
+
+- `STRIPE_SECRET_KEY`: Stripe secret key (server-side)
+- `STRIPE_AUDIT_PRICE_ID`: Stripe Price ID for the €500 audit (server-side)
 
 ## Notes
 

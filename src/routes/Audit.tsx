@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Check, Clock, AlertCircle } from "lucide-react";
 import { SEO, WebPageSchema, ServiceSchema } from "@/components/layout/SEO";
 import { track } from "@/lib/analytics";
+import { useState } from "react";
 import {
   Accordion,
   AccordionContent,
@@ -11,8 +12,25 @@ import {
 } from "@/components/ui/accordion";
 
 export default function Audit() {
-  const stripeCheckoutUrl = import.meta.env.VITE_STRIPE_CHECKOUT_URL as string | undefined;
   const intakeUrl = import.meta.env.VITE_AUDIT_INTAKE_URL as string | undefined;
+  const checkoutApiUrl = (import.meta.env.VITE_CHECKOUT_API_URL as string | undefined) ?? "/api/checkout";
+  const [checkoutError, setCheckoutError] = useState<string>("");
+  const [isCheckingOut, setIsCheckingOut] = useState(false);
+
+  async function startCheckout() {
+    setCheckoutError("");
+    setIsCheckingOut(true);
+    try {
+      track("checkout_click", { product: "audit", price: 500, currency: "EUR" });
+      const res = await fetch(checkoutApiUrl, { method: "POST" });
+      const data = (await res.json()) as { url?: string; error?: string };
+      if (!res.ok || !data.url) throw new Error(data.error || "Checkout failed.");
+      window.location.href = data.url;
+    } catch (e) {
+      setCheckoutError(e instanceof Error ? e.message : "Checkout failed.");
+      setIsCheckingOut(false);
+    }
+  }
 
   const included = [
     "20 strategic queries tested across your category",
@@ -102,30 +120,21 @@ export default function Audit() {
                 <Clock size={18} />
                 <span>Delivered in 5-7 business days</span>
               </div>
-              {stripeCheckoutUrl ? (
-                <a
-                  href={stripeCheckoutUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => track("checkout_click", { product: "audit", price: 500, currency: "EUR" })}
-                >
-                  <Button variant="hero" size="lg">
-                    Purchase Audit
-                    <ArrowRight size={18} />
-                  </Button>
-                </a>
-              ) : (
-                <Link to="/contact">
-                  <Button
-                    variant="hero"
-                    size="lg"
-                    onClick={() => track("cta_click_contact", { placement: "audit_hero_no_checkout" })}
-                  >
-                    Request invoice / pay by bank transfer
-                    <ArrowRight size={18} />
-                  </Button>
-                </Link>
-              )}
+              <Button variant="hero" size="lg" onClick={startCheckout} disabled={isCheckingOut}>
+                {isCheckingOut ? "Redirecting…" : "Purchase Audit"}
+                <ArrowRight size={18} />
+              </Button>
+              {checkoutError ? (
+                <div className="mt-4">
+                  <p className="text-small text-destructive">Checkout failed: {checkoutError}</p>
+                  <Link to="/contact" className="inline-flex mt-2">
+                    <Button variant="outline" onClick={() => track("cta_click_contact", { placement: "audit_checkout_error" })}>
+                      Request invoice / pay by bank transfer
+                      <ArrowRight size={16} />
+                    </Button>
+                  </Link>
+                </div>
+              ) : null}
               <p className="text-small mt-4">Stripe payment. Invoice provided.</p>
             </div>
             <div className="card-minimal">
@@ -302,30 +311,21 @@ export default function Audit() {
           <p className="lead max-w-xl mx-auto mb-10">
             €500. Fixed scope. Delivered in 5-7 business days.
           </p>
-          {stripeCheckoutUrl ? (
-            <a
-              href={stripeCheckoutUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => track("checkout_click", { product: "audit", price: 500, currency: "EUR" })}
-            >
-              <Button variant="hero" size="lg">
-                Start your audit
-                <ArrowRight size={18} />
-              </Button>
-            </a>
-          ) : (
-            <Link to="/contact">
-              <Button
-                variant="hero"
-                size="lg"
-                onClick={() => track("cta_click_contact", { placement: "audit_cta_no_checkout" })}
-              >
-                Request invoice / pay by bank transfer
-                <ArrowRight size={18} />
-              </Button>
-            </Link>
-          )}
+          <Button variant="hero" size="lg" onClick={startCheckout} disabled={isCheckingOut}>
+            {isCheckingOut ? "Redirecting…" : "Start your audit"}
+            <ArrowRight size={18} />
+          </Button>
+          {checkoutError ? (
+            <div className="mt-4">
+              <p className="text-small text-destructive">Checkout failed: {checkoutError}</p>
+              <Link to="/contact" className="inline-flex mt-2">
+                <Button variant="outline" onClick={() => track("cta_click_contact", { placement: "audit_cta_checkout_error" })}>
+                  Request invoice / pay by bank transfer
+                  <ArrowRight size={16} />
+                </Button>
+              </Link>
+            </div>
+          ) : null}
         </div>
       </section>
     </>
