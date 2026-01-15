@@ -10,6 +10,8 @@ import {
 } from "@/components/ui/accordion";
 
 export default function Audit() {
+  const stripeCheckoutUrl = import.meta.env.VITE_STRIPE_CHECKOUT_URL as string | undefined;
+
   const included = [
     "20 strategic queries tested across your category",
     "4 LLMs evaluated: ChatGPT, Claude, Gemini, Perplexity",
@@ -98,10 +100,18 @@ export default function Audit() {
                 <Clock size={18} />
                 <span>Delivered in 5-7 business days</span>
               </div>
-              <Button variant="hero" size="lg">
-                Purchase Audit
-                <ArrowRight size={18} />
-              </Button>
+              {stripeCheckoutUrl ? (
+                <a href={stripeCheckoutUrl} target="_blank" rel="noopener noreferrer">
+                  <Button variant="hero" size="lg">
+                    Purchase Audit
+                    <ArrowRight size={18} />
+                  </Button>
+                </a>
+              ) : (
+                <Button variant="hero" size="lg" disabled>
+                  Checkout unavailable
+                </Button>
+              )}
               <p className="text-small mt-4">Stripe payment. Invoice provided.</p>
             </div>
             <div className="card-minimal">
@@ -198,11 +208,21 @@ export default function Audit() {
             
             {/* Stripe Button Placeholder */}
             <div className="card-minimal inline-block mb-8">
-              <Button variant="hero" size="lg" className="mb-4">
-                Pay €500 via Stripe
-                <ArrowRight size={18} />
-              </Button>
-              <p className="text-small text-muted-foreground">[Stripe checkout integration placeholder]</p>
+              {stripeCheckoutUrl ? (
+                <a href={stripeCheckoutUrl} target="_blank" rel="noopener noreferrer">
+                  <Button variant="hero" size="lg" className="mb-4">
+                    Pay €500 via Stripe
+                    <ArrowRight size={18} />
+                  </Button>
+                </a>
+              ) : (
+                <Button variant="hero" size="lg" className="mb-4" disabled>
+                  Checkout unavailable
+                </Button>
+              )}
+              <p className="text-small text-muted-foreground">
+                You will be redirected to secure Stripe Checkout.
+              </p>
             </div>
             
             {/* Intake Form Placeholder */}
@@ -261,10 +281,18 @@ export default function Audit() {
           <p className="lead max-w-xl mx-auto mb-10">
             €500. Fixed scope. Delivered in 5-7 business days.
           </p>
-          <Button variant="hero" size="lg">
-            Start your audit
-            <ArrowRight size={18} />
-          </Button>
+          {stripeCheckoutUrl ? (
+            <a href={stripeCheckoutUrl} target="_blank" rel="noopener noreferrer">
+              <Button variant="hero" size="lg">
+                Start your audit
+                <ArrowRight size={18} />
+              </Button>
+            </a>
+          ) : (
+            <Button variant="hero" size="lg" disabled>
+              Checkout unavailable
+            </Button>
+          )}
         </div>
       </section>
     </>
