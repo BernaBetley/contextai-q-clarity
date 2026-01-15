@@ -25,7 +25,7 @@ export async function POST(req: Request) {
   if (!secretKey || !priceId) {
     return Response.json(
       { error: "Stripe is not configured. Set STRIPE_SECRET_KEY and STRIPE_AUDIT_PRICE_ID." },
-      { status: 503 }
+      { status: 503, headers: { "cache-control": "no-store" } }
     );
   }
 
@@ -46,16 +46,19 @@ export async function POST(req: Request) {
     });
 
     if (!session.url) {
-      return Response.json({ error: "Stripe session created but no redirect URL was returned." }, { status: 502 });
+      return Response.json(
+        { error: "Stripe session created but no redirect URL was returned." },
+        { status: 502, headers: { "cache-control": "no-store" } }
+      );
     }
 
-    return Response.json({ url: session.url });
+    return Response.json({ url: session.url }, { headers: { "cache-control": "no-store" } });
   } catch (err) {
     const message =
       err instanceof Error
         ? err.message
         : "Stripe checkout failed. Verify STRIPE_SECRET_KEY and STRIPE_AUDIT_PRICE_ID.";
-    return Response.json({ error: message }, { status: 502 });
+    return Response.json({ error: message }, { status: 502, headers: { "cache-control": "no-store" } });
   }
 }
 

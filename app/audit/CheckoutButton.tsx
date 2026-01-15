@@ -22,15 +22,25 @@ export function CheckoutButton({ label = "Purchase Audit" }: { label?: string })
         window.gtag("event", "checkout_click", { product: "audit" });
       }
 
-      const res = await fetch("/api/checkout", { method: "POST" });
+      const res = await fetch("/api/checkout", { method: "POST", cache: "no-store" });
       const contentType = res.headers.get("content-type") || "";
-      const payload = contentType.includes("application/json") ? await res.json() : await res.text();
+      const raw = await res.text();
+      const trimmed = raw.trim();
 
-      const data = (typeof payload === "object" ? payload : {}) as { url?: string; error?: string };
-      const message =
-        typeof payload === "string"
-          ? payload.slice(0, 400)
-          : data.error || (res.ok ? "" : `Checkout failed (${res.status}).`);
+      const isJson = contentType.includes("application/json");
+      const parsed =
+        isJson && trimmed
+          ? (() => {
+              try {
+                return JSON.parse(trimmed) as unknown;
+              } catch {
+                return null;
+              }
+            })()
+          : null;
+
+      const data = (parsed && typeof parsed === "object" ? parsed : {}) as { url?: string; error?: string };
+      const message = data.error || (trimmed ? trimmed.slice(0, 400) : `Checkout failed (${res.status}).`);
 
       if (!res.ok || !data.url) {
         throw new Error(message || "Checkout failed.");
