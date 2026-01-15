@@ -9,13 +9,13 @@ export default function Measurement() {
       name: "AI Share-of-Voice",
       definition: "The percentage of category-relevant queries where your brand appears in AI-generated responses.",
       measurement: "Query sampling across target LLMs, appearance tracking, position scoring.",
-      benchmark: "[Baseline established per client]",
+      benchmark: "Baseline established in your audit; tracked over time against your category.",
     },
     {
       name: "Citation Rate",
       definition: "How frequently LLMs attribute information to your official sources.",
       measurement: "Source analysis in responses, link tracking, attribution patterns.",
-      benchmark: "[Industry-specific baseline]",
+      benchmark: "Baseline established in your audit; target increases as citation-ready sources improve.",
     },
     {
       name: "Accuracy Score",
@@ -33,7 +33,7 @@ export default function Measurement() {
       name: "Competitive Displacement",
       definition: "Queries where competitors appear but you don't, or vice versa.",
       measurement: "Head-to-head comparison, position tracking, trend analysis.",
-      benchmark: "[Competitor-specific baseline]",
+      benchmark: "Baseline established in your audit; tracked by query and by competitor.",
     },
   ];
 

@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import { SEO, WebPageSchema } from "@/components/layout/SEO";
+import { track } from "@/lib/analytics";
+import { useEffect } from "react";
 
 // Mock data for resources
 const resources = [
@@ -18,6 +20,10 @@ const resources = [
 ];
 
 export default function Resources() {
+  useEffect(() => {
+    track("content_list_view", { type: "resources" });
+  }, []);
+
   return (
     <>
       <SEO
@@ -52,6 +58,7 @@ export default function Resources() {
                 key={index}
                 to={`/resources/${resource.slug}`}
                 className="block card-minimal hover:shadow-elevated transition-shadow"
+                onClick={() => track("content_click", { type: "resource", slug: resource.slug })}
               >
                 <span className="badge-tag mb-3">{resource.category}</span>
                 <h2 className="text-2xl mb-3">{resource.title}</h2>

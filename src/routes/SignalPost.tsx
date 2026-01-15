@@ -2,6 +2,8 @@ import { useParams, Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { SEO, WebPageSchema } from "@/components/layout/SEO";
+import { useEffect } from "react";
+import { track } from "@/lib/analytics";
 
 // Mock signal content - in production, this would be loaded from MDX files
 const signalContent: Record<string, {
@@ -11,44 +13,15 @@ const signalContent: Record<string, {
   whatHappened: string[];
   whyItMatters: string[];
   whatToDoNext: string[];
-  sources: { title: string; url: string }[];
 }> = {
-  "walmart-google-ai-commerce": {
-    title: "Walmart × Google: AI Commerce Goes Native",
-    date: "2024-01-15",
-    tags: ["AI Commerce", "Google", "Retail"],
-    whatHappened: [
-      "Google announced deeper integration with Walmart for AI-powered shopping experiences.",
-      "Product inventory and availability will be surfaced directly in Google's AI-generated responses.",
-      "Voice shopping through Google Assistant will include Walmart product recommendations.",
-      "[Additional details from official announcement - source placeholder]",
-    ],
-    whyItMatters: [
-      "AI intermediation of retail discovery is accelerating faster than expected.",
-      "Brands not visible in these AI-powered experiences will lose market share to those that are.",
-      "Traditional e-commerce SEO tactics may be insufficient for AI commerce visibility.",
-      "First-mover advantage in AI commerce optimization could be significant.",
-    ],
-    whatToDoNext: [
-      "Audit your current visibility in Google's AI shopping experiences.",
-      "Ensure product data is structured and citation-ready for AI consumption.",
-      "Monitor competitor visibility in AI-powered shopping interfaces.",
-    ],
-    sources: [
-      { title: "[Google Official Announcement - placeholder]", url: "#" },
-      { title: "[Walmart Press Release - placeholder]", url: "#" },
-      { title: "[Industry Analysis - placeholder]", url: "#" },
-    ],
-  },
   "seo-to-ai-share-of-voice": {
     title: "From SEO to AI Share-of-Voice: the new discovery funnel",
     date: "2024-01-10",
     tags: ["Strategy", "AI Discovery", "SEO"],
     whatHappened: [
-      "Major search engines are shifting from link-based results to AI-generated answers.",
-      "User behavior is changing: direct answers reduce click-through to source websites.",
-      "New metrics are emerging to measure visibility in AI-generated responses.",
-      "[Additional market data - source placeholder]",
+      "Buyers increasingly ask AI assistants for category and vendor recommendations.",
+      "In many journeys, the “shortlist” now forms inside AI-generated answers, not on search result pages.",
+      "That shifts the optimization target from “rank” to “be mentioned and cited accurately.”",
     ],
     whyItMatters: [
       "Traditional SEO rankings may become less predictive of traffic and conversions.",
@@ -61,16 +34,16 @@ const signalContent: Record<string, {
       "Audit content for citation-readiness and factual accuracy.",
       "Develop monitoring systems for AI-generated mentions.",
     ],
-    sources: [
-      { title: "[Industry Research Report - placeholder]", url: "#" },
-      { title: "[Search Engine Announcement - placeholder]", url: "#" },
-    ],
   },
 };
 
 export default function SignalPost() {
   const { slug } = useParams<{ slug: string }>();
   const signal = slug ? signalContent[slug] : null;
+
+  useEffect(() => {
+    if (slug) track("content_view", { type: "signal", slug });
+  }, [slug]);
 
   if (!signal) {
     return (
@@ -180,29 +153,6 @@ export default function SignalPost() {
         </div>
       </section>
 
-      {/* Sources */}
-      <section className="section-slide bg-secondary/30">
-        <div className="container-wide">
-          <div className="max-w-3xl">
-            <h2 className="mb-6">Sources</h2>
-            <ul className="space-y-3">
-              {signal.sources.map((source, index) => (
-                <li key={index}>
-                  <a 
-                    href={source.url} 
-                    className="text-foreground hover:text-muted-foreground transition-colors"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {source.title}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </section>
-
       {/* CTA */}
       <section className="section-slide">
         <div className="container-wide text-center">
@@ -211,7 +161,10 @@ export default function SignalPost() {
             The €500 audit shows exactly where you stand in AI-generated answers.
           </p>
           <Link to="/audit">
-            <Button variant="hero">
+            <Button
+              variant="hero"
+              onClick={() => track("cta_click_audit", { placement: "signal_post" })}
+            >
               Start your audit
               <ArrowRight size={18} />
             </Button>

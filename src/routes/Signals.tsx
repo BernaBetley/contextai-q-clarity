@@ -1,15 +1,10 @@
 import { Link } from "react-router-dom";
 import { SEO, WebPageSchema } from "@/components/layout/SEO";
+import { useEffect } from "react";
+import { track } from "@/lib/analytics";
 
 // Mock data for signals - in production, this would come from markdown files
 const signals = [
-  {
-    slug: "walmart-google-ai-commerce",
-    title: "Walmart × Google: AI Commerce Goes Native",
-    date: "2024-01-15",
-    tags: ["AI Commerce", "Google", "Retail"],
-    excerpt: "Google's integration of Walmart inventory into AI-powered shopping experiences signals a major shift in how consumers will discover and purchase products.",
-  },
   {
     slug: "seo-to-ai-share-of-voice",
     title: "From SEO to AI Share-of-Voice: the new discovery funnel",
@@ -20,6 +15,10 @@ const signals = [
 ];
 
 export default function Signals() {
+  useEffect(() => {
+    track("content_list_view", { type: "signals" });
+  }, []);
+
   return (
     <>
       <SEO
@@ -54,6 +53,7 @@ export default function Signals() {
                 key={index}
                 to={`/signals/${signal.slug}`}
                 className="block card-minimal hover:shadow-elevated transition-shadow"
+                onClick={() => track("content_click", { type: "signal", slug: signal.slug })}
               >
                 <div className="flex flex-wrap gap-2 mb-3">
                   {signal.tags.map((tag, i) => (

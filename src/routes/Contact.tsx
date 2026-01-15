@@ -5,8 +5,64 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { ArrowRight, Mail, Calendar } from "lucide-react";
 import { SEO, WebPageSchema } from "@/components/layout/SEO";
+import { FormEvent, useMemo, useState } from "react";
+import { track } from "@/lib/analytics";
 
 export default function Contact() {
+  const calendlyUrl = (import.meta.env.VITE_CALENDLY_URL as string | undefined) ?? "";
+  const contactEndpoint = (import.meta.env.VITE_CONTACT_FORM_ENDPOINT as string | undefined) ?? "";
+
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [error, setError] = useState<string>("");
+
+  const canPost = useMemo(() => Boolean(contactEndpoint), [contactEndpoint]);
+
+  async function onSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setError("");
+    setStatus("sending");
+
+    const form = new FormData(e.currentTarget);
+    const name = String(form.get("name") ?? "");
+    const company = String(form.get("company") ?? "");
+    const email = String(form.get("email") ?? "");
+    const subject = String(form.get("subject") ?? "ContextAI Q inquiry");
+    const message = String(form.get("message") ?? "");
+
+    track("contact_submit", { method: canPost ? "http" : "mailto" });
+
+    if (canPost) {
+      try {
+        const res = await fetch(contactEndpoint, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name, company, email, subject, message }),
+        });
+        if (!res.ok) throw new Error(`Request failed: ${res.status}`);
+        setStatus("sent");
+        e.currentTarget.reset();
+        return;
+      } catch (err) {
+        setError(err instanceof Error ? err.message : "Failed to send message.");
+        setStatus("error");
+        return;
+      }
+    }
+
+    // Mailto fallback: opens user's mail client (works without backend).
+    const to = "hello@contextaiq.com";
+    const lines = [
+      `Name: ${name}`,
+      `Company: ${company}`,
+      `Email: ${email}`,
+      "",
+      message,
+    ];
+    const mailto = `mailto:${encodeURIComponent(to)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join("\n"))}`;
+    window.location.href = mailto;
+    setStatus("sent");
+  }
+
   return (
     <>
       <SEO
@@ -39,41 +95,46 @@ export default function Contact() {
             {/* Contact Form */}
             <div className="card-minimal">
               <h2 className="text-2xl mb-6">Send a message</h2>
-              <form className="space-y-6">
+              <form className="space-y-6" onSubmit={onSubmit}>
                 <div className="grid-2-col">
                   <div className="space-y-2">
                     <Label htmlFor="name">Name</Label>
-                    <Input id="name" placeholder="Your name" />
+                    <Input id="name" name="name" placeholder="Your name" required />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="company">Company</Label>
-                    <Input id="company" placeholder="Company name" />
+                    <Input id="company" name="company" placeholder="Company name" />
                   </div>
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="email">Email</Label>
-                  <Input id="email" type="email" placeholder="you@company.com" />
+                  <Input id="email" name="email" type="email" placeholder="you@company.com" required />
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="subject">Subject</Label>
-                  <Input id="subject" placeholder="What would you like to discuss?" />
+                  <Input id="subject" name="subject" placeholder="What would you like to discuss?" required />
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="message">Message</Label>
                   <Textarea 
                     id="message" 
+                    name="message"
                     placeholder="Tell us about your situation and what you're looking to achieve."
                     rows={5}
+                    required
                   />
                 </div>
-                <Button type="submit" variant="default" className="w-full">
-                  Send message
+                <Button type="submit" variant="default" className="w-full" disabled={status === "sending"}>
+                  {status === "sending" ? "Sending…" : "Send message"}
                   <ArrowRight size={16} />
                 </Button>
               </form>
-              <p className="text-small mt-4 text-center">
-                [Form submission placeholder - integrate with preferred backend]
-              </p>
+              {status === "sent" ? (
+                <p className="text-small mt-4 text-center">Message initiated. If your mail client didn’t open, email `hello@contextaiq.com`.</p>
+              ) : null}
+              {status === "error" ? (
+                <p className="text-small mt-4 text-center text-destructive">Failed to send: {error}</p>
+              ) : null}
             </div>
 
             {/* Other Options */}
@@ -89,11 +150,29 @@ export default function Contact() {
                     <p className="text-muted-foreground mb-4">
                       Book a 30-minute introductory call to discuss your AI visibility needs.
                     </p>
-                    <Button variant="outline">
-                      Open calendar
-                      <ArrowRight size={16} />
-                    </Button>
-                    <p className="text-small mt-2">[Calendly embed placeholder]</p>
+                    {calendlyUrl ? (
+                      <a
+                        href={calendlyUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={() => track("book_call_click", { provider: "calendly" })}
+                      >
+                        <Button variant="outline">
+                          Open calendar
+                          <ArrowRight size={16} />
+                        </Button>
+                      </a>
+                    ) : (
+                      <a
+                        href="mailto:hello@contextaiq.com?subject=Call%20request%20(ContextAI%20Q)"
+                        onClick={() => track("book_call_click", { provider: "email" })}
+                      >
+                        <Button variant="outline">
+                          Request a call by email
+                          <ArrowRight size={16} />
+                        </Button>
+                      </a>
+                    )}
                   </div>
                 </div>
               </div>
