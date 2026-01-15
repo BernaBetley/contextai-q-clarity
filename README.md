@@ -11,8 +11,7 @@ npm run dev
 
 ## Builds
 
-- `npm run build`: Next.js production build (primary)
-- `npm run build:vite`: Vite SPA build (legacy / transitional)
+- `npm run build`: Next.js production build
 
 ## Environment variables
 
