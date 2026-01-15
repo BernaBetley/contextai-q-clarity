@@ -1,15 +1,19 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { ArrowRight, Calendar, Mail } from "lucide-react";
 
-export const metadata: Metadata = {
+import { ContactForm } from "../components/ContactForm";
+import { TrackedLink } from "../components/TrackedLink";
+import { env } from "../lib/env.server";
+import { buildMetadata } from "../lib/metadata";
+
+export const metadata: Metadata = buildMetadata({
   title: "Contact",
-  description: "Get in touch with ContextAI Q. Schedule a call, send an email, or start the AI Visibility Audit.",
-  alternates: { canonical: "/contact" },
-};
+  description: "Start the AI Visibility Audit or schedule a call. We respond within one business day.",
+  path: "/contact",
+});
 
 export default function ContactPage() {
-  const calendlyUrl = process.env.NEXT_PUBLIC_CALENDLY_URL;
+  const calendlyUrl = env.NEXT_PUBLIC_CALENDLY_URL;
 
   return (
     <>
@@ -17,8 +21,10 @@ export default function ContactPage() {
       <section className="section-slide pt-24 md:pt-32">
         <div className="container-wide">
           <p className="eyebrow mb-4">Contact</p>
-          <h1 className="mb-6 max-w-3xl">Let&apos;s talk</h1>
-          <p className="lead max-w-2xl">Questions about AI visibility? We respond within one business day.</p>
+          <h1 className="mb-6 max-w-3xl">Let&apos;s scope your AI visibility baseline</h1>
+          <p className="lead max-w-2xl">
+            Share your category, target queries, and competitors. We respond within one business day.
+          </p>
         </div>
       </section>
 
@@ -26,17 +32,8 @@ export default function ContactPage() {
         <div className="container-wide">
           <div className="grid-2-col">
             <div className="card-minimal">
-              <h2 className="text-2xl mb-6">Email</h2>
-              <p className="text-muted-foreground mb-6">
-                Send context (company, category, competitors, priority queries) and we&apos;ll reply with next steps.
-              </p>
-              <a
-                href="mailto:hello@contextaiq.com"
-                className="inline-flex items-center justify-center gap-2 rounded-md bg-primary px-5 py-2 text-sm font-semibold text-primary-foreground shadow-subtle transition hover:-translate-y-0.5"
-              >
-                Email hello@contextaiq.com <Mail size={16} />
-              </a>
-              <p className="text-small mt-4">If you need invoicing details, include your billing entity and VAT ID.</p>
+              <h2 className="text-2xl mb-6">Send a request</h2>
+              <ContactForm />
             </div>
 
             <div className="space-y-8">
@@ -48,24 +45,30 @@ export default function ContactPage() {
                   <div>
                     <h3 className="text-lg mb-2">Schedule a call</h3>
                     <p className="text-muted-foreground mb-4">
-                      Book a 30-minute introductory call to discuss your AI visibility needs.
+                      Book a 20-minute call to confirm scope and outcomes.
                     </p>
                     {calendlyUrl ? (
-                      <a
+                      <TrackedLink
                         href={calendlyUrl}
+                        external
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center justify-center gap-2 rounded-md border border-foreground bg-transparent px-5 py-2 text-sm font-medium text-foreground transition-all duration-200 hover:bg-foreground hover:text-background"
+                        className="btn btn-secondary btn-sm"
+                        eventName="cta_click"
+                        eventParams={{ location: "contact_schedule", cta: "Open calendar" }}
                       >
                         Open calendar <ArrowRight size={16} />
-                      </a>
+                      </TrackedLink>
                     ) : (
-                      <a
+                      <TrackedLink
                         href="mailto:hello@contextaiq.com?subject=Call%20request%20(ContextAI%20Q)"
-                        className="inline-flex items-center justify-center gap-2 rounded-md border border-foreground bg-transparent px-5 py-2 text-sm font-medium text-foreground transition-all duration-200 hover:bg-foreground hover:text-background"
+                        external
+                        className="btn btn-secondary btn-sm"
+                        eventName="cta_click"
+                        eventParams={{ location: "contact_schedule", cta: "Request call by email" }}
                       >
                         Request a call by email <ArrowRight size={16} />
-                      </a>
+                      </TrackedLink>
                     )}
                   </div>
                 </div>
@@ -74,12 +77,31 @@ export default function ContactPage() {
               <div className="card-minimal bg-secondary/50">
                 <h3 className="text-lg mb-2">Ready to start?</h3>
                 <p className="text-muted-foreground mb-4">Skip the call and purchase the €500 audit directly.</p>
-                <Link
+                <TrackedLink
                   href="/audit"
-                  className="inline-flex items-center justify-center gap-2 rounded-md bg-primary px-5 py-2 text-sm font-semibold text-primary-foreground shadow-subtle transition hover:-translate-y-0.5"
+                  className="btn btn-secondary btn-sm"
+                  eventName="cta_click"
+                  eventParams={{ location: "contact_cta", cta: "Start audit now" }}
                 >
                   Start audit now <ArrowRight size={16} />
-                </Link>
+                </TrackedLink>
+              </div>
+
+              <div className="card-minimal">
+                <h3 className="text-lg mb-2">Email us directly</h3>
+                <p className="text-muted-foreground mb-4">
+                  Prefer email? Send your context and we&apos;ll reply with next steps.
+                </p>
+                <TrackedLink
+                  href="mailto:hello@contextaiq.com"
+                  external
+                  className="btn btn-secondary btn-sm"
+                  eventName="cta_click"
+                  eventParams={{ location: "contact_email", cta: "Email hello@contextaiq.com" }}
+                >
+                  Email hello@contextaiq.com <Mail size={16} />
+                </TrackedLink>
+                <p className="text-small mt-4">If you need invoicing details, include your billing entity and VAT ID.</p>
               </div>
             </div>
           </div>

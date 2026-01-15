@@ -1,55 +1,92 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { ArrowRight, Check, Clock } from "lucide-react";
 
-export const metadata: Metadata = {
+import { FaqSchema, ServiceSchema } from "../components/StructuredData";
+import { TrackedLink } from "../components/TrackedLink";
+import { env } from "../lib/env.server";
+import { buildMetadata } from "../lib/metadata";
+
+export const metadata: Metadata = buildMetadata({
   title: "AI Visibility Audit — €500",
   description:
-    "Fixed-scope AI visibility audit: 20 queries, 4 LLMs, 3 competitors. Delivered in 5–7 business days. Actionable roadmap included.",
-  alternates: { canonical: "/audit" },
-};
+    "Fixed-scope AI visibility audit: 20 queries, 4 LLMs, 3 competitors. Delivered in 5–7 business days with a prioritized action roadmap.",
+  path: "/audit",
+});
 
 const included = [
-  "20 strategic queries tested across your category",
+  "20 strategic queries across brand, category, and use-case intent",
   "4 LLMs evaluated: ChatGPT, Claude, Gemini, Perplexity",
-  "3 competitors benchmarked",
-  "Visibility scoring (0-100) per query",
-  "Accuracy assessment with hallucination flagging",
-  "Citation and source analysis",
+  "3 competitors benchmarked using the same query set",
+  "Visibility scorecard (0–100) with query-level breakdowns",
+  "Accuracy and hallucination log with evidence",
+  "Citation and source analysis to identify authority gaps",
   "Competitive positioning matrix",
-  "Prioritized action roadmap",
-  "PDF report with screenshots",
+  "Prioritized action roadmap (quick wins + structural fixes)",
+  "PDF report with screenshots and annotated evidence",
   "Optional 30-minute walkthrough call",
 ];
 
 const isNot = [
-  "Not a one-time SEO audit",
-  "Not a content marketing strategy",
+  "Not a generic SEO audit or keyword report",
+  "Not a content marketing strategy or editorial calendar",
   "Not an implementation service (available separately)",
   "Not ongoing monitoring (retainer available)",
 ];
+const sampleOutputs = [
+  {
+    title: "Executive summary",
+    description: "One-page snapshot of visibility, accuracy, and competitive positioning.",
+  },
+  {
+    title: "Visibility scorecard",
+    description: "Per-query scores across each LLM with clear baselines.",
+  },
+  {
+    title: "Evidence archive",
+    description: "Screenshots of responses and citations for decision-ready proof.",
+  },
+  {
+    title: "Action roadmap",
+    description: "Sequenced recommendations by impact and effort.",
+  },
+];
 
-function ServiceSchema() {
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    name: "AI Visibility Audit",
-    provider: { "@type": "Organization", name: "ContextAI Q" },
-    description:
-      "Fixed-scope audit measuring your brand's visibility and accuracy across major LLMs including ChatGPT, Claude, Gemini, and Perplexity.",
-    offers: { "@type": "Offer", price: "500", priceCurrency: "EUR" },
-    areaServed: "Worldwide",
-  };
-  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />;
-}
+const faqs = [
+  {
+    question: "Who is the audit for?",
+    answer:
+      "B2B founders, CMOs, growth, and SEO/AI leads who need to know how their brand appears in AI-generated answers.",
+  },
+  {
+    question: "What do you need from us?",
+    answer:
+      "Company context, priority queries, competitor list, and any existing fact sheets or source materials.",
+  },
+  {
+    question: "Can we move directly to implementation?",
+    answer:
+      "Yes. The audit becomes the scoped brief for implementation and monitoring, with clear priorities and timelines.",
+  },
+  {
+    question: "Is the audit reusable?",
+    answer:
+      "Yes. You can repeat it quarterly or after major product changes to benchmark progress.",
+  },
+];
 
 export default function AuditPage() {
-  const stripeCheckoutUrl = process.env.NEXT_PUBLIC_STRIPE_CHECKOUT_URL;
-  const intakeUrl = process.env.NEXT_PUBLIC_AUDIT_INTAKE_URL;
+  const stripeCheckoutUrl = env.NEXT_PUBLIC_STRIPE_CHECKOUT_URL;
+  const intakeUrl = env.NEXT_PUBLIC_AUDIT_INTAKE_URL;
 
   return (
     <>
-      <ServiceSchema />
+      <ServiceSchema
+        name="AI Visibility Audit"
+        description="Fixed-scope audit measuring your brand's visibility and accuracy across ChatGPT, Claude, Gemini, and Perplexity."
+        price="500"
+        url="/audit"
+      />
+      <FaqSchema items={faqs} />
 
       {/* Hero */}
       <section className="section-slide pt-24 md:pt-32">
@@ -59,8 +96,8 @@ export default function AuditPage() {
               <p className="eyebrow mb-4">Start Here</p>
               <h1 className="mb-6">AI Visibility Audit</h1>
               <p className="lead mb-8">
-                Understand exactly how your brand appears—or doesn&apos;t—in AI-generated answers. Fixed scope, clear
-                deliverables, actionable roadmap.
+                Quantify how your brand appears in AI-generated answers, with evidence and a prioritized roadmap. Fixed scope,
+                delivered in 5–7 business days.
               </p>
               <div className="flex items-baseline gap-3 mb-8">
                 <span className="text-6xl font-serif font-semibold">€500</span>
@@ -72,18 +109,26 @@ export default function AuditPage() {
               </div>
 
               {stripeCheckoutUrl ? (
-                <a href={stripeCheckoutUrl} target="_blank" rel="noopener noreferrer">
-                  <span className="inline-flex items-center justify-center gap-2 rounded-md bg-primary px-8 py-6 text-base font-medium text-primary-foreground shadow-elevated transition-all duration-200 hover:shadow-prominent hover:-translate-y-0.5 active:translate-y-0">
-                    Purchase Audit <ArrowRight size={18} />
-                  </span>
-                </a>
+                <TrackedLink
+                  href={stripeCheckoutUrl}
+                  external
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-primary btn-lg"
+                  eventName="cta_click"
+                  eventParams={{ location: "audit_hero", cta: "Purchase audit" }}
+                >
+                  Purchase audit <ArrowRight size={18} />
+                </TrackedLink>
               ) : (
-                <Link
+                <TrackedLink
                   href="/contact"
-                  className="inline-flex items-center justify-center gap-2 rounded-md bg-primary px-8 py-6 text-base font-medium text-primary-foreground shadow-elevated transition-all duration-200 hover:shadow-prominent hover:-translate-y-0.5 active:translate-y-0"
+                  className="btn btn-primary btn-lg"
+                  eventName="cta_click"
+                  eventParams={{ location: "audit_hero", cta: "Request invoice" }}
                 >
                   Request invoice / pay by bank transfer <ArrowRight size={18} />
-                </Link>
+                </TrackedLink>
               )}
 
               <p className="text-small mt-4">Stripe payment. Invoice provided.</p>
@@ -141,11 +186,17 @@ export default function AuditPage() {
                         precisely.
                       </p>
                       {intakeUrl ? (
-                        <a href={intakeUrl} target="_blank" rel="noopener noreferrer">
-                          <span className="inline-flex items-center justify-center gap-2 rounded-md border border-foreground bg-transparent px-5 py-2 text-sm font-medium text-foreground transition-all duration-200 hover:bg-foreground hover:text-background mt-3">
-                            Open intake form <ArrowRight size={16} />
-                          </span>
-                        </a>
+                        <TrackedLink
+                          href={intakeUrl}
+                          external
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="btn btn-secondary btn-sm mt-3"
+                          eventName="cta_click"
+                          eventParams={{ location: "audit_intake", cta: "Open intake form" }}
+                        >
+                          Open intake form <ArrowRight size={16} />
+                        </TrackedLink>
                       ) : (
                         <p className="text-small mt-3 text-muted-foreground">
                           Intake link is provided in your confirmation email. If you don’t receive it, email{" "}
@@ -174,24 +225,62 @@ export default function AuditPage() {
         </div>
       </section>
 
+      <section className="section-slide bg-secondary/30">
+        <div className="container-wide">
+          <p className="eyebrow mb-4">Sample output</p>
+          <h2 className="mb-12">What you receive</h2>
+          <div className="grid-2-col">
+            {sampleOutputs.map((item) => (
+              <div key={item.title} className="card-minimal bg-background">
+                <h3 className="text-lg mb-2">{item.title}</h3>
+                <p className="text-muted-foreground text-sm">{item.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section-slide">
+        <div className="container-wide">
+          <p className="eyebrow mb-4">FAQ</p>
+          <h2 className="mb-12">Questions we hear often</h2>
+          <div className="grid-2-col">
+            {faqs.map((item) => (
+              <div key={item.question} className="card-minimal">
+                <h3 className="text-lg mb-3">{item.question}</h3>
+                <p className="text-muted-foreground text-sm">{item.answer}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="section-slide bg-secondary/30">
         <div className="container-wide text-center">
           <h2 className="mb-6">Ready to see where you stand?</h2>
           <p className="lead max-w-xl mx-auto mb-10">€500. Fixed scope. Delivered in 5–7 business days.</p>
           {stripeCheckoutUrl ? (
-            <a href={stripeCheckoutUrl} target="_blank" rel="noopener noreferrer">
-              <span className="inline-flex items-center justify-center gap-2 rounded-md bg-primary px-8 py-6 text-base font-medium text-primary-foreground shadow-elevated transition-all duration-200 hover:shadow-prominent hover:-translate-y-0.5 active:translate-y-0">
-                Start your audit <ArrowRight size={18} />
-              </span>
-            </a>
+            <TrackedLink
+              href={stripeCheckoutUrl}
+              external
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-primary btn-lg"
+              eventName="cta_click"
+              eventParams={{ location: "audit_final", cta: "Start your audit" }}
+            >
+              Start your audit <ArrowRight size={18} />
+            </TrackedLink>
           ) : (
-            <Link
+            <TrackedLink
               href="/contact"
-              className="inline-flex items-center justify-center gap-2 rounded-md bg-primary px-8 py-6 text-base font-medium text-primary-foreground shadow-elevated transition-all duration-200 hover:shadow-prominent hover:-translate-y-0.5 active:translate-y-0"
+              className="btn btn-primary btn-lg"
+              eventName="cta_click"
+              eventParams={{ location: "audit_final", cta: "Request invoice" }}
             >
               Request invoice / pay by bank transfer <ArrowRight size={18} />
-            </Link>
+            </TrackedLink>
           )}
         </div>
       </section>

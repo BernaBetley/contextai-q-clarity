@@ -1,11 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-export const metadata: Metadata = {
+import { TrackedLink } from "../components/TrackedLink";
+import { buildMetadata } from "../lib/metadata";
+
+export const metadata: Metadata = buildMetadata({
   title: "Signals",
-  description: "Industry signals and developments in AI visibility and AI-driven discovery. What changed, why it matters, and what to do next.",
-  alternates: { canonical: "/signals" },
-};
+  description: "Industry signals and developments in AI visibility and AI-driven discovery.",
+  path: "/signals",
+});
 
 const signals = [
   {
@@ -51,6 +54,21 @@ export default function SignalsPage() {
               </Link>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="section-slide bg-secondary/30">
+        <div className="container-wide text-center">
+          <h2 className="mb-6">Need a baseline for your brand?</h2>
+          <p className="lead max-w-xl mx-auto mb-10">Start with the €500 audit and quantify your position.</p>
+          <TrackedLink
+            href="/audit"
+            className="btn btn-primary btn-lg"
+            eventName="cta_click"
+            eventParams={{ location: "signals_final", cta: "Start the audit" }}
+          >
+            Start the audit
+          </TrackedLink>
         </div>
       </section>
     </>

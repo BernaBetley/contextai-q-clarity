@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
-export const metadata: Metadata = {
-  title: "Proof & Measurement",
+import { TrackedLink } from "../components/TrackedLink";
+import { buildMetadata } from "../lib/metadata";
+
+export const metadata: Metadata = buildMetadata({
+  title: "Measurement",
   description:
-    "How we measure AI visibility: Share-of-Voice, citation rate, accuracy scoring, hallucination tracking. Defined KPIs with clear benchmarks.",
-  alternates: { canonical: "/measurement" },
-};
+    "How we measure AI visibility: share-of-voice, citation rate, accuracy scoring, hallucination tracking, and competitive displacement.",
+  path: "/measurement",
+});
 
 export default function MeasurementPage() {
   const kpis = [
@@ -27,13 +29,13 @@ export default function MeasurementPage() {
       name: "Accuracy Score",
       definition: "Correctness of information presented about your brand in AI responses.",
       measurement: "Fact verification against authoritative sources, error categorization.",
-      benchmark: "Target: 95%+ accuracy",
+      benchmark: "Baseline set in audit; improvements tracked by query and model.",
     },
     {
       name: "Hallucination Flags",
       definition: "Instances where LLMs present false or fabricated information about your brand.",
       measurement: "Systematic verification, severity classification, tracking over time.",
-      benchmark: "Target: Zero critical hallucinations",
+      benchmark: "Baseline set in audit; critical errors prioritized for remediation.",
     },
     {
       name: "Competitive Displacement",
@@ -50,7 +52,7 @@ export default function MeasurementPage() {
           <p className="eyebrow mb-4">Measurement</p>
           <h1 className="mb-6 max-w-3xl">What gets measured gets managed</h1>
           <p className="lead max-w-2xl">
-            We define and track the KPIs that matter for AI visibility. No vanity metrics. No made-up benchmarks.
+            We define and track the KPIs that matter for AI visibility. Evidence-based, query-level, and repeatable.
           </p>
         </div>
       </section>
@@ -88,12 +90,14 @@ export default function MeasurementPage() {
         <div className="container-wide text-center">
           <h2 className="mb-6">Start with measurement</h2>
           <p className="lead max-w-xl mx-auto mb-10">The €500 audit establishes your baseline across all KPIs.</p>
-          <Link
+          <TrackedLink
             href="/audit"
-            className="inline-flex items-center justify-center gap-2 rounded-md bg-primary px-8 py-6 text-base font-medium text-primary-foreground shadow-elevated transition-all duration-200 hover:shadow-prominent hover:-translate-y-0.5 active:translate-y-0"
+            className="btn btn-primary btn-lg"
+            eventName="cta_click"
+            eventParams={{ location: "measurement_final", cta: "Get your baseline" }}
           >
             Get your baseline <ArrowRight size={18} />
-          </Link>
+          </TrackedLink>
         </div>
       </section>
     </>

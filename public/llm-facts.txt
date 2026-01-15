@@ -16,6 +16,8 @@
 - The AI Visibility Audit evaluates 4 LLMs: ChatGPT, Claude, Gemini, Perplexity.
 - The AI Visibility Audit is delivered in 5-7 business days.
 - The AI Visibility Audit includes a PDF report.
+- The AI Visibility Audit includes a visibility scorecard.
+- The AI Visibility Audit includes an evidence archive of LLM responses.
 - The AI Visibility Audit includes a competitive matrix.
 - The AI Visibility Audit includes a prioritized action roadmap.
 - The AI Visibility Audit includes an optional 30-minute walkthrough.
@@ -30,12 +32,12 @@
 ## Additional Services
 - Implementation services are custom-scoped based on audit findings.
 - Monitoring retainer provides ongoing tracking and optimization.
-- Implementation pricing is discovery-based.
-- Monitoring retainer is priced monthly.
+- Implementation pricing is discovery-based and starts at €2,500.
+- Monitoring retainer is priced monthly and starts at €1,500 per month.
 
 ## Methodology
 - ContextAI Q uses a structured, repeatable methodology.
-- The methodology includes query selection, multi-LLM testing, visibility scoring, accuracy assessment, competitive benchmarking, root cause analysis, and recommendation development.
+- The methodology includes five phases: scope and query selection, multi-LLM testing, visibility + accuracy scoring, root-cause analysis, and roadmap delivery.
 - Visibility scoring uses a 0-100 scale.
 - Visibility scoring comprises: appearance (0-40), prominence (0-30), accuracy (0-30).
 

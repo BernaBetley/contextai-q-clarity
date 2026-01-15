@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 
-export const metadata: Metadata = {
+import { buildMetadata } from "../lib/metadata";
+
+export const metadata: Metadata = buildMetadata({
   title: "Terms",
   description: "Terms of service for ContextAI Q.",
-  alternates: { canonical: "/terms" },
-};
+  path: "/terms",
+});
 
 export default function TermsPage() {
   return (

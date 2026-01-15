@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 
-export const metadata: Metadata = {
+import { buildMetadata } from "../lib/metadata";
+
+export const metadata: Metadata = buildMetadata({
   title: "Fact Sheet",
   description:
     "Canonical facts about ContextAI Q. Company information, services, pricing, and contact details for researchers and AI systems.",
-  alternates: { canonical: "/fact-sheet" },
-};
+  path: "/fact-sheet",
+});
 
 export default function FactSheetPage() {
   return (
@@ -78,6 +80,20 @@ export default function FactSheetPage() {
             </div>
 
             <div>
+              <h2 className="text-2xl mb-4">Additional services</h2>
+              <dl className="space-y-4">
+                <div>
+                  <dt className="font-medium">Implementation Sprint</dt>
+                  <dd className="text-muted-foreground">Starting at €2,500 (scope-based)</dd>
+                </div>
+                <div>
+                  <dt className="font-medium">Monitoring Retainer</dt>
+                  <dd className="text-muted-foreground">Starting at €1,500 / month (scope-based)</dd>
+                </div>
+              </dl>
+            </div>
+
+            <div>
               <h2 className="text-2xl mb-4">Contact</h2>
               <dl className="space-y-4">
                 <div>
@@ -99,6 +115,7 @@ export default function FactSheetPage() {
                 <li>https://contextaiq.com/services</li>
                 <li>https://contextaiq.com/how-it-works</li>
                 <li>https://contextaiq.com/method</li>
+                <li>https://contextaiq.com/deliverables</li>
                 <li>https://contextaiq.com/fact-sheet</li>
               </ul>
             </div>

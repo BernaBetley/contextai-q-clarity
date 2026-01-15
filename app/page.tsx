@@ -1,13 +1,25 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { ArrowRight, Activity, BarChart3, Search, Share2 } from "lucide-react";
+import {
+  Activity,
+  ArrowRight,
+  BarChart3,
+  CheckCircle2,
+  FileText,
+  Search,
+  ShieldCheck,
+  Target,
+} from "lucide-react";
 
-export const metadata: Metadata = {
+import { FaqSchema, ServiceSchema } from "./components/StructuredData";
+import { TrackedLink } from "./components/TrackedLink";
+import { buildMetadata } from "./lib/metadata";
+
+export const metadata: Metadata = buildMetadata({
   title: "AI Visibility Audit",
   description:
-    "We measure and improve how your organization appears in AI-generated answers. Start with a €500 fixed-scope AI Visibility Audit.",
-  alternates: { canonical: "/" },
-};
+    "A fixed-scope audit that measures how your brand appears in AI-generated answers across major LLMs and delivers a prioritized action roadmap in 5–7 business days.",
+  path: "/",
+});
 
 function Section({
   children,
@@ -25,274 +37,309 @@ function Section({
   );
 }
 
-function HeroSection() {
-  return (
-    <Section className="pt-24 md:pt-32">
-      <div className="max-w-4xl">
-        <p className="eyebrow mb-4 animate-fade-in">AI Visibility Advisory</p>
-        <h1 className="mb-6 animate-fade-in" style={{ animationDelay: "0.1s" }}>
-          Are LLMs getting your brand right?
-        </h1>
-        <p className="lead max-w-2xl mb-10 animate-fade-in" style={{ animationDelay: "0.2s" }}>
-          We measure and optimize how your organization appears in AI-generated answers. Fixed-scope audit. Measurable
-          outcomes. No guesswork.
-        </p>
-        <div className="flex flex-wrap gap-4 animate-fade-in" style={{ animationDelay: "0.3s" }}>
-          <Link
-            href="/audit"
-            className="inline-flex items-center justify-center gap-2 rounded-md bg-primary px-8 py-6 text-base font-medium text-primary-foreground shadow-elevated transition-all duration-200 hover:shadow-prominent hover:-translate-y-0.5 active:translate-y-0"
-          >
-            Run €500 Audit <ArrowRight size={18} />
-          </Link>
-          <Link
-            href="/how-it-works"
-            className="inline-flex items-center justify-center rounded-md border-2 border-foreground bg-transparent px-8 py-6 text-base font-medium text-foreground transition-all duration-200 hover:bg-foreground hover:text-background"
-          >
-            See methodology
-          </Link>
-        </div>
-      </div>
-    </Section>
-  );
-}
+const phases = [
+  {
+    title: "Scope & query selection",
+    description: "Define 20 strategic queries across brand, category, and use-case intent.",
+    output: "Validated query set and success criteria.",
+    icon: Search,
+  },
+  {
+    title: "Multi-LLM testing",
+    description: "Run queries across ChatGPT, Claude, Gemini, and Perplexity.",
+    output: "Response archive with screenshots and metadata.",
+    icon: Activity,
+  },
+  {
+    title: "Visibility + accuracy scoring",
+    description: "Score appearance, prominence, and factual accuracy on a 0–100 scale.",
+    output: "Visibility scorecard and error inventory.",
+    icon: BarChart3,
+  },
+  {
+    title: "Root-cause analysis",
+    description: "Identify source gaps, citation patterns, and content structure issues.",
+    output: "Cause map and fixability assessment.",
+    icon: ShieldCheck,
+  },
+  {
+    title: "Roadmap + delivery",
+    description: "Prioritize actions by impact and effort for immediate execution.",
+    output: "Executive summary, roadmap, and walkthrough.",
+    icon: Target,
+  },
+];
 
-function ExecutiveSummary() {
-  const points = [
-    "AI assistants increasingly shape how buyers research categories and vendors.",
-    "Brands often appear inaccurately, incompletely, or not at all in AI-generated answers.",
-    "This requires different tactics than traditional SEO: structure, authority, and citation-ready content.",
-  ];
+const deliverables = [
+  {
+    title: "Visibility scorecard",
+    description: "Query-level scores by model with clear baselines.",
+  },
+  {
+    title: "Evidence snapshots",
+    description: "Screenshots and citations showing how LLMs describe you today.",
+  },
+  {
+    title: "Competitive matrix",
+    description: "Head-to-head comparison with 3 named competitors.",
+  },
+  {
+    title: "Prioritized roadmap",
+    description: "Sequenced actions grouped by quick wins vs. structural fixes.",
+  },
+];
 
-  return (
-    <Section>
-      <div className="max-w-3xl mx-auto">
-        <p className="eyebrow mb-4 text-center">Executive Summary</p>
-        <div className="space-y-6">
-          {points.map((point, index) => (
-            <div key={point} className="flex items-start gap-4 p-6 bg-secondary/50 rounded-lg">
-              <span className="text-2xl font-serif font-semibold text-muted-foreground">
-                {(index + 1).toString().padStart(2, "0")}
-              </span>
-              <p className="text-large">{point}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </Section>
-  );
-}
+const useCases = [
+  {
+    title: "Category leadership defense",
+    description: "Protect visibility when buyers ask LLMs for category recommendations.",
+  },
+  {
+    title: "New category creation",
+    description: "Define how LLMs describe your category and who they cite first.",
+  },
+  {
+    title: "Competitive displacement",
+    description: "Identify where competitors appear and why you do not.",
+  },
+];
 
-function StakesSection() {
-  const risks = [
-    {
-      title: "Invisibility",
-      description: "Your brand is absent from AI-generated recommendations in your category.",
-    },
-    {
-      title: "Inaccuracy",
-      description: "LLMs present outdated or incorrect information about your products and services.",
-    },
-    {
-      title: "Displacement",
-      description: "Competitors appear prominently while you remain unlisted or misrepresented.",
-    },
-  ];
-
-  return (
-    <Section>
-      <p className="eyebrow mb-4">What's at Stake</p>
-      <h2 className="mb-12 max-w-2xl">The AI discovery gap is widening</h2>
-
-      <div className="grid-3-col">
-        {risks.map((risk) => (
-          <div key={risk.title} className="card-minimal">
-            <h3 className="mb-3">{risk.title}</h3>
-            <p className="text-muted-foreground">{risk.description}</p>
-          </div>
-        ))}
-      </div>
-    </Section>
-  );
-}
-
-function HowWeHelpSection() {
-  const steps = [
-    {
-      icon: Search,
-      phase: "Measure",
-      title: "AI Visibility Audit",
-      deliverables: ["20-query visibility scan", "Accuracy scoring", "Competitive benchmarking"],
-    },
-    {
-      icon: BarChart3,
-      phase: "Structure",
-      title: "Content Architecture",
-      deliverables: ["Schema markup", "Fact-sheet creation", "Citation-ready formatting"],
-    },
-    {
-      icon: Share2,
-      phase: "Distribute",
-      title: "Signal Amplification",
-      deliverables: ["Knowledge graph optimization", "Authority building", "Source diversification"],
-    },
-    {
-      icon: Activity,
-      phase: "Monitor",
-      title: "Ongoing Tracking",
-      deliverables: ["Weekly position reports", "Hallucination alerts", "Competitive tracking"],
-    },
-  ];
-
-  return (
-    <Section>
-      <p className="eyebrow mb-4">How We Help</p>
-      <h2 className="mb-12 max-w-2xl">Four-layer methodology</h2>
-
-      <div className="grid-4-col">
-        {steps.map((step) => (
-          <div key={step.title} className="card-minimal">
-            <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center mb-4">
-              <step.icon size={24} />
-            </div>
-            <p className="eyebrow mb-1">{step.phase}</p>
-            <h3 className="text-lg mb-4">{step.title}</h3>
-            <ul className="space-y-2">
-              {step.deliverables.map((item) => (
-                <li key={item} className="text-small flex items-start gap-2">
-                  <span className="text-muted-foreground">—</span>
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
-      </div>
-    </Section>
-  );
-}
-
-function ProductOfferSection() {
-  const scope = [
-    "20 strategic queries tested",
-    "3 competitors benchmarked",
-    "4 LLMs evaluated (ChatGPT, Claude, Gemini, Perplexity)",
-    "Accuracy and citation analysis",
-    "Prioritized action roadmap",
-  ];
-
-  return (
-    <Section className="bg-secondary/30">
-      <div className="grid-2-col items-center">
-        <div>
-          <p className="eyebrow mb-4">Start Here</p>
-          <h2 className="mb-6">AI Visibility Audit</h2>
-          <p className="lead mb-8">Fixed scope. Clear deliverables. Actionable insights in 5-7 business days.</p>
-          <div className="flex items-baseline gap-2 mb-8">
-            <span className="text-5xl font-serif font-semibold">€500</span>
-            <span className="text-muted-foreground">one-time</span>
-          </div>
-          <Link
-            href="/audit"
-            className="inline-flex items-center justify-center gap-2 rounded-md bg-primary px-8 py-6 text-base font-medium text-primary-foreground shadow-elevated transition-all duration-200 hover:shadow-prominent hover:-translate-y-0.5 active:translate-y-0"
-          >
-            Start your audit <ArrowRight size={18} />
-          </Link>
-        </div>
-        <div className="card-minimal">
-          <h3 className="mb-6">What's included</h3>
-          <ul className="space-y-4">
-            {scope.map((item) => (
-              <li key={item} className="flex items-start gap-3">
-                <span className="text-foreground font-medium flex-shrink-0 mt-0.5">✓</span>
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-    </Section>
-  );
-}
-
-function FinalCTA() {
-  return (
-    <Section>
-      <div className="text-center max-w-2xl mx-auto">
-        <h2 className="mb-6">Ready to become visible?</h2>
-        <p className="lead mb-10">
-          Start with a fixed-scope audit. Understand exactly where you stand in AI-generated answers.
-        </p>
-        <div className="flex flex-wrap justify-center gap-4">
-          <Link
-            href="/audit"
-            className="inline-flex items-center justify-center gap-2 rounded-md bg-primary px-8 py-6 text-base font-medium text-primary-foreground shadow-elevated transition-all duration-200 hover:shadow-prominent hover:-translate-y-0.5 active:translate-y-0"
-          >
-            Run €500 Audit <ArrowRight size={18} />
-          </Link>
-          <Link
-            href="/contact"
-            className="inline-flex items-center justify-center rounded-md border-2 border-foreground bg-transparent px-8 py-6 text-base font-medium text-foreground transition-all duration-200 hover:bg-foreground hover:text-background"
-          >
-            Get in touch
-          </Link>
-        </div>
-      </div>
-    </Section>
-  );
-}
-
-function OrganizationSchema() {
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    name: "ContextAI Q",
-    url: "https://contextaiq.com",
-    logo: "https://contextaiq.com/contextaiq_logo_bw.svg",
-    description: "Making brands visible and accurately represented in AI-generated answers.",
-    address: { "@type": "PostalAddress", addressCountry: "PT" },
-    sameAs: [],
-  };
-
-  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />;
-}
-
-function WebSiteSchema() {
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    name: "ContextAI Q",
-    url: "https://contextaiq.com",
-  };
-  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />;
-}
-
-function ServiceSchema() {
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    name: "AI Visibility Audit",
-    provider: { "@type": "Organization", name: "ContextAI Q" },
-    description:
-      "Fixed-scope audit measuring your brand's visibility and accuracy across major LLMs including ChatGPT, Claude, Gemini, and Perplexity.",
-    offers: { "@type": "Offer", price: "500", priceCurrency: "EUR" },
-    areaServed: "Worldwide",
-  };
-  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />;
-}
+const faqs = [
+  {
+    question: "What makes this different from a traditional SEO audit?",
+    answer:
+      "We measure visibility inside LLM answers, not search rankings. The audit focuses on how AI systems cite and describe your brand, with evidence and scoring per query.",
+  },
+  {
+    question: "How long does the audit take?",
+    answer: "5–7 business days from intake completion to delivery.",
+  },
+  {
+    question: "Which models do you test?",
+    answer: "ChatGPT, Claude, Gemini, and Perplexity are included in the standard audit.",
+  },
+  {
+    question: "What do you deliver?",
+    answer:
+      "A PDF report, visibility scorecard, competitive matrix, and a prioritized action roadmap. A walkthrough call is included.",
+  },
+  {
+    question: "Can you implement the recommendations?",
+    answer:
+      "Yes. Implementation and monitoring are available as separate engagements after the audit.",
+  },
+];
 
 export default function HomePage() {
   return (
     <>
-      <OrganizationSchema />
-      <WebSiteSchema />
-      <ServiceSchema />
+      <ServiceSchema
+        name="AI Visibility Audit"
+        description="Fixed-scope audit measuring your brand's visibility and accuracy across ChatGPT, Claude, Gemini, and Perplexity."
+        price="500"
+        url="/audit"
+      />
+      <FaqSchema items={faqs} />
 
-      <HeroSection />
-      <ExecutiveSummary />
-      <StakesSection />
-      <HowWeHelpSection />
-      <ProductOfferSection />
-      <FinalCTA />
+      <Section className="pt-24 md:pt-32">
+        <div className="max-w-4xl">
+          <p className="eyebrow mb-4">AI Visibility Audit for B2B teams</p>
+          <h1 className="mb-6 text-balance">Know exactly how LLMs describe your brand — and what to fix.</h1>
+          <p className="lead max-w-2xl mb-8">
+            We test 20 strategic queries across ChatGPT, Claude, Gemini, and Perplexity, score visibility and accuracy, and
+            deliver a prioritized roadmap in 5–7 business days.
+          </p>
+          <ul className="list-check mb-10 max-w-2xl text-muted-foreground">
+            <li>Fixed-scope €500 audit with documented methodology.</li>
+            <li>Query-level evidence, not generic SEO claims.</li>
+            <li>Designed for founders, CMOs, growth leaders, and AI/SEO leads.</li>
+          </ul>
+          <div className="flex flex-wrap gap-4">
+            <TrackedLink
+              href="/audit"
+              className="btn btn-primary btn-lg"
+              eventName="cta_click"
+              eventParams={{ location: "home_hero", cta: "Start the audit" }}
+            >
+              Start the audit <ArrowRight size={18} />
+            </TrackedLink>
+            <TrackedLink
+              href="/method"
+              className="btn btn-secondary btn-lg"
+              eventName="cta_click"
+              eventParams={{ location: "home_hero", cta: "See methodology" }}
+            >
+              See methodology
+            </TrackedLink>
+          </div>
+        </div>
+      </Section>
+
+      <Section className="bg-secondary/30">
+        <div className="grid-2-col items-start">
+          <div>
+            <p className="eyebrow mb-4">Definition</p>
+            <h2 className="mb-6">What “AI visibility” actually means</h2>
+            <p className="text-muted-foreground">
+              AI visibility is the share of category-relevant queries where your brand appears and is described accurately in
+              AI-generated answers. It is not traffic; it is whether you make the shortlist inside the model response.
+            </p>
+          </div>
+          <div className="card-minimal bg-background">
+            <p className="eyebrow mb-3">What we measure</p>
+            <ul className="space-y-3 text-sm text-muted-foreground">
+              <li className="flex items-start gap-3">
+                <CheckCircle2 size={16} className="text-foreground mt-0.5" />
+                Visibility score by query and model (0–100).
+              </li>
+              <li className="flex items-start gap-3">
+                <CheckCircle2 size={16} className="text-foreground mt-0.5" />
+                Accuracy and hallucination flags against authoritative sources.
+              </li>
+              <li className="flex items-start gap-3">
+                <CheckCircle2 size={16} className="text-foreground mt-0.5" />
+                Competitive displacement across 3 named competitors.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </Section>
+
+      <Section>
+        <p className="eyebrow mb-4">What’s at stake</p>
+        <h2 className="mb-12 max-w-2xl">The AI discovery gap is widening</h2>
+        <div className="grid-3-col">
+          {[
+            {
+              title: "Invisibility",
+              description: "Your brand is absent from AI-generated recommendations in your category.",
+            },
+            {
+              title: "Inaccuracy",
+              description: "LLMs present outdated or incorrect information about your product or positioning.",
+            },
+            {
+              title: "Displacement",
+              description: "Competitors are recommended because their sources are more citation-ready.",
+            },
+          ].map((risk) => (
+            <div key={risk.title} className="card-minimal">
+              <h3 className="mb-3">{risk.title}</h3>
+              <p className="text-muted-foreground">{risk.description}</p>
+            </div>
+          ))}
+        </div>
+      </Section>
+
+      <Section>
+        <p className="eyebrow mb-4">Methodology</p>
+        <h2 className="mb-12 max-w-2xl">Five phases, one clear outcome</h2>
+        <div className="grid-3-col">
+          {phases.map((phase) => (
+            <div key={phase.title} className="card-minimal">
+              <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center mb-4">
+                <phase.icon size={22} />
+              </div>
+              <h3 className="text-lg mb-3">{phase.title}</h3>
+              <p className="text-muted-foreground mb-4">{phase.description}</p>
+              <p className="text-small">Output: {phase.output}</p>
+            </div>
+          ))}
+        </div>
+        <div className="mt-10">
+          <TrackedLink
+            href="/method"
+            className="btn btn-secondary btn-md"
+            eventName="cta_click"
+            eventParams={{ location: "home_method", cta: "View full methodology" }}
+          >
+            View full methodology
+          </TrackedLink>
+        </div>
+      </Section>
+
+      <Section className="bg-secondary/30">
+        <p className="eyebrow mb-4">Sample output</p>
+        <h2 className="mb-12 max-w-2xl">What the audit delivers</h2>
+        <div className="grid-2-col">
+          {deliverables.map((item) => (
+            <div key={item.title} className="card-minimal bg-background">
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center flex-shrink-0">
+                  <FileText size={18} />
+                </div>
+                <div>
+                  <h3 className="text-lg mb-2">{item.title}</h3>
+                  <p className="text-small">{item.description}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="mt-10">
+          <TrackedLink
+            href="/deliverables"
+            className="btn btn-secondary btn-md"
+            eventName="cta_click"
+            eventParams={{ location: "home_deliverables", cta: "Explore deliverables" }}
+          >
+            Explore deliverables
+          </TrackedLink>
+        </div>
+      </Section>
+
+      <Section>
+        <p className="eyebrow mb-4">Use cases</p>
+        <h2 className="mb-12 max-w-2xl">Built for teams under pressure to be cited correctly</h2>
+        <div className="grid-3-col">
+          {useCases.map((item) => (
+            <div key={item.title} className="card-minimal">
+              <h3 className="mb-3">{item.title}</h3>
+              <p className="text-muted-foreground">{item.description}</p>
+            </div>
+          ))}
+        </div>
+      </Section>
+
+      <Section>
+        <p className="eyebrow mb-4">FAQ</p>
+        <h2 className="mb-12 max-w-2xl">Common questions</h2>
+        <div className="grid-2-col">
+          {faqs.map((item) => (
+            <div key={item.question} className="card-minimal">
+              <h3 className="text-lg mb-3">{item.question}</h3>
+              <p className="text-muted-foreground text-sm">{item.answer}</p>
+            </div>
+          ))}
+        </div>
+      </Section>
+
+      <Section>
+        <div className="text-center max-w-2xl mx-auto">
+          <h2 className="mb-6">Start with a €500 audit</h2>
+          <p className="lead mb-10">
+            Get a quantified baseline, a clear competitive picture, and a roadmap you can execute.
+          </p>
+          <div className="flex flex-wrap justify-center gap-4">
+            <TrackedLink
+              href="/audit"
+              className="btn btn-primary btn-lg"
+              eventName="cta_click"
+              eventParams={{ location: "home_final", cta: "Start the audit" }}
+            >
+              Start the audit <ArrowRight size={18} />
+            </TrackedLink>
+            <TrackedLink
+              href="/contact"
+              className="btn btn-secondary btn-lg"
+              eventName="cta_click"
+              eventParams={{ location: "home_final", cta: "Talk to us first" }}
+            >
+              Talk to us first
+            </TrackedLink>
+          </div>
+        </div>
+      </Section>
     </>
   );
 }

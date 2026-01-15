@@ -3,6 +3,10 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 
+import { ArticleSchema } from "../../components/StructuredData";
+import { TrackedLink } from "../../components/TrackedLink";
+import { buildMetadata } from "../../lib/metadata";
+
 const signalContent: Record<
   string,
   {
@@ -41,11 +45,12 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   const signal = signalContent[params.slug];
   if (!signal) return {};
 
-  return {
+  return buildMetadata({
     title: signal.title,
     description: `Analysis: ${signal.whatHappened[0]}`,
-    alternates: { canonical: `/signals/${params.slug}` },
-  };
+    path: `/signals/${params.slug}`,
+    type: "article",
+  });
 }
 
 export default function SignalPostPage({ params }: { params: { slug: string } }) {
@@ -54,6 +59,12 @@ export default function SignalPostPage({ params }: { params: { slug: string } })
 
   return (
     <>
+      <ArticleSchema
+        headline={signal.title}
+        description={signal.whatHappened[0]}
+        url={`/signals/${params.slug}`}
+        datePublished={signal.date}
+      />
       <section className="section-slide pt-24 md:pt-32">
         <div className="container-wide">
           <div className="max-w-3xl">
@@ -130,12 +141,14 @@ export default function SignalPostPage({ params }: { params: { slug: string } })
         <div className="container-wide text-center">
           <h2 className="mb-6">Want to understand your position?</h2>
           <p className="lead max-w-xl mx-auto mb-10">The €500 audit shows exactly where you stand in AI-generated answers.</p>
-          <Link
+          <TrackedLink
             href="/audit"
-            className="inline-flex items-center justify-center gap-2 rounded-md bg-primary px-8 py-6 text-base font-medium text-primary-foreground shadow-elevated transition-all duration-200 hover:shadow-prominent hover:-translate-y-0.5 active:translate-y-0"
+            className="btn btn-primary btn-lg"
+            eventName="cta_click"
+            eventParams={{ location: "signal_final", cta: "Start your audit" }}
           >
             Start your audit <ArrowRight size={18} />
-          </Link>
+          </TrackedLink>
         </div>
       </section>
     </>
