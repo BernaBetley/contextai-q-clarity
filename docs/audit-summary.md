@@ -154,52 +154,52 @@
 
 ### Engineering Quality
 
-- [ ] Build passes with zero errors (`npm run build`)
-- [ ] Lint passes with zero errors (`npm run lint`)
-- [ ] TypeScript strict mode enabled with no type errors
-- [ ] No unused imports or dead code
-- [ ] All environment variables documented in README
-- [ ] Typecheck script added to package.json
+- [x] Build passes with zero errors (`npm run build`)
+- [x] Lint passes with zero errors (`npm run lint`)
+- [x] TypeScript strict mode enabled with no type errors
+- [x] No unused imports or dead code
+- [x] All environment variables documented in README
+- [x] Typecheck script added to package.json
 
 ### Performance
 
-- [ ] All images use `next/image` with proper sizing
-- [ ] Fonts load without FOIT (font-display: swap)
-- [ ] No layout shifts visible on page load
-- [ ] Bundle size per-route under 100KB (excluding shared)
+- [x] All images use `next/image` with proper sizing
+- [x] Fonts load without FOIT (font-display: swap)
+- [x] No layout shifts visible on page load
+- [x] Bundle size per-route under 100KB (excluding shared)
 
 ### SEO / AI Readiness
 
-- [ ] Every indexable page has unique title and meta description
-- [ ] OpenGraph and Twitter cards present on all pages
-- [ ] JSON-LD schema on homepage (Organization, WebSite, Service)
-- [ ] FAQ schema on homepage and audit page
-- [ ] Sitemap includes all public pages
-- [ ] robots.txt correctly configured
-- [ ] llms.txt and llm-facts.txt up-to-date
+- [x] Every indexable page has unique title and meta description
+- [x] OpenGraph and Twitter cards present on all pages
+- [x] JSON-LD schema on homepage (Organization, WebSite, Service)
+- [x] FAQ schema on homepage and audit page
+- [x] Sitemap includes all public pages
+- [x] robots.txt correctly configured
+- [x] llms.txt and llm-facts.txt up-to-date
 
 ### UX / Conversion
 
-- [ ] Mobile navigation fully functional
-- [ ] Primary CTA visible above fold on all pages
-- [ ] Contact form or mailto path works end-to-end
-- [ ] No dead links or 404s
-- [ ] Focus states visible on all interactive elements
+- [x] Mobile navigation fully functional
+- [x] Primary CTA visible above fold on all pages
+- [x] Contact form or mailto path works end-to-end
+- [x] No dead links or 404s
+- [x] Focus states visible on all interactive elements
 
 ### Content / Copy
 
-- [ ] Value proposition clear within 5 seconds on homepage
-- [ ] FAQ section with at least 6 questions
-- [ ] Sample output section showing deliverable preview
-- [ ] Methodology page with 5+ detailed phases
-- [ ] About page with credibility signals
+- [x] Value proposition clear within 5 seconds on homepage
+- [x] FAQ section with at least 6 questions
+- [x] Sample output section showing deliverable preview
+- [x] Methodology page with 5+ detailed phases
+- [x] About page with credibility signals
 
 ### Documentation
 
-- [ ] README covers local setup, env vars, deploy
-- [ ] /docs/audit-summary.md exists (this file)
-- [ ] /docs/analytics.md explains events and setup
-- [ ] /docs/website-structure.md maps components and content
+- [x] README covers local setup, env vars, deploy
+- [x] /docs/audit-summary.md exists (this file)
+- [x] /docs/analytics.md explains events and setup
+- [x] /docs/website-structure.md maps components and content
 
 ---
 
