@@ -1,14 +1,18 @@
 import Link from "next/link";
+
 import { BrandLogo } from "../BrandLogo";
+import { TrackedLink } from "../TrackedLink";
+import { MobileNav } from "./MobileNav";
 
 const navLinks = [
-  { href: "/how-it-works", label: "How it works" },
-  { href: "/services", label: "Services" },
-  { href: "/audit", label: "Audit (€500)" },
-  { href: "/signals", label: "Signals" },
+  { href: "/method", label: "Methodology" },
+  { href: "/deliverables", label: "Deliverables" },
+  { href: "/services", label: "Pricing" },
   { href: "/resources", label: "Resources" },
   { href: "/contact", label: "Contact" },
 ];
+
+const primaryCta = { href: "/audit", label: "Start the audit" };
 
 export function Header() {
   return (
@@ -22,7 +26,7 @@ export function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+                className="px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground focus-ring"
               >
                 {link.label}
               </Link>
@@ -30,13 +34,17 @@ export function Header() {
           </div>
 
           <div className="hidden md:flex items-center gap-4">
-            <Link
-              href="/audit"
-              className="inline-flex items-center justify-center rounded-md bg-foreground px-5 py-2 text-sm font-medium text-background shadow-subtle transition hover:-translate-y-0.5"
+            <TrackedLink
+              href={primaryCta.href}
+              className="btn btn-primary btn-sm"
+              eventName="cta_click"
+              eventParams={{ location: "header", cta: primaryCta.label }}
             >
-              Run €500 Audit
-            </Link>
+              {primaryCta.label}
+            </TrackedLink>
           </div>
+
+          <MobileNav links={navLinks} cta={primaryCta} />
         </nav>
       </div>
     </header>

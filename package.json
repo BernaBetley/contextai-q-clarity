@@ -11,6 +11,7 @@
     "build:next": "next build",
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
     "preview": "vite preview",
     "start": "next start"
   },
