@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { SEO, WebPageSchema } from "@/components/layout/SEO";
+import { track } from "@/lib/analytics";
 
 export default function About() {
   const values = [
@@ -88,27 +89,6 @@ export default function About() {
         </div>
       </section>
 
-      {/* Founder */}
-      <section className="section-slide bg-secondary/30">
-        <div className="container-wide">
-          <div className="max-w-3xl">
-            <p className="eyebrow mb-4">Founder</p>
-            <h2 className="mb-8">[Founder Name]</h2>
-            <div className="space-y-6 text-muted-foreground">
-              <p>
-                [Founder bio placeholder. Background in digital strategy, AI/ML, 
-                and marketing technology. Previous experience at [Company names]. 
-                Based in Portugal with regular travel to the Middle East for client work.]
-              </p>
-              <p>
-                [Additional context about expertise, motivation for founding ContextAI Q, 
-                and perspective on the AI visibility opportunity.]
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Delivery Model */}
       <section className="section-slide">
         <div className="container-wide">
@@ -161,13 +141,19 @@ export default function About() {
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link to="/audit">
-              <Button variant="hero">
+              <Button
+                variant="hero"
+                onClick={() => track("cta_click_audit", { placement: "about_cta" })}
+              >
                 Start your audit
                 <ArrowRight size={18} />
               </Button>
             </Link>
             <Link to="/contact">
-              <Button variant="heroOutline">
+              <Button
+                variant="heroOutline"
+                onClick={() => track("cta_click_contact", { placement: "about_cta" })}
+              >
                 Get in touch
               </Button>
             </Link>

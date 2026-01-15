@@ -2,6 +2,8 @@ import { useParams, Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { SEO, WebPageSchema } from "@/components/layout/SEO";
+import { useEffect } from "react";
+import { track } from "@/lib/analytics";
 
 // Mock resource content
 const resourceContent: Record<string, {
@@ -23,7 +25,7 @@ const resourceContent: Record<string, {
       },
       {
         heading: "Why it matters",
-        content: "As more users rely on AI assistants for research and recommendations, AI SoV becomes a leading indicator of future demand. Brands invisible in AI-generated responses miss the growing segment of AI-mediated discovery. [Specific usage statistics would be cited from verified sources here]",
+        content: "AI assistants increasingly influence how buyers shortlist options. AI SoV helps you quantify whether you show up in those moments, whether you are correctly described, and whether competitors are being recommended instead.",
       },
       {
         heading: "How we measure it",
@@ -66,6 +68,10 @@ const resourceContent: Record<string, {
 export default function ResourcePost() {
   const { slug } = useParams<{ slug: string }>();
   const resource = slug ? resourceContent[slug] : null;
+
+  useEffect(() => {
+    if (slug) track("content_view", { type: "resource", slug });
+  }, [slug]);
 
   if (!resource) {
     return (

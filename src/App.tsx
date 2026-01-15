@@ -20,6 +20,8 @@ import Contact from "./pages/Contact";
 import FactSheet from "./pages/FactSheet";
 import Method from "./pages/Method";
 import NotFound from "./pages/NotFound";
+import Privacy from "./pages/Privacy";
+import Terms from "./pages/Terms";
 
 const queryClient = new QueryClient();
 
@@ -44,6 +46,8 @@ const App = () => (
             <Route path="/contact" element={<Contact />} />
             <Route path="/fact-sheet" element={<FactSheet />} />
             <Route path="/method" element={<Method />} />
+            <Route path="/privacy" element={<Privacy />} />
+            <Route path="/terms" element={<Terms />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Layout>

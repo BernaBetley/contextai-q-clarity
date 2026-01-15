@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Check, Clock, AlertCircle, HelpCircle } from "lucide-react";
+import { ArrowRight, Check, Clock, AlertCircle } from "lucide-react";
 import { SEO, WebPageSchema, ServiceSchema } from "@/components/layout/SEO";
+import { track } from "@/lib/analytics";
 import {
   Accordion,
   AccordionContent,
@@ -11,6 +12,7 @@ import {
 
 export default function Audit() {
   const stripeCheckoutUrl = import.meta.env.VITE_STRIPE_CHECKOUT_URL as string | undefined;
+  const intakeUrl = import.meta.env.VITE_AUDIT_INTAKE_URL as string | undefined;
 
   const included = [
     "20 strategic queries tested across your category",
@@ -101,16 +103,28 @@ export default function Audit() {
                 <span>Delivered in 5-7 business days</span>
               </div>
               {stripeCheckoutUrl ? (
-                <a href={stripeCheckoutUrl} target="_blank" rel="noopener noreferrer">
+                <a
+                  href={stripeCheckoutUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => track("checkout_click", { product: "audit", price: 500, currency: "EUR" })}
+                >
                   <Button variant="hero" size="lg">
                     Purchase Audit
                     <ArrowRight size={18} />
                   </Button>
                 </a>
               ) : (
-                <Button variant="hero" size="lg" disabled>
-                  Checkout unavailable
-                </Button>
+                <Link to="/contact">
+                  <Button
+                    variant="hero"
+                    size="lg"
+                    onClick={() => track("cta_click_contact", { placement: "audit_hero_no_checkout" })}
+                  >
+                    Request invoice / pay by bank transfer
+                    <ArrowRight size={18} />
+                  </Button>
+                </Link>
               )}
               <p className="text-small mt-4">Stripe payment. Invoice provided.</p>
             </div>
@@ -196,56 +210,63 @@ export default function Audit() {
         </div>
       </section>
 
-      {/* Purchase Flow Placeholder */}
+      {/* Next steps */}
       <section className="section-slide bg-secondary/30">
         <div className="container-wide">
           <div className="max-w-2xl mx-auto text-center">
-            <p className="eyebrow mb-4">Get Started</p>
-            <h2 className="mb-6">Purchase your audit</h2>
+            <p className="eyebrow mb-4">Get started</p>
+            <h2 className="mb-6">What happens after you purchase</h2>
             <p className="lead mb-10">
-              Complete payment, then fill out the intake form. We'll begin within 1 business day.
+              Pay via Stripe, complete a short intake, then we begin within 1 business day. Delivery in 5–7 business days.
             </p>
-            
-            {/* Stripe Button Placeholder */}
-            <div className="card-minimal inline-block mb-8">
-              {stripeCheckoutUrl ? (
-                <a href={stripeCheckoutUrl} target="_blank" rel="noopener noreferrer">
-                  <Button variant="hero" size="lg" className="mb-4">
-                    Pay €500 via Stripe
-                    <ArrowRight size={18} />
-                  </Button>
-                </a>
-              ) : (
-                <Button variant="hero" size="lg" className="mb-4" disabled>
-                  Checkout unavailable
-                </Button>
-              )}
-              <p className="text-small text-muted-foreground">
-                You will be redirected to secure Stripe Checkout.
-              </p>
-            </div>
-            
-            {/* Intake Form Placeholder */}
-            <div className="card-minimal">
-              <h3 className="mb-4">Intake Form</h3>
-              <p className="text-muted-foreground mb-4">
-                After payment, you'll receive access to a brief intake form covering:
-              </p>
-              <ul className="text-left space-y-2 max-w-sm mx-auto">
-                <li className="flex items-center gap-2">
-                  <Check size={16} /> Company overview
+
+            <div className="card-minimal text-left">
+              <ol className="space-y-4">
+                <li className="flex items-start gap-4">
+                  <span className="text-2xl font-serif font-semibold text-muted-foreground">01</span>
+                  <div>
+                    <p className="font-medium mb-1">Purchase</p>
+                    <p className="text-small">
+                      Complete the €500 payment. We send an invoice automatically.
+                    </p>
+                  </div>
                 </li>
-                <li className="flex items-center gap-2">
-                  <Check size={16} /> Target queries
+                <li className="flex items-start gap-4">
+                  <span className="text-2xl font-serif font-semibold text-muted-foreground">02</span>
+                  <div>
+                    <p className="font-medium mb-1">Intake</p>
+                    <p className="text-small">
+                      Share company context, target queries, competitors, and priorities so we can scope the 20 queries precisely.
+                    </p>
+                    {intakeUrl ? (
+                      <a
+                        href={intakeUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={() => track("intake_click", { source: "audit_page" })}
+                      >
+                        <Button variant="outline" className="mt-3">
+                          Open intake form
+                          <ArrowRight size={16} />
+                        </Button>
+                      </a>
+                    ) : (
+                      <p className="text-small mt-3 text-muted-foreground">
+                        Intake link is provided in your confirmation email. If you don’t receive it, email `hello@contextaiq.com`.
+                      </p>
+                    )}
+                  </div>
                 </li>
-                <li className="flex items-center gap-2">
-                  <Check size={16} /> Competitor names
+                <li className="flex items-start gap-4">
+                  <span className="text-2xl font-serif font-semibold text-muted-foreground">03</span>
+                  <div>
+                    <p className="font-medium mb-1">Delivery</p>
+                    <p className="text-small">
+                      You receive the PDF report + competitive matrix + prioritized roadmap. Optional 30-minute walkthrough included.
+                    </p>
+                  </div>
                 </li>
-                <li className="flex items-center gap-2">
-                  <Check size={16} /> Priority areas
-                </li>
-              </ul>
-              <p className="text-small text-muted-foreground mt-4">[Form embed placeholder]</p>
+              </ol>
             </div>
           </div>
         </div>
@@ -282,16 +303,28 @@ export default function Audit() {
             €500. Fixed scope. Delivered in 5-7 business days.
           </p>
           {stripeCheckoutUrl ? (
-            <a href={stripeCheckoutUrl} target="_blank" rel="noopener noreferrer">
+            <a
+              href={stripeCheckoutUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => track("checkout_click", { product: "audit", price: 500, currency: "EUR" })}
+            >
               <Button variant="hero" size="lg">
                 Start your audit
                 <ArrowRight size={18} />
               </Button>
             </a>
           ) : (
-            <Button variant="hero" size="lg" disabled>
-              Checkout unavailable
-            </Button>
+            <Link to="/contact">
+              <Button
+                variant="hero"
+                size="lg"
+                onClick={() => track("cta_click_contact", { placement: "audit_cta_no_checkout" })}
+              >
+                Request invoice / pay by bank transfer
+                <ArrowRight size={18} />
+              </Button>
+            </Link>
           )}
         </div>
       </section>

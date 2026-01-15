@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Search, BarChart3, Share2, Activity } from "lucide-react";
 import { SEO, OrganizationSchema, WebSiteSchema, ServiceSchema } from "@/components/layout/SEO";
+import { track } from "@/lib/analytics";
 
 // Section component for print-friendly slides
 function Section({ 
@@ -37,13 +38,19 @@ function HeroSection() {
         </p>
         <div className="flex flex-wrap gap-4 animate-fade-in" style={{ animationDelay: "0.3s" }}>
           <Link to="/audit">
-            <Button variant="hero">
+            <Button
+              variant="hero"
+              onClick={() => track("cta_click_audit", { placement: "home_hero" })}
+            >
               Run €500 Audit
               <ArrowRight size={18} />
             </Button>
           </Link>
           <Link to="/how-it-works">
-            <Button variant="heroOutline">
+            <Button
+              variant="heroOutline"
+              onClick={() => track("cta_click_methodology", { placement: "home_hero" })}
+            >
               See methodology
             </Button>
           </Link>
@@ -56,9 +63,9 @@ function HeroSection() {
 // Executive Summary
 function ExecutiveSummary() {
   const points = [
-    "ChatGPT, Claude, and Perplexity now answer 40%+ of product research queries.",
-    "Most brands appear inaccurately, incompletely, or not at all in these responses.",
-    "Traditional SEO does not fix this. LLMs require structured, citation-ready content.",
+    "AI assistants increasingly shape how buyers research categories and vendors.",
+    "Brands often appear inaccurately, incompletely, or not at all in AI-generated answers.",
+    "This requires different tactics than traditional SEO: structure, authority, and citation-ready content.",
   ];
 
   return (
@@ -100,11 +107,6 @@ function StakesSection() {
     },
   ];
 
-  const stats = [
-    { value: "63%", label: "of consumers now start product research with AI tools", source: "[Source placeholder]" },
-    { value: "47%", label: "of B2B buyers use AI assistants for vendor research", source: "[Source placeholder]" },
-  ];
-
   return (
     <Section>
       <p className="eyebrow mb-4">What's at Stake</p>
@@ -115,16 +117,6 @@ function StakesSection() {
           <div key={index} className="card-minimal">
             <h3 className="mb-3">{risk.title}</h3>
             <p className="text-muted-foreground">{risk.description}</p>
-          </div>
-        ))}
-      </div>
-
-      <div className="grid-2-col max-w-3xl">
-        {stats.map((stat, index) => (
-          <div key={index} className="text-center p-8 bg-secondary/30 rounded-lg">
-            <p className="text-5xl font-serif font-semibold mb-2">{stat.value}</p>
-            <p className="text-muted-foreground mb-2">{stat.label}</p>
-            <p className="text-xs text-muted-foreground">{stat.source}</p>
           </div>
         ))}
       </div>
@@ -213,7 +205,10 @@ function ProductOfferSection() {
             <span className="text-muted-foreground">one-time</span>
           </div>
           <Link to="/audit">
-            <Button variant="hero">
+            <Button
+              variant="hero"
+              onClick={() => track("cta_click_audit", { placement: "home_offer" })}
+            >
               Start your audit
               <ArrowRight size={18} />
             </Button>
@@ -356,13 +351,19 @@ function FinalCTA() {
         </p>
         <div className="flex flex-wrap justify-center gap-4">
           <Link to="/audit">
-            <Button variant="hero">
+            <Button
+              variant="hero"
+              onClick={() => track("cta_click_audit", { placement: "home_final" })}
+            >
               Run €500 Audit
               <ArrowRight size={18} />
             </Button>
           </Link>
           <Link to="/contact">
-            <Button variant="heroOutline">
+            <Button
+              variant="heroOutline"
+              onClick={() => track("cta_click_contact", { placement: "home_final" })}
+            >
               Get in touch
             </Button>
           </Link>
