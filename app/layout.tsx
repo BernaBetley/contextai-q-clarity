@@ -46,8 +46,8 @@ export const metadata: Metadata = {
     images: ["/contextaiq_logo_bw.png"],
   },
   icons: {
-    icon: [{ url: "/icon.png", type: "image/png" }],
-    apple: [{ url: "/apple-icon.png", type: "image/png" }],
+    icon: [{ url: "/icon", type: "image/png" }],
+    apple: [{ url: "/apple-icon", type: "image/png" }],
   },
 };
 

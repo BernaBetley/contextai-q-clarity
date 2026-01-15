@@ -23,10 +23,19 @@ export function CheckoutButton({ label = "Purchase Audit" }: { label?: string })
       }
 
       const res = await fetch("/api/checkout", { method: "POST" });
-      const data = (await res.json()) as { url?: string; error?: string };
+      const contentType = res.headers.get("content-type") || "";
+      const payload = contentType.includes("application/json") ? await res.json() : await res.text();
+
+      const data = (typeof payload === "object" ? payload : {}) as { url?: string; error?: string };
+      const message =
+        typeof payload === "string"
+          ? payload.slice(0, 400)
+          : data.error || (res.ok ? "" : `Checkout failed (${res.status}).`);
+
       if (!res.ok || !data.url) {
-        throw new Error(data.error || "Checkout failed.");
+        throw new Error(message || "Checkout failed.");
       }
+
       window.location.href = data.url;
     } catch (e) {
       setError(e instanceof Error ? e.message : "Checkout failed.");

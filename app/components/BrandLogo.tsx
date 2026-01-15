@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 
 interface BrandLogoProps {
   className?: string;
@@ -10,7 +9,26 @@ export function BrandLogo({ className = "", showWordmark = true }: BrandLogoProp
   return (
     <Link href="/" className={`flex items-center gap-3 ${className}`}>
       <span className="relative inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background shadow-subtle">
-        <Image src="/contextaiq_logo_bw.png" alt="ContextAI Q" width={24} height={24} priority />
+        <svg
+          viewBox="0 0 64 64"
+          width="24"
+          height="24"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <circle cx="32" cy="32" r="28" fill="none" stroke="currentColor" strokeWidth="4" />
+          <text
+            x="32"
+            y="40"
+            textAnchor="middle"
+            fontFamily="Georgia, 'Times New Roman', serif"
+            fontSize="28"
+            fontWeight="700"
+            fill="currentColor"
+          >
+            Q
+          </text>
+        </svg>
       </span>
       {showWordmark && (
         <div className="leading-none">
