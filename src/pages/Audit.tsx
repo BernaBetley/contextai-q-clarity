@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Check, Clock, AlertCircle, HelpCircle } from "lucide-react";
@@ -10,6 +11,38 @@ import {
 } from "@/components/ui/accordion";
 
 export default function Audit() {
+  const stripeCheckoutUrl = import.meta.env.VITE_STRIPE_CHECKOUT_URL as string | undefined;
+  const isPaymentLinkConfigured = Boolean(stripeCheckoutUrl);
+  const [isCheckoutLoading, setIsCheckoutLoading] = useState(false);
+  const [checkoutError, setCheckoutError] = useState<string | null>(null);
+
+  const handleApiCheckout = async () => {
+    setIsCheckoutLoading(true);
+    setCheckoutError(null);
+
+    try {
+      const response = await fetch("/api/create-checkout-session", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+      });
+
+      if (!response.ok) {
+        throw new Error("Unable to start checkout.");
+      }
+
+      const data = (await response.json()) as { url?: string };
+
+      if (!data.url) {
+        throw new Error("Checkout URL missing from response.");
+      }
+
+      window.location.href = data.url;
+    } catch (error) {
+      setCheckoutError(error instanceof Error ? error.message : "Checkout failed.");
+      setIsCheckoutLoading(false);
+    }
+  };
+
   const included = [
     "20 strategic queries tested across your category",
     "4 LLMs evaluated: ChatGPT, Claude, Gemini, Perplexity",
@@ -98,11 +131,33 @@ export default function Audit() {
                 <Clock size={18} />
                 <span>Delivered in 5-7 business days</span>
               </div>
-              <Button variant="hero" size="lg">
-                Purchase Audit
-                <ArrowRight size={18} />
-              </Button>
+              {isPaymentLinkConfigured ? (
+                <a href={stripeCheckoutUrl} target="_blank" rel="noopener noreferrer">
+                  <Button variant="hero" size="lg">
+                    Purchase Audit
+                    <ArrowRight size={18} />
+                  </Button>
+                </a>
+              ) : (
+                <Button
+                  variant="hero"
+                  size="lg"
+                  onClick={handleApiCheckout}
+                  disabled={isCheckoutLoading}
+                >
+                  {isCheckoutLoading ? "Starting checkout..." : "Purchase Audit"}
+                  <ArrowRight size={18} />
+                </Button>
+              )}
               <p className="text-small mt-4">Stripe payment. Invoice provided.</p>
+              {checkoutError && (
+                <p className="text-small mt-2 text-destructive">{checkoutError}</p>
+              )}
+              {!isPaymentLinkConfigured && !checkoutError && (
+                <p className="text-small mt-2 text-muted-foreground">
+                  Stripe Checkout opens in a secure redirect.
+                </p>
+              )}
             </div>
             <div className="card-minimal">
               <h3 className="mb-6">What's included</h3>
@@ -196,13 +251,40 @@ export default function Audit() {
               Complete payment, then fill out the intake form. We'll begin within 1 business day.
             </p>
             
-            {/* Stripe Button Placeholder */}
+            {/* Stripe Checkout */}
             <div className="card-minimal inline-block mb-8">
-              <Button variant="hero" size="lg" className="mb-4">
-                Pay €500 via Stripe
-                <ArrowRight size={18} />
-              </Button>
-              <p className="text-small text-muted-foreground">[Stripe checkout integration placeholder]</p>
+              {isPaymentLinkConfigured ? (
+                <a href={stripeCheckoutUrl} target="_blank" rel="noopener noreferrer">
+                  <Button variant="hero" size="lg" className="mb-4">
+                    Pay €500 via Stripe
+                    <ArrowRight size={18} />
+                  </Button>
+                </a>
+              ) : (
+                <Button
+                  variant="hero"
+                  size="lg"
+                  className="mb-4"
+                  onClick={handleApiCheckout}
+                  disabled={isCheckoutLoading}
+                >
+                  {isCheckoutLoading ? "Starting checkout..." : "Pay €500 via Stripe"}
+                  <ArrowRight size={18} />
+                </Button>
+              )}
+              <p className="text-small text-muted-foreground">
+                {isPaymentLinkConfigured
+                  ? "You will be redirected to secure Stripe Checkout."
+                  : "Secure Stripe Checkout will open in a new tab."}
+              </p>
+              {checkoutError && (
+                <div className="mt-4">
+                  <p className="text-small text-destructive">{checkoutError}</p>
+                  <Link to="/contact" className="text-small text-foreground underline">
+                    Contact us to purchase.
+                  </Link>
+                </div>
+              )}
             </div>
             
             {/* Intake Form Placeholder */}
@@ -261,10 +343,19 @@ export default function Audit() {
           <p className="lead max-w-xl mx-auto mb-10">
             €500. Fixed scope. Delivered in 5-7 business days.
           </p>
-          <Button variant="hero" size="lg">
-            Start your audit
-            <ArrowRight size={18} />
-          </Button>
+          {isPaymentLinkConfigured ? (
+            <a href={stripeCheckoutUrl} target="_blank" rel="noopener noreferrer">
+              <Button variant="hero" size="lg">
+                Start your audit
+                <ArrowRight size={18} />
+              </Button>
+            </a>
+          ) : (
+            <Button variant="hero" size="lg" onClick={handleApiCheckout} disabled={isCheckoutLoading}>
+              {isCheckoutLoading ? "Starting checkout..." : "Start your audit"}
+              <ArrowRight size={18} />
+            </Button>
+          )}
         </div>
       </section>
     </>
