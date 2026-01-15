@@ -47,7 +47,7 @@
     
     /* Typography scale (fonts provided by next/font in app/layout.tsx) */
     --font-sans: var(--font-inter), -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-    --font-serif: var(--font-newsreader), Georgia, 'Times New Roman', serif;
+    --font-serif: var(--font-merriweather), Georgia, 'Times New Roman', serif;
     
     /* Spacing rhythm */
     --section-padding: 6rem;

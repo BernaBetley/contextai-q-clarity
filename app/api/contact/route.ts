@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
 
-import { env } from "@/app/lib/env.server";
+import { env } from "../../lib/env.server";
 
 const payloadSchema = z.object({
   name: z.string().min(1),

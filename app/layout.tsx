@@ -1,7 +1,7 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import Script from "next/script";
-import { Inter, Newsreader } from "next/font/google";
+import { Inter, Merriweather } from "next/font/google";
 
 import { Analytics } from "./components/Analytics";
 import { OrganizationSchema, WebSiteSchema } from "./components/StructuredData";
@@ -17,11 +17,11 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
-const newsreader = Newsreader({
+const merriweather = Merriweather({
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
+  weight: ["300", "400", "700"],
   display: "swap",
-  variable: "--font-newsreader",
+  variable: "--font-merriweather",
 });
 
 export const metadata: Metadata = {
@@ -56,7 +56,7 @@ export default function RootLayout({
   const ga4Id = env.NEXT_PUBLIC_GA4_MEASUREMENT_ID;
 
   return (
-    <html lang="en" className={`${inter.variable} ${newsreader.variable}`}>
+    <html lang="en" className={`${inter.variable} ${merriweather.variable}`}>
       <body className="min-h-screen bg-background text-foreground font-sans antialiased">
         <a
           href="#main-content"
