@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Check, Clock, AlertCircle, HelpCircle } from "lucide-react";
@@ -113,6 +114,14 @@ export default function Audit() {
                 </Button>
               )}
               <p className="text-small mt-4">Stripe payment. Invoice provided.</p>
+              {checkoutError && (
+                <p className="text-small mt-2 text-destructive">{checkoutError}</p>
+              )}
+              {!isPaymentLinkConfigured && !checkoutError && (
+                <p className="text-small mt-2 text-muted-foreground">
+                  Stripe Checkout opens in a secure redirect.
+                </p>
+              )}
             </div>
             <div className="card-minimal">
               <h3 className="mb-6">What's included</h3>
@@ -206,7 +215,7 @@ export default function Audit() {
               Complete payment, then fill out the intake form. We'll begin within 1 business day.
             </p>
             
-            {/* Stripe Button Placeholder */}
+            {/* Stripe Checkout */}
             <div className="card-minimal inline-block mb-8">
               {stripeCheckoutUrl ? (
                 <a href={stripeCheckoutUrl} target="_blank" rel="noopener noreferrer">
