@@ -3,15 +3,19 @@ import type { Metadata } from "next";
 import { Inter, Newsreader } from "next/font/google";
 import { Header } from "./components/layout/Header";
 import { Footer } from "./components/layout/Footer";
+import Script from "next/script";
+import { Analytics } from "./components/Analytics";
 
 const inter = Inter({
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
   display: "swap",
   variable: "--font-inter",
 });
 
 const newsreader = Newsreader({
   subsets: ["latin"],
+  weight: ["400", "500", "600"],
   display: "swap",
   variable: "--font-newsreader",
 });
@@ -48,9 +52,27 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const ga4Id = process.env.NEXT_PUBLIC_GA4_MEASUREMENT_ID;
+
   return (
     <html lang="en" className={`${inter.variable} ${newsreader.variable}`}>
       <body className="min-h-screen bg-background text-foreground font-sans antialiased">
+        {ga4Id ? (
+          <>
+            <Script src={`https://www.googletagmanager.com/gtag/js?id=${ga4Id}`} strategy="afterInteractive" />
+            <Script id="ga4-init" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                window.gtag = gtag;
+                gtag('js', new Date());
+                gtag('config', '${ga4Id}', { anonymize_ip: true, send_page_view: false });
+              `}
+            </Script>
+            <Analytics />
+          </>
+        ) : null}
+
         <div className="min-h-screen flex flex-col">
           <Header />
           <main className="flex-1 pt-16 md:pt-20">{children}</main>
