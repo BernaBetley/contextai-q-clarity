@@ -71,16 +71,15 @@ export default function AuditPage() {
                 <span>Delivered in 5–7 business days</span>
               </div>
 
-              {process.env.STRIPE_AUDIT_PRICE_ID ? (
+              <div className="flex flex-wrap items-center gap-4">
                 <CheckoutButton label="Purchase Audit" />
-              ) : (
                 <Link
                   href="/contact"
-                  className="inline-flex items-center justify-center gap-2 rounded-md bg-primary px-8 py-6 text-base font-medium text-primary-foreground shadow-elevated transition-all duration-200 hover:shadow-prominent hover:-translate-y-0.5 active:translate-y-0"
+                  className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
                 >
-                  Request invoice / pay by bank transfer <ArrowRight size={18} />
+                  Prefer invoice / bank transfer?
                 </Link>
-              )}
+              </div>
 
               <p className="text-small mt-4">Stripe payment. Invoice provided.</p>
             </div>
@@ -175,18 +174,12 @@ export default function AuditPage() {
         <div className="container-wide text-center">
           <h2 className="mb-6">Ready to see where you stand?</h2>
           <p className="lead max-w-xl mx-auto mb-10">€500. Fixed scope. Delivered in 5–7 business days.</p>
-          {process.env.STRIPE_AUDIT_PRICE_ID ? (
-            <div className="flex justify-center">
-              <CheckoutButton label="Start your audit" />
-            </div>
-          ) : (
-            <Link
-              href="/contact"
-              className="inline-flex items-center justify-center gap-2 rounded-md bg-primary px-8 py-6 text-base font-medium text-primary-foreground shadow-elevated transition-all duration-200 hover:shadow-prominent hover:-translate-y-0.5 active:translate-y-0"
-            >
-              Request invoice / pay by bank transfer <ArrowRight size={18} />
+          <div className="flex flex-col items-center gap-4">
+            <CheckoutButton label="Start your audit" />
+            <Link href="/contact" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+              Prefer invoice / bank transfer?
             </Link>
-          )}
+          </div>
         </div>
       </section>
     </>

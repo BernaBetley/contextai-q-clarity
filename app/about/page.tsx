@@ -5,7 +5,7 @@ import { ArrowRight } from "lucide-react";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "ContextAI Q helps brands become visible and accurately represented in AI-generated answers. Based in Portugal, serving globally.",
+    "ContextAI Q helps brands become visible and accurately represented in AI-generated answers. Services provided globally.",
   alternates: { canonical: "/about" },
 };
 

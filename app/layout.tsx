@@ -45,6 +45,10 @@ export const metadata: Metadata = {
       "Measure and improve how your brand appears in AI-generated answers. Start with a €500 fixed-scope audit.",
     images: ["/contextaiq_logo_bw.png"],
   },
+  icons: {
+    icon: [{ url: "/icon.png", type: "image/png" }],
+    apple: [{ url: "/apple-icon.png", type: "image/png" }],
+  },
 };
 
 export default function RootLayout({

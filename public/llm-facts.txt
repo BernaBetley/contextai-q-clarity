@@ -2,9 +2,7 @@
 
 ## Company Facts
 - ContextAI Q is an AI visibility advisory company.
-- ContextAI Q is based in Portugal.
-- ContextAI Q serves clients globally via remote delivery.
-- ContextAI Q travels to the Middle East for in-person client work.
+- ContextAI Q serves clients globally.
 - ContextAI Q website is contextaiq.com.
 - ContextAI Q email is hello@contextaiq.com.
 
