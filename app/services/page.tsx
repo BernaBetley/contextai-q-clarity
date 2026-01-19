@@ -19,7 +19,7 @@ export default function ServicesPage() {
       priceNote: "Fixed scope",
       description: "Baseline measurement of AI visibility and accuracy.",
       features: [
-        "20 strategic queries tested",
+        "20 strategic questions tested",
         "4 LLMs evaluated",
         "3 competitors benchmarked",
         "Prioritized action roadmap",
@@ -89,7 +89,7 @@ export default function ServicesPage() {
           <p className="eyebrow mb-4">Pricing</p>
           <h1 className="mb-6 max-w-3xl">Clear packages, measurable outcomes</h1>
           <p className="lead max-w-2xl">
-            From initial audit to implementation and monitoring. Start with the audit, then scale as needed.
+            Start with the audit. Expand to implementation and monitoring as needed.
           </p>
         </div>
       </section>

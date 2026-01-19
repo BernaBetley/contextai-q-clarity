@@ -14,15 +14,15 @@ export default function HowItWorksPage() {
   const layers = [
     {
       number: "01",
-      title: "Scope & Query Selection",
-      input: "Business context, target queries, competitor list",
-      method: "Stakeholder intake, query mapping, baseline criteria",
-      output: "Audit scope document, 20 validated queries",
+      title: "Scope & Question Selection",
+      input: "Business context, target questions, competitor list",
+      method: "Stakeholder intake, question mapping, baseline criteria",
+      output: "Audit scope document, 20 validated questions",
     },
     {
       number: "02",
       title: "Multi-LLM Testing",
-      input: "Query set, competitor names",
+      input: "Question set, competitor names",
       method: "Systematic prompting across ChatGPT, Claude, Gemini, Perplexity",
       output: "Response archive with screenshots and metadata",
     },
@@ -62,7 +62,7 @@ export default function HowItWorksPage() {
         <div className="container-wide">
           <p className="eyebrow mb-4">Methodology</p>
           <h1 className="mb-6 max-w-3xl">How we measure AI visibility</h1>
-          <p className="lead max-w-2xl">A structured process that delivers actionable insights in 5–7 business days.</p>
+          <p className="lead max-w-2xl">Purpose: establish baseline. Process: five phases. Timing: 5–7 business days.</p>
         </div>
       </section>
 
@@ -71,8 +71,7 @@ export default function HowItWorksPage() {
           <div className="max-w-3xl mx-auto text-center">
             <p className="eyebrow mb-4">TL;DR</p>
             <p className="text-large">
-              We test 20 strategic queries across 4 major LLMs, benchmark against 3 competitors, score for visibility and
-              accuracy, and deliver a prioritized action roadmap.
+              Scope: 20 strategic questions. Coverage: 4 major LLMs. Benchmark: 3 competitors. Output: prioritized roadmap.
             </p>
           </div>
         </div>

@@ -19,10 +19,9 @@ npm run dev
 
 - `NEXT_PUBLIC_SITE_URL`: Canonical site URL used for metadata (default: https://contextaiq.com)
 - `NEXT_PUBLIC_GA4_MEASUREMENT_ID`: Enables GA4 tracking
-- `NEXT_PUBLIC_STRIPE_CHECKOUT_URL`: Audit checkout link
-- `NEXT_PUBLIC_AUDIT_INTAKE_URL`: Intake form link shown after purchase
+- `NEXT_PUBLIC_AUDIT_INTAKE_URL`: Intake form link shared after scope confirmation
 - `NEXT_PUBLIC_CALENDLY_URL`: Scheduling link on Contact
-- `CONTACT_WEBHOOK_URL`: Server-side webhook endpoint for contact form submissions
+- `CONTACT_WEBHOOK_URL`: Required webhook endpoint for contact form submissions
 - `CONTACT_WEBHOOK_SECRET`: Optional secret header for the contact webhook
 
 Create a `.env.local` file for local development.

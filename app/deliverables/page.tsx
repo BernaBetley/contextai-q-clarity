@@ -18,7 +18,7 @@ const deliverables = [
   },
   {
     title: "Visibility scorecard",
-    description: "Query-level scores across each LLM with a clear baseline.",
+    description: "Question-level scores across each LLM with a clear baseline.",
     icon: Table2,
   },
   {
@@ -46,8 +46,7 @@ export default function DeliverablesPage() {
           <p className="eyebrow mb-4">Deliverables</p>
           <h1 className="mb-6 max-w-3xl">A concrete output you can act on immediately</h1>
           <p className="lead max-w-2xl">
-            The AI Visibility Audit delivers proof, scoring, and a prioritized roadmap. Every item is tied to evidence from
-            real LLM responses.
+            Outputs: proof, scoring, and a prioritized roadmap. Evidence: real LLM responses tied to each finding.
           </p>
         </div>
       </section>
@@ -76,7 +75,7 @@ export default function DeliverablesPage() {
             <table className="w-full text-sm border-collapse">
               <thead>
                 <tr className="text-left border-b border-border">
-                  <th className="py-3 pr-4 font-semibold">Query</th>
+                  <th className="py-3 pr-4 font-semibold">Question</th>
                   <th className="py-3 pr-4 font-semibold">ChatGPT</th>
                   <th className="py-3 pr-4 font-semibold">Claude</th>
                   <th className="py-3 pr-4 font-semibold">Gemini</th>
@@ -109,7 +108,7 @@ export default function DeliverablesPage() {
             </table>
           </div>
           <p className="text-small mt-4 text-muted-foreground">
-            Scores reflect visibility + accuracy (0–100). Actual scores are derived from your query set and evidence archive.
+            Scores reflect visibility + accuracy (0–100). Actual scores are derived from your question set and evidence archive.
           </p>
         </div>
       </section>

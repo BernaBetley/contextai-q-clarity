@@ -9,15 +9,15 @@ import { buildMetadata } from "../lib/metadata";
 export const metadata: Metadata = buildMetadata({
   title: "AI Visibility Audit — €500",
   description:
-    "Fixed-scope AI visibility audit: 20 queries, 4 LLMs, 3 competitors. Delivered in 5–7 business days with a prioritized action roadmap.",
+    "Fixed-scope AI visibility audit: 20 strategic questions, 4 LLMs, 3 competitors. Delivered in 5–7 business days with a prioritized action roadmap.",
   path: "/audit",
 });
 
 const included = [
-  "20 strategic queries across brand, category, and use-case intent",
+  "20 strategic questions across brand, category, and use-case intent",
   "4 LLMs evaluated: ChatGPT, Claude, Gemini, Perplexity",
-  "3 competitors benchmarked using the same query set",
-  "Visibility scorecard (0–100) with query-level breakdowns",
+  "3 competitors benchmarked using the same question set",
+  "Visibility scorecard (0–100) with question-level breakdowns",
   "Accuracy and hallucination log with evidence",
   "Citation and source analysis to identify authority gaps",
   "Competitive positioning matrix",
@@ -39,7 +39,7 @@ const sampleOutputs = [
   },
   {
     title: "Visibility scorecard",
-    description: "Per-query scores across each LLM with clear baselines.",
+    description: "Per-question scores across each LLM with clear baselines.",
   },
   {
     title: "Evidence archive",
@@ -60,7 +60,7 @@ const faqs = [
   {
     question: "What do you need from us?",
     answer:
-      "Company context, priority queries, competitor list, and any existing fact sheets or source materials.",
+      "Company context, priority questions, competitor list, and any existing fact sheets or source materials.",
   },
   {
     question: "Can we move directly to implementation?",
@@ -75,7 +75,6 @@ const faqs = [
 ];
 
 export default function AuditPage() {
-  const stripeCheckoutUrl = env.NEXT_PUBLIC_STRIPE_CHECKOUT_URL;
   const intakeUrl = env.NEXT_PUBLIC_AUDIT_INTAKE_URL;
 
   return (
@@ -96,8 +95,8 @@ export default function AuditPage() {
               <p className="eyebrow mb-4">Start Here</p>
               <h1 className="mb-6">AI Visibility Audit</h1>
               <p className="lead mb-8">
-                Quantify how your brand appears in AI-generated answers, with evidence and a prioritized roadmap. Fixed scope,
-                delivered in 5–7 business days.
+                Outcome: quantified visibility and accuracy. Evidence: annotated responses. Action: prioritized roadmap. Fixed
+                scope. €500. Delivered in 5–7 business days.
               </p>
               <div className="flex items-baseline gap-3 mb-8">
                 <span className="text-6xl font-serif font-semibold">€500</span>
@@ -108,30 +107,16 @@ export default function AuditPage() {
                 <span>Delivered in 5–7 business days</span>
               </div>
 
-              {stripeCheckoutUrl ? (
-                <TrackedLink
-                  href={stripeCheckoutUrl}
-                  external
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn btn-primary btn-lg"
-                  eventName="cta_click"
-                  eventParams={{ location: "audit_hero", cta: "Purchase audit" }}
-                >
-                  Purchase audit <ArrowRight size={18} />
-                </TrackedLink>
-              ) : (
-                <TrackedLink
-                  href="/contact"
-                  className="btn btn-primary btn-lg"
-                  eventName="cta_click"
-                  eventParams={{ location: "audit_hero", cta: "Request invoice" }}
-                >
-                  Request invoice / pay by bank transfer <ArrowRight size={18} />
-                </TrackedLink>
-              )}
+              <TrackedLink
+                href="/contact"
+                className="btn btn-primary btn-lg"
+                eventName="cta_click"
+                eventParams={{ location: "audit_hero", cta: "Request audit scope" }}
+              >
+                Request audit scope <ArrowRight size={18} />
+              </TrackedLink>
 
-              <p className="text-small mt-4">Stripe payment. Invoice provided.</p>
+              <p className="text-small mt-4">Invoice issued after scope confirmation.</p>
             </div>
 
             <div className="card-minimal">
@@ -167,14 +152,14 @@ export default function AuditPage() {
             </div>
             <div>
               <p className="eyebrow mb-4">Next</p>
-              <h2 className="mb-6">What happens after you purchase</h2>
+              <h2 className="mb-6">What happens next</h2>
               <div className="card-minimal">
                 <ol className="space-y-4">
                   <li className="flex items-start gap-4">
                     <span className="text-2xl font-serif font-semibold text-muted-foreground">01</span>
                     <div>
-                      <p className="font-medium mb-1">Purchase</p>
-                      <p className="text-small">Complete the €500 payment. We send an invoice automatically.</p>
+                      <p className="font-medium mb-1">Scope confirmation</p>
+                      <p className="text-small">We confirm scope and timing, then issue an invoice.</p>
                     </div>
                   </li>
                   <li className="flex items-start gap-4">
@@ -182,7 +167,7 @@ export default function AuditPage() {
                     <div>
                       <p className="font-medium mb-1">Intake</p>
                       <p className="text-small">
-                        Share company context, target queries, competitors, and priorities so we can scope the 20 queries
+                        Share company context, target questions, competitors, and priorities so we can scope the 20 questions
                         precisely.
                       </p>
                       {intakeUrl ? (
@@ -199,7 +184,7 @@ export default function AuditPage() {
                         </TrackedLink>
                       ) : (
                         <p className="text-small mt-3 text-muted-foreground">
-                          Intake link is provided in your confirmation email. If you don’t receive it, email{" "}
+                          Intake link is provided after scope confirmation. If you don’t receive it, email{" "}
                           <a className="text-foreground underline underline-offset-4" href="mailto:hello@contextaiq.com">
                             hello@contextaiq.com
                           </a>
@@ -260,28 +245,14 @@ export default function AuditPage() {
         <div className="container-wide text-center">
           <h2 className="mb-6">Ready to see where you stand?</h2>
           <p className="lead max-w-xl mx-auto mb-10">€500. Fixed scope. Delivered in 5–7 business days.</p>
-          {stripeCheckoutUrl ? (
-            <TrackedLink
-              href={stripeCheckoutUrl}
-              external
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn-primary btn-lg"
-              eventName="cta_click"
-              eventParams={{ location: "audit_final", cta: "Start your audit" }}
-            >
-              Start your audit <ArrowRight size={18} />
-            </TrackedLink>
-          ) : (
-            <TrackedLink
-              href="/contact"
-              className="btn btn-primary btn-lg"
-              eventName="cta_click"
-              eventParams={{ location: "audit_final", cta: "Request invoice" }}
-            >
-              Request invoice / pay by bank transfer <ArrowRight size={18} />
-            </TrackedLink>
-          )}
+          <TrackedLink
+            href="/contact"
+            className="btn btn-primary btn-lg"
+            eventName="cta_click"
+            eventParams={{ location: "audit_final", cta: "Request audit scope" }}
+          >
+            Request audit scope <ArrowRight size={18} />
+          </TrackedLink>
         </div>
       </section>
     </>

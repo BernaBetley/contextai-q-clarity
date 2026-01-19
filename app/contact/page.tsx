@@ -23,7 +23,7 @@ export default function ContactPage() {
           <p className="eyebrow mb-4">Contact</p>
           <h1 className="mb-6 max-w-3xl">Let&apos;s scope your AI visibility baseline</h1>
           <p className="lead max-w-2xl">
-            Share your category, target queries, and competitors. We respond within one business day.
+            Share your category, target questions, and competitors. We respond within one business day.
           </p>
         </div>
       </section>
@@ -75,16 +75,12 @@ export default function ContactPage() {
               </div>
 
               <div className="card-minimal bg-secondary/50">
-                <h3 className="text-lg mb-2">Ready to start?</h3>
-                <p className="text-muted-foreground mb-4">Skip the call and purchase the €500 audit directly.</p>
-                <TrackedLink
-                  href="/audit"
-                  className="btn btn-secondary btn-sm"
-                  eventName="cta_click"
-                  eventParams={{ location: "contact_cta", cta: "Start audit now" }}
-                >
-                  Start audit now <ArrowRight size={16} />
-                </TrackedLink>
+                <h3 className="text-lg mb-2">What happens next</h3>
+                <ul className="space-y-2 text-muted-foreground text-sm">
+                  <li>We confirm scope, timeline, and success criteria.</li>
+                  <li>We issue an invoice and send the intake link.</li>
+                  <li>We begin the audit once intake is complete.</li>
+                </ul>
               </div>
 
               <div className="card-minimal">

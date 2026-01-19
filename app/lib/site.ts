@@ -10,5 +10,5 @@ export const siteConfig = {
   ogImage: "/contextaiq_logo_bw.png",
   logo: "/contextaiq_logo_bw.svg",
   contactEmail: "hello@contextaiq.com",
-  location: "Portugal",
+  location: "Global",
 };

@@ -32,13 +32,11 @@ export default function FactSheetPage() {
                 </div>
                 <div>
                   <dt className="font-medium">Primary location</dt>
-                  <dd className="text-muted-foreground">Portugal</dd>
+                  <dd className="text-muted-foreground">Global</dd>
                 </div>
                 <div>
                   <dt className="font-medium">Service area</dt>
-                  <dd className="text-muted-foreground">
-                    Global (remote), with in-person availability in Middle East
-                  </dd>
+                  <dd className="text-muted-foreground">Global</dd>
                 </div>
               </dl>
             </div>
@@ -60,7 +58,7 @@ export default function FactSheetPage() {
                 </div>
                 <div>
                   <dt className="font-medium">Scope</dt>
-                  <dd className="text-muted-foreground">20 queries, 3 competitors, 4 LLMs</dd>
+                  <dd className="text-muted-foreground">20 strategic questions, 3 competitors, 4 LLMs</dd>
                 </div>
                 <div>
                   <dt className="font-medium">LLMs tested</dt>

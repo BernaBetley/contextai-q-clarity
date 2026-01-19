@@ -84,7 +84,7 @@ export function ContactForm() {
           name="message"
           required
           className="textarea-field"
-          placeholder="Share your category, target queries, competitors, and goals."
+          placeholder="Share your category, target questions, competitors, and goals."
         />
       </label>
 
