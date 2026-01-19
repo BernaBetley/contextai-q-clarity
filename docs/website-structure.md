@@ -3,7 +3,6 @@
 ## Runtime
 - **Framework**: Next.js App Router (`app/`)
 - **Primary entry**: `app/layout.tsx` and page routes in `app/**/page.tsx`
-- **Legacy**: `src/` contains a Vite/React app and is not used in the Next.js build.
 
 ## Key Directories
 - `app/` — All production pages and layout.

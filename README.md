@@ -12,7 +12,6 @@ npm run dev
 ## Builds
 
 - `npm run build`: Next.js production build (primary)
-- `npm run build:vite`: Vite SPA build (legacy / transitional)
 - `npm run lint`: Lint the codebase
 - `npm run typecheck`: TypeScript typecheck
 

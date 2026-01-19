@@ -1,7 +1,7 @@
 # Audit Summary — ContextAIQ Marketing Site
 
 ## Top 10 Issues (Engineering, UX, Design, Copy, Business)
-1. **Dual app footprints (Next + Vite)** create unclear source-of-truth and maintainability risk.
+1. **No automated test coverage or CI gating** leaves regressions undetected.
 2. **Inconsistent CTA hierarchy** (multiple primary CTAs per page, mixed labels) weakens conversion focus.
 3. **Metadata gaps per page** (limited OG/Twitter and JSON-LD coverage) reduce SEO and LLM extractability.
 4. **No structured event tracking** beyond page views; no CTA/form instrumentation.
@@ -27,7 +27,7 @@
 ## Key Assumptions
 - Pricing for non-audit tiers will be expressed as “starting at” ranges unless exact numbers are confirmed.
 - Contact form submission will use a configurable webhook/email service via env vars.
-- Next.js `app/` is the production source-of-truth; legacy `src/` (Vite) is not used in deploy.
+- Next.js `app/` is the production source-of-truth; no SPA build is required.
 
 ## Definition of Done (Measurable)
 - [ ] All indexable pages have unique title + meta description + canonical + OG/Twitter.
