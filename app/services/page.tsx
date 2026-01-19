@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
-export const metadata: Metadata = {
-  title: "Services & Pricing",
+import { TrackedLink } from "../components/TrackedLink";
+import { buildMetadata } from "../lib/metadata";
+
+export const metadata: Metadata = buildMetadata({
+  title: "Pricing & Packages",
   description:
-    "AI Visibility services: €500 fixed-scope audit, custom implementation, and ongoing monitoring retainers. Clear pricing, measurable outcomes.",
-  alternates: { canonical: "/services" },
-};
+    "Clear pricing for the AI Visibility Audit, implementation sprints, and monitoring retainers. Start with the €500 fixed-scope audit.",
+  path: "/services",
+});
 
 export default function ServicesPage() {
   const packages = [
@@ -15,7 +17,7 @@ export default function ServicesPage() {
       name: "AI Visibility Audit",
       price: "€500",
       priceNote: "Fixed scope",
-      description: "Baseline measurement of your AI visibility position.",
+      description: "Baseline measurement of AI visibility and accuracy.",
       features: [
         "20 strategic queries tested",
         "4 LLMs evaluated",
@@ -28,10 +30,10 @@ export default function ServicesPage() {
       featured: true,
     },
     {
-      name: "Implementation",
-      price: "Custom",
-      priceNote: "Discovery-based",
-      description: "Execute the audit recommendations with expert guidance.",
+      name: "Implementation Sprint",
+      price: "Starting at €2,500",
+      priceNote: "Scope-based",
+      description: "Turn audit findings into citation-ready assets and fixes.",
       features: [
         "Content architecture design",
         "Schema markup implementation",
@@ -45,9 +47,9 @@ export default function ServicesPage() {
     },
     {
       name: "Monitoring Retainer",
-      price: "Monthly",
+      price: "Starting at €1,500 / month",
       priceNote: "Ongoing",
-      description: "Continuous tracking and optimization of AI visibility.",
+      description: "Continuous tracking of visibility and accuracy with monthly reporting.",
       features: [
         "Weekly position tracking",
         "Hallucination monitoring",
@@ -84,10 +86,10 @@ export default function ServicesPage() {
     <>
       <section className="section-slide pt-24 md:pt-32">
         <div className="container-wide">
-          <p className="eyebrow mb-4">Services</p>
-          <h1 className="mb-6 max-w-3xl">Clear services, measurable outcomes</h1>
+          <p className="eyebrow mb-4">Pricing</p>
+          <h1 className="mb-6 max-w-3xl">Clear packages, measurable outcomes</h1>
           <p className="lead max-w-2xl">
-            From initial audit to ongoing optimization. Choose the engagement model that fits your needs.
+            From initial audit to implementation and monitoring. Start with the audit, then scale as needed.
           </p>
         </div>
       </section>
@@ -97,8 +99,7 @@ export default function ServicesPage() {
           <div className="max-w-3xl mx-auto text-center">
             <p className="eyebrow mb-4">TL;DR</p>
             <p className="text-large">
-              Start with the €500 audit to establish baseline. Implementation and monitoring are scoped based on your specific
-              needs and findings.
+              Start with the €500 audit to establish your baseline. Implementation and monitoring are scoped to your findings.
             </p>
           </div>
         </div>
@@ -127,16 +128,47 @@ export default function ServicesPage() {
                     </li>
                   ))}
                 </ul>
-                <Link
+                <TrackedLink
                   href={pkg.href}
-                  className={`inline-flex items-center justify-center gap-2 rounded-md px-5 py-2 text-sm font-medium transition-all duration-200 ${
-                    pkg.featured
-                      ? "bg-primary text-primary-foreground shadow-sm hover:bg-primary/90"
-                      : "border border-foreground bg-transparent text-foreground hover:bg-foreground hover:text-background"
+                  className={`btn btn-sm ${
+                    pkg.featured ? "btn-primary" : "btn-secondary"
                   }`}
+                  eventName="cta_click"
+                  eventParams={{ location: "pricing_card", cta: pkg.cta }}
                 >
                   {pkg.cta} <ArrowRight size={16} />
-                </Link>
+                </TrackedLink>
+              </div>
+            ))}
+          </div>
+          <p className="text-small text-muted-foreground mt-6">
+            Implementation and monitoring pricing are starting points and are confirmed after scope definition.
+          </p>
+        </div>
+      </section>
+
+      <section className="section-slide bg-secondary/30">
+        <div className="container-wide">
+          <p className="eyebrow mb-4">Engagement path</p>
+          <h2 className="mb-12">How clients typically progress</h2>
+          <div className="grid-3-col">
+            {[
+              {
+                title: "Audit",
+                description: "Establish visibility baseline, evidence, and priority fixes.",
+              },
+              {
+                title: "Implementation",
+                description: "Build citation-ready content and fix structural gaps.",
+              },
+              {
+                title: "Monitoring",
+                description: "Track visibility changes and adjust as models evolve.",
+              },
+            ].map((item) => (
+              <div key={item.title} className="card-minimal bg-background">
+                <h3 className="mb-3">{item.title}</h3>
+                <p className="text-muted-foreground">{item.description}</p>
               </div>
             ))}
           </div>
@@ -162,20 +194,24 @@ export default function ServicesPage() {
       <section className="section-slide">
         <div className="container-wide text-center">
           <h2 className="mb-6">Not sure where to start?</h2>
-          <p className="lead max-w-xl mx-auto mb-10">The €500 audit provides the baseline for the next decisions.</p>
+          <p className="lead max-w-xl mx-auto mb-10">The €500 audit gives you the baseline for every next decision.</p>
           <div className="flex flex-wrap justify-center gap-4">
-            <Link
+            <TrackedLink
               href="/audit"
-              className="inline-flex items-center justify-center gap-2 rounded-md bg-primary px-8 py-6 text-base font-medium text-primary-foreground shadow-elevated transition-all duration-200 hover:shadow-prominent hover:-translate-y-0.5 active:translate-y-0"
+              className="btn btn-primary btn-lg"
+              eventName="cta_click"
+              eventParams={{ location: "pricing_final", cta: "Start with the audit" }}
             >
               Start with the audit <ArrowRight size={18} />
-            </Link>
-            <Link
+            </TrackedLink>
+            <TrackedLink
               href="/contact"
-              className="inline-flex items-center justify-center rounded-md border-2 border-foreground bg-transparent px-8 py-6 text-base font-medium text-foreground transition-all duration-200 hover:bg-foreground hover:text-background"
+              className="btn btn-secondary btn-lg"
+              eventName="cta_click"
+              eventParams={{ location: "pricing_final", cta: "Talk to us first" }}
             >
               Talk to us first
-            </Link>
+            </TrackedLink>
           </div>
         </div>
       </section>

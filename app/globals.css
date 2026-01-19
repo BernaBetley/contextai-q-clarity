@@ -47,7 +47,7 @@
     
     /* Typography scale (fonts provided by next/font in app/layout.tsx) */
     --font-sans: var(--font-inter), -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-    --font-serif: var(--font-newsreader), Georgia, 'Times New Roman', serif;
+    --font-serif: var(--font-merriweather), Georgia, 'Times New Roman', serif;
     
     /* Spacing rhythm */
     --section-padding: 6rem;
@@ -161,6 +161,39 @@
     @apply inline-flex items-center px-2.5 py-0.5 text-xs font-medium bg-secondary text-foreground rounded;
   }
 
+  /* Button system */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-md font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
+  }
+
+  .btn-lg {
+    @apply px-8 py-5 text-base;
+  }
+
+  .btn-md {
+    @apply px-6 py-3 text-sm;
+  }
+
+  .btn-sm {
+    @apply px-4 py-2 text-sm;
+  }
+
+  .btn-primary {
+    @apply bg-primary text-primary-foreground shadow-elevated hover:shadow-prominent hover:-translate-y-0.5 active:translate-y-0;
+  }
+
+  .btn-secondary {
+    @apply border-2 border-foreground bg-transparent text-foreground hover:bg-foreground hover:text-background;
+  }
+
+  .btn-tertiary {
+    @apply text-foreground underline underline-offset-4 hover:text-muted-foreground;
+  }
+
+  .btn-ghost {
+    @apply bg-secondary/60 text-foreground hover:bg-secondary;
+  }
+
   /* Divider */
   .section-divider {
     @apply w-12 h-px bg-border mx-auto my-16;
@@ -182,6 +215,19 @@
   /* Card variants */
   .card-minimal {
     @apply p-6 md:p-8 border border-border rounded-lg bg-card;
+  }
+
+  .card-contrast {
+    @apply p-6 md:p-8 rounded-lg bg-secondary/40 border border-border;
+  }
+
+  /* Form inputs */
+  .input-field {
+    @apply w-full rounded-md border border-border bg-background px-3 py-2 text-sm text-foreground shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
+  }
+
+  .textarea-field {
+    @apply w-full rounded-md border border-border bg-background px-3 py-2 text-sm text-foreground shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 min-h-[140px];
   }
 
   .card-elevated {

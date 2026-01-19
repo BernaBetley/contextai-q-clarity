@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
-export const metadata: Metadata = {
+import { TrackedLink } from "../components/TrackedLink";
+import { buildMetadata } from "../lib/metadata";
+
+export const metadata: Metadata = buildMetadata({
   title: "About",
   description:
-    "ContextAI Q helps brands become visible and accurately represented in AI-generated answers. Based in Portugal, serving globally.",
-  alternates: { canonical: "/about" },
-};
+    "ContextAI Q is an AI visibility advisory helping brands be accurately represented in AI-generated answers.",
+  path: "/about",
+});
 
 export default function AboutPage() {
   const values = [
@@ -34,8 +36,11 @@ export default function AboutPage() {
       <section className="section-slide pt-24 md:pt-32">
         <div className="container-wide">
           <p className="eyebrow mb-4">About</p>
-          <h1 className="mb-6 max-w-3xl">Making brands visible in AI</h1>
-          <p className="lead max-w-2xl">We help organizations understand and improve how they appear in AI-generated answers.</p>
+          <h1 className="mb-6 max-w-3xl">AI visibility advisory for teams who need accuracy, not hype</h1>
+          <p className="lead max-w-2xl">
+            ContextAI Q helps organizations measure and improve how they appear in AI-generated answers — with evidence,
+            benchmarks, and a clear implementation path.
+          </p>
         </div>
       </section>
 
@@ -44,7 +49,8 @@ export default function AboutPage() {
           <div className="max-w-3xl mx-auto text-center">
             <p className="eyebrow mb-4">Mission</p>
             <p className="text-2xl md:text-3xl font-serif leading-relaxed">
-              “Ensure that when AI systems answer questions about your industry, your brand appears prominently and accurately.”
+              “Ensure that when AI systems answer questions about your industry, your brand appears accurately and
+              credibly.”
             </p>
           </div>
         </div>
@@ -52,23 +58,32 @@ export default function AboutPage() {
 
       <section className="section-slide">
         <div className="container-wide">
-          <div className="max-w-3xl">
-            <p className="eyebrow mb-4">Why now</p>
-            <h2 className="mb-8">The discovery landscape is shifting</h2>
-            <div className="space-y-6 text-lg">
-              <p>
-                AI assistants are changing how people find information. Users increasingly ask AI directly rather than searching
-                and clicking through results.
-              </p>
-              <p>
-                This creates a new challenge: brands optimized for traditional search may be invisible or misrepresented in
-                AI-generated responses. The structures and authority signals that work for search don’t automatically translate
-                to LLM visibility.
-              </p>
-              <p>
-                ContextAI Q exists to close this gap with a repeatable measurement methodology and an implementation path that
-                makes the output actionable.
-              </p>
+          <div className="grid-2-col items-start">
+            <div>
+              <p className="eyebrow mb-4">Why now</p>
+              <h2 className="mb-8">Discovery is moving inside AI answers</h2>
+              <div className="space-y-6 text-lg">
+                <p>
+                  Buyers increasingly ask AI assistants for recommendations. The shortlist is forming inside the model response,
+                  not on a search results page.
+                </p>
+                <p>
+                  Traditional SEO signals are still important, but they are insufficient for AI visibility. You need structured,
+                  citation-ready sources that LLMs can trust.
+                </p>
+                <p>
+                  ContextAI Q exists to close this gap with a repeatable measurement methodology and an implementation path that
+                  makes the output actionable.
+                </p>
+              </div>
+            </div>
+            <div className="card-minimal">
+              <p className="eyebrow mb-4">What we do</p>
+              <ul className="space-y-3 text-small">
+                <li>Measure visibility and accuracy across major LLMs.</li>
+                <li>Benchmark against named competitors.</li>
+                <li>Deliver a roadmap for citations, structure, and authority signals.</li>
+              </ul>
             </div>
           </div>
         </div>
@@ -94,18 +109,22 @@ export default function AboutPage() {
           <h2 className="mb-6">Ready to work together?</h2>
           <p className="lead max-w-xl mx-auto mb-10">Start with the audit to see where you stand.</p>
           <div className="flex flex-wrap justify-center gap-4">
-            <Link
+            <TrackedLink
               href="/audit"
-              className="inline-flex items-center justify-center gap-2 rounded-md bg-primary px-8 py-6 text-base font-medium text-primary-foreground shadow-elevated transition-all duration-200 hover:shadow-prominent hover:-translate-y-0.5 active:translate-y-0"
+              className="btn btn-primary btn-lg"
+              eventName="cta_click"
+              eventParams={{ location: "about_final", cta: "Start your audit" }}
             >
               Start your audit <ArrowRight size={18} />
-            </Link>
-            <Link
+            </TrackedLink>
+            <TrackedLink
               href="/contact"
-              className="inline-flex items-center justify-center rounded-md border-2 border-foreground bg-transparent px-8 py-6 text-base font-medium text-foreground transition-all duration-200 hover:bg-foreground hover:text-background"
+              className="btn btn-secondary btn-lg"
+              eventName="cta_click"
+              eventParams={{ location: "about_final", cta: "Get in touch" }}
             >
               Get in touch
-            </Link>
+            </TrackedLink>
           </div>
         </div>
       </section>

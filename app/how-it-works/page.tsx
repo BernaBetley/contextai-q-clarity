@@ -1,49 +1,51 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { ArrowRight, Clock, FileText } from "lucide-react";
 
-export const metadata: Metadata = {
+import { TrackedLink } from "../components/TrackedLink";
+import { buildMetadata } from "../lib/metadata";
+
+export const metadata: Metadata = buildMetadata({
   title: "How It Works",
-  description: "Our methodology for measuring and improving AI visibility. From audit to implementation to ongoing monitoring.",
-  alternates: { canonical: "/how-it-works" },
-};
+  description: "How the AI Visibility Audit runs in five phases, from scoping to delivery.",
+  path: "/how-it-works",
+});
 
 export default function HowItWorksPage() {
   const layers = [
     {
       number: "01",
-      title: "Discovery & Scoping",
+      title: "Scope & Query Selection",
       input: "Business context, target queries, competitor list",
-      method: "Stakeholder intake, query mapping, baseline measurement",
+      method: "Stakeholder intake, query mapping, baseline criteria",
       output: "Audit scope document, 20 validated queries",
     },
     {
       number: "02",
       title: "Multi-LLM Testing",
-      input: "Query set, competitor names, current content",
+      input: "Query set, competitor names",
       method: "Systematic prompting across ChatGPT, Claude, Gemini, Perplexity",
-      output: "Raw response data, visibility scores, accuracy flags",
+      output: "Response archive with screenshots and metadata",
     },
     {
       number: "03",
-      title: "Analysis & Scoring",
+      title: "Visibility + Accuracy Scoring",
       input: "Response data, accuracy criteria",
       method: "Citation analysis, fact verification, competitive positioning",
-      output: "Scored matrix, hallucination inventory, gap analysis",
+      output: "Scorecard, hallucination inventory, gap analysis",
     },
     {
       number: "04",
-      title: "Recommendations",
-      input: "Analysis results, client capabilities",
-      method: "Prioritization framework, effort/impact mapping",
-      output: "Ranked action roadmap, quick wins, strategic initiatives",
+      title: "Root-Cause Analysis",
+      input: "Analysis results, source review",
+      method: "Identify structural gaps and missing authority signals",
+      output: "Cause map and fixability assessment",
     },
     {
       number: "05",
-      title: "Delivery & Review",
+      title: "Roadmap + Delivery",
       input: "Complete audit package",
       method: "Executive summary, detailed findings, walkthrough session",
-      output: "PDF report, optional 30-min walkthrough",
+      output: "PDF report, prioritized roadmap, optional walkthrough",
     },
   ];
 
@@ -135,12 +137,14 @@ export default function HowItWorksPage() {
           </div>
           <h2 className="mb-6">Ready to start?</h2>
           <p className="lead max-w-xl mx-auto mb-10">The €500 audit is the fastest way to establish your baseline.</p>
-          <Link
+          <TrackedLink
             href="/audit"
-            className="inline-flex items-center justify-center gap-2 rounded-md bg-primary px-8 py-6 text-base font-medium text-primary-foreground shadow-elevated transition-all duration-200 hover:shadow-prominent hover:-translate-y-0.5 active:translate-y-0"
+            className="btn btn-primary btn-lg"
+            eventName="cta_click"
+            eventParams={{ location: "how_it_works_final", cta: "Start your audit" }}
           >
             Start your audit <ArrowRight size={18} />
-          </Link>
+          </TrackedLink>
         </div>
       </section>
     </>

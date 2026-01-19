@@ -1,78 +1,56 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
-export const metadata: Metadata = {
+import { TrackedLink } from "../components/TrackedLink";
+import { buildMetadata } from "../lib/metadata";
+
+export const metadata: Metadata = buildMetadata({
   title: "Methodology",
-  description: "Step-by-step methodology for the ContextAI Q AI Visibility Audit. From query selection through report delivery.",
-  alternates: { canonical: "/method" },
-};
+  description: "Five-phase methodology for the ContextAI Q AI Visibility Audit, from query selection to delivery.",
+  path: "/method",
+});
 
 export default function MethodPage() {
   const steps = [
     {
       number: "1",
-      title: "Query Selection",
+      title: "Scope & Query Selection",
       description:
-        "Identify the 20 most strategic queries for your brand: brand queries, category queries, competitive queries, and use-case queries.",
-      inputs: ["Business context interview", "Query mapping", "Competitive landscape review"],
-      outputs: ["Validated query set", "Query categorization", "Priority ranking"],
+        "Define the 20 most strategic queries across brand, category, competitive, and use-case intent.",
+      inputs: ["Business context", "Query mapping", "Competitive landscape review"],
+      outputs: ["Validated query set", "Query categories", "Priority ranking"],
     },
     {
       number: "2",
       title: "Multi-LLM Testing",
       description:
-        "Execute each query across ChatGPT, Claude, Gemini, and Perplexity. Capture responses with timestamps.",
+        "Run every query across ChatGPT, Claude, Gemini, and Perplexity with consistent prompts and timestamps.",
       inputs: ["Query set", "LLM access", "Controlled testing process"],
-      outputs: ["Raw response archive", "Screenshots", "Response metadata"],
+      outputs: ["Response archive", "Screenshots", "Response metadata"],
     },
     {
       number: "3",
-      title: "Visibility Scoring",
+      title: "Visibility + Accuracy Scoring",
       description:
-        "Score each response for brand appearance (0-40), prominence position (0-30), and information accuracy (0-30). Total score: 0-100.",
+        "Score appearance, prominence, and accuracy on a 0–100 scale and identify hallucinations.",
       inputs: ["Response archive", "Brand fact sheet", "Scoring rubric"],
-      outputs: ["Per-query scores", "Per-LLM scores", "Aggregate visibility index"],
+      outputs: ["Per-query scores", "Per-LLM scores", "Accuracy flags"],
     },
     {
       number: "4",
-      title: "Accuracy Assessment",
+      title: "Root-Cause Analysis",
       description:
-        "Verify factual claims in responses against authoritative sources. Flag hallucinations, outdated information, and misattribution.",
-      inputs: ["Response content", "Official brand information", "Verification sources"],
-      outputs: ["Accuracy score", "Error inventory", "Hallucination log"],
-    },
-    {
-      number: "5",
-      title: "Competitive Benchmarking",
-      description:
-        "Apply the same methodology to 3 named competitors. Generate a head-to-head comparison matrix.",
-      inputs: ["Competitor names", "Same query set", "Same LLMs"],
-      outputs: ["Competitive matrix", "Gap analysis", "Position rankings"],
-    },
-    {
-      number: "6",
-      title: "Root Cause Analysis",
-      description:
-        "Identify why gaps exist: content structure, source availability, citation patterns, knowledge graph presence.",
+        "Identify why gaps exist: content structure, source availability, citation patterns, and authority signals.",
       inputs: ["Visibility gaps", "Content review", "Technical review"],
       outputs: ["Cause categorization", "Fixability assessment", "Technical findings"],
     },
     {
-      number: "7",
-      title: "Recommendation Development",
+      number: "5",
+      title: "Roadmap + Delivery",
       description:
-        "Prioritize actions by impact and effort. Separate quick wins from strategic initiatives.",
-      inputs: ["Gap analysis", "Root causes", "Client capabilities"],
-      outputs: ["Ranked action list", "Quick wins", "Strategic roadmap"],
-    },
-    {
-      number: "8",
-      title: "Report Assembly",
-      description:
-        "Compile findings into executive summary and detailed report. Prepare walkthrough.",
-      inputs: ["All analysis outputs", "Recommendations", "Client context"],
-      outputs: ["PDF report", "Executive summary", "Walkthrough"],
+        "Prioritize actions by impact and effort and deliver the report plus walkthrough.",
+      inputs: ["Gap analysis", "Root causes", "Client context"],
+      outputs: ["PDF report", "Action roadmap", "Walkthrough"],
     },
   ];
 
@@ -130,12 +108,14 @@ export default function MethodPage() {
         <div className="container-wide text-center">
           <h2 className="mb-6">Ready to apply this methodology?</h2>
           <p className="lead max-w-xl mx-auto mb-10">€500. Fixed scope. Delivered in 5–7 business days.</p>
-          <Link
+          <TrackedLink
             href="/audit"
-            className="inline-flex items-center justify-center gap-2 rounded-md bg-primary px-8 py-6 text-base font-medium text-primary-foreground shadow-elevated transition-all duration-200 hover:shadow-prominent hover:-translate-y-0.5 active:translate-y-0"
+            className="btn btn-primary btn-lg"
+            eventName="cta_click"
+            eventParams={{ location: "method_final", cta: "Start your audit" }}
           >
             Start your audit <ArrowRight size={18} />
-          </Link>
+          </TrackedLink>
         </div>
       </section>
     </>

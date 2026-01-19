@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 
-export const metadata: Metadata = {
+import { buildMetadata } from "../lib/metadata";
+
+export const metadata: Metadata = buildMetadata({
   title: "Privacy",
   description: "Privacy policy for ContextAI Q.",
-  alternates: { canonical: "/privacy" },
-};
+  path: "/privacy",
+});
 
 export default function PrivacyPage() {
   return (
@@ -39,7 +41,8 @@ export default function PrivacyPage() {
               <h2 className="text-2xl mb-3">Sharing</h2>
               <p className="text-muted-foreground">
                 We do not sell personal data. We may share data with service providers necessary to operate the site (e.g.,
-                analytics or form tooling) and only to the extent required.
+                analytics or form tooling) and only to the extent required. Contact form submissions are routed to our internal
+                inbox or configured webhook processor.
               </p>
             </div>
 

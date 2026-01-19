@@ -1,10 +1,14 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Inter, Newsreader } from "next/font/google";
-import { Header } from "./components/layout/Header";
-import { Footer } from "./components/layout/Footer";
 import Script from "next/script";
+import { Inter, Merriweather } from "next/font/google";
+
 import { Analytics } from "./components/Analytics";
+import { OrganizationSchema, WebSiteSchema } from "./components/StructuredData";
+import { Footer } from "./components/layout/Footer";
+import { Header } from "./components/layout/Header";
+import { env } from "./lib/env.server";
+import { siteConfig } from "./lib/site";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -13,37 +17,34 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
-const newsreader = Newsreader({
+const merriweather = Merriweather({
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
+  weight: ["300", "400", "700"],
   display: "swap",
-  variable: "--font-newsreader",
+  variable: "--font-merriweather",
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteConfig.url),
   title: {
     default: "ContextAI Q — AI Visibility Audit",
     template: "%s | ContextAI Q",
   },
-  description:
-    "ContextAI Q measures and improves how your brand appears in AI-generated answers. Start with a €500 fixed-scope AI Visibility Audit.",
-  metadataBase: new URL("https://contextaiq.com"),
+  description: siteConfig.description,
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",
-    siteName: "ContextAI Q",
-    url: "https://contextaiq.com/",
+    siteName: siteConfig.name,
+    url: siteConfig.url,
     title: "ContextAI Q — AI Visibility Audit",
-    description:
-      "Measure and improve how your brand appears in AI-generated answers. Start with a €500 fixed-scope audit.",
-    images: [{ url: "/contextaiq_logo_bw.png" }],
+    description: siteConfig.description,
+    images: [{ url: siteConfig.ogImage }],
   },
   twitter: {
     card: "summary_large_image",
     title: "ContextAI Q — AI Visibility Audit",
-    description:
-      "Measure and improve how your brand appears in AI-generated answers. Start with a €500 fixed-scope audit.",
-    images: ["/contextaiq_logo_bw.png"],
+    description: siteConfig.description,
+    images: [siteConfig.ogImage],
   },
 };
 
@@ -52,11 +53,19 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const ga4Id = process.env.NEXT_PUBLIC_GA4_MEASUREMENT_ID;
+  const ga4Id = env.NEXT_PUBLIC_GA4_MEASUREMENT_ID;
 
   return (
-    <html lang="en" className={`${inter.variable} ${newsreader.variable}`}>
+    <html lang="en" className={`${inter.variable} ${merriweather.variable}`}>
       <body className="min-h-screen bg-background text-foreground font-sans antialiased">
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:rounded-md focus:bg-background focus:px-4 focus:py-2 focus:text-sm focus:shadow-md"
+        >
+          Skip to content
+        </a>
+        <OrganizationSchema />
+        <WebSiteSchema />
         {ga4Id ? (
           <>
             <Script src={`https://www.googletagmanager.com/gtag/js?id=${ga4Id}`} strategy="afterInteractive" />
@@ -75,7 +84,9 @@ export default function RootLayout({
 
         <div className="min-h-screen flex flex-col">
           <Header />
-          <main className="flex-1 pt-16 md:pt-20">{children}</main>
+          <main id="main-content" className="flex-1 pt-16 md:pt-20">
+            {children}
+          </main>
           <Footer />
         </div>
       </body>

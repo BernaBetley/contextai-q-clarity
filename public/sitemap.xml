@@ -26,14 +26,34 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://contextaiq.com/deliverables</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://contextaiq.com/signals</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://contextaiq.com/signals/seo-to-ai-share-of-voice</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://contextaiq.com/resources</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://contextaiq.com/resources/what-is-ai-share-of-voice</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://contextaiq.com/resources/llm-seo-vs-seo-vs-geo</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://contextaiq.com/about</loc>

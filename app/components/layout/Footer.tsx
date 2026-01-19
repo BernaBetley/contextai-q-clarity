@@ -4,21 +4,21 @@ import { BrandLogo } from "../BrandLogo";
 const footerLinks = {
   company: [
     { href: "/about", label: "About" },
-    { href: "/how-it-works", label: "How it works" },
+    { href: "/method", label: "Methodology" },
+    { href: "/deliverables", label: "Deliverables" },
     { href: "/contact", label: "Contact" },
   ],
   services: [
     { href: "/audit", label: "AI Visibility Audit" },
-    { href: "/services", label: "All Services" },
-    { href: "/measurement", label: "Proof & Measurement" },
+    { href: "/services", label: "Pricing & Packages" },
+    { href: "/measurement", label: "Measurement" },
   ],
   resources: [
     { href: "/signals", label: "Signals" },
     { href: "/resources", label: "Resources" },
-    { href: "/method", label: "Methodology" },
+    { href: "/fact-sheet", label: "Fact Sheet" },
   ],
   llm: [
-    { href: "/fact-sheet", label: "Fact Sheet" },
     { href: "/llms.txt", label: "llms.txt" },
     { href: "/llm-facts.txt", label: "llm-facts.txt" },
   ],
@@ -32,7 +32,7 @@ export function Footer() {
           <div className="col-span-2 md:col-span-1">
             <BrandLogo className="mb-4" />
             <p className="text-small max-w-xs">
-              Making brands visible and accurately represented in AI-generated answers.
+              AI visibility advisory for B2B teams that need accurate, attributable answers in LLMs.
             </p>
           </div>
 

@@ -1,11 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-export const metadata: Metadata = {
+import { TrackedLink } from "../components/TrackedLink";
+import { buildMetadata } from "../lib/metadata";
+
+export const metadata: Metadata = buildMetadata({
   title: "Resources",
   description: "Educational resources on AI visibility and LLM-driven discovery. Concepts, strategies, and frameworks.",
-  alternates: { canonical: "/resources" },
-};
+  path: "/resources",
+});
 
 const resources = [
   {
@@ -50,6 +53,21 @@ export default function ResourcesPage() {
               </Link>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="section-slide bg-secondary/30">
+        <div className="container-wide text-center">
+          <h2 className="mb-6">Apply these concepts to your brand</h2>
+          <p className="lead max-w-xl mx-auto mb-10">The audit turns theory into a quantified baseline.</p>
+          <TrackedLink
+            href="/audit"
+            className="btn btn-primary btn-lg"
+            eventName="cta_click"
+            eventParams={{ location: "resources_final", cta: "Start the audit" }}
+          >
+            Start the audit
+          </TrackedLink>
         </div>
       </section>
     </>

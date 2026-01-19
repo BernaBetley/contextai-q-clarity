@@ -13,8 +13,9 @@ accurately reference our content.
 - Home: https://contextaiq.com/
 - How it works: https://contextaiq.com/how-it-works
 - AI Visibility Audit: https://contextaiq.com/audit
-- Services & Pricing: https://contextaiq.com/services
+- Pricing & Packages: https://contextaiq.com/services
 - Proof & Measurement: https://contextaiq.com/measurement
+- Deliverables: https://contextaiq.com/deliverables
 - About: https://contextaiq.com/about
 - Contact: https://contextaiq.com/contact
 
