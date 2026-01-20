@@ -31,6 +31,11 @@ export const metadata: Metadata = {
     template: "%s | ContextAI Q",
   },
   description: siteConfig.description,
+  icons: {
+    icon: "/contextaiq_logo_bw.png",
+    shortcut: "/contextaiq_logo_bw.png",
+    apple: "/contextaiq_logo_bw.png",
+  },
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",

@@ -13,8 +13,6 @@ export const metadata: Metadata = buildMetadata({
 });
 
 export default function ContactPage() {
-  const calendlyUrl = env.NEXT_PUBLIC_CALENDLY_URL;
-
   return (
     <>
       {/* Hero */}
@@ -47,29 +45,15 @@ export default function ContactPage() {
                     <p className="text-muted-foreground mb-4">
                       Book a 20-minute call to confirm scope and outcomes.
                     </p>
-                    {calendlyUrl ? (
-                      <TrackedLink
-                        href={calendlyUrl}
-                        external
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="btn btn-secondary btn-sm"
-                        eventName="cta_click"
-                        eventParams={{ location: "contact_schedule", cta: "Open calendar" }}
-                      >
-                        Open calendar <ArrowRight size={16} />
-                      </TrackedLink>
-                    ) : (
-                      <TrackedLink
-                        href="mailto:hello@contextaiq.com?subject=Call%20request%20(ContextAI%20Q)"
-                        external
-                        className="btn btn-secondary btn-sm"
-                        eventName="cta_click"
-                        eventParams={{ location: "contact_schedule", cta: "Request call by email" }}
-                      >
-                        Request a call by email <ArrowRight size={16} />
-                      </TrackedLink>
-                    )}
+                    <TrackedLink
+                      href="mailto:hello@contextaiq.com?subject=Call%20request%20(ContextAI%20Q)"
+                      external
+                      className="btn btn-secondary btn-sm"
+                      eventName="cta_click"
+                      eventParams={{ location: "contact_schedule", cta: "Request call by email" }}
+                    >
+                      Request a call by email <ArrowRight size={16} />
+                    </TrackedLink>
                   </div>
                 </div>
               </div>
