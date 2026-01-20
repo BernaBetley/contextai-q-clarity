@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <circle cx="50" cy="50" r="48" fill="white" stroke="black" stroke-width="0"/>
+  <path d="M50 85C69.33 85 85 69.33 85 50C85 30.67 69.33 15 50 15C30.67 15 15 30.67 15 50C15 69.33 30.67 85 50 85ZM50 95C25.147 95 5 74.853 5 50C5 25.147 25.147 5 50 5C74.853 5 95 25.147 95 50C95 74.853 74.853 95 50 95Z" fill="white"/>
+  <text x="50" y="72" font-family="serif" font-weight="900" font-size="75" text-anchor="middle" fill="black">Q</text>
+</svg>

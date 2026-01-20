@@ -32,9 +32,9 @@ export const metadata: Metadata = {
   },
   description: siteConfig.description,
   icons: {
-    icon: "/contextaiq_logo_bw.png",
-    shortcut: "/contextaiq_logo_bw.png",
-    apple: "/contextaiq_logo_bw.png",
+    icon: "/logo.svg",
+    shortcut: "/logo.svg",
+    apple: "/logo.svg",
   },
   alternates: { canonical: "/" },
   openGraph: {
