@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { ArrowRight, Check, Clock } from "lucide-react";
 
+import { AuditCheckoutButton } from "../components/AuditCheckoutButton";
 import { FaqSchema, ServiceSchema } from "../components/StructuredData";
 import { TrackedLink } from "../components/TrackedLink";
 import { env } from "../lib/env.server";
@@ -76,6 +77,7 @@ const faqs = [
 
 export default function AuditPage() {
   const stripeCheckoutUrl = env.NEXT_PUBLIC_STRIPE_CHECKOUT_URL;
+  const hasStripeKey = !!env.STRIPE_SECRET_KEY;
   const intakeUrl = env.NEXT_PUBLIC_AUDIT_INTAKE_URL;
 
   return (
@@ -120,6 +122,13 @@ export default function AuditPage() {
                 >
                   Purchase audit <ArrowRight size={18} />
                 </TrackedLink>
+              ) : hasStripeKey ? (
+                <AuditCheckoutButton
+                  className="btn btn-primary btn-lg"
+                  eventParams={{ location: "audit_hero", cta: "Purchase audit" }}
+                >
+                  Purchase audit <ArrowRight size={18} />
+                </AuditCheckoutButton>
               ) : (
                 <TrackedLink
                   href="/contact"
@@ -272,6 +281,13 @@ export default function AuditPage() {
             >
               Start your audit <ArrowRight size={18} />
             </TrackedLink>
+          ) : hasStripeKey ? (
+            <AuditCheckoutButton
+              className="btn btn-primary btn-lg"
+              eventParams={{ location: "audit_final", cta: "Start your audit" }}
+            >
+              Start your audit <ArrowRight size={18} />
+            </AuditCheckoutButton>
           ) : (
             <TrackedLink
               href="/contact"
@@ -287,4 +303,3 @@ export default function AuditPage() {
     </>
   );
 }
-
