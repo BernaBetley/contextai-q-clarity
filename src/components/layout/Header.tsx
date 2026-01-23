@@ -42,7 +42,7 @@ export function Header() {
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2 group">
             <img
-              src="/contextaiq_logo_bw.svg"
+              src="/contextaiq_logo_bw.png"
               alt="ContextAI Q"
               className="h-8 md:h-9 w-auto"
             />

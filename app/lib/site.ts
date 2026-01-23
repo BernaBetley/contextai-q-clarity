@@ -8,7 +8,7 @@ export const siteConfig = {
   description:
     "ContextAI Q measures how brands appear in AI-generated answers and delivers a fixed-scope AI Visibility Audit with a clear action roadmap.",
   ogImage: "/contextaiq_logo_bw.png",
-  logo: "/contextaiq_logo_bw.svg",
+  logo: "/contextaiq_logo_bw.png",
   contactEmail: "hello@contextaiq.com",
   location: "Portugal",
 };

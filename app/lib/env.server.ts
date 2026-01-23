@@ -8,6 +8,8 @@ const envSchema = z.object({
   NEXT_PUBLIC_STRIPE_CHECKOUT_URL: z.string().url().optional(),
   NEXT_PUBLIC_AUDIT_INTAKE_URL: z.string().url().optional(),
   NEXT_PUBLIC_CALENDLY_URL: z.string().url().optional(),
+  STRIPE_SECRET_KEY: z.string().optional(),
+  STRIPE_AUDIT_PRICE_ID: z.string().optional(),
   CONTACT_WEBHOOK_URL: z.string().url().optional(),
   CONTACT_WEBHOOK_SECRET: z.string().optional(),
 });

@@ -32,7 +32,7 @@ export function Footer() {
           <div className="col-span-2 md:col-span-1">
             <Link to="/" className="inline-block mb-4">
               <img
-                src="/contextaiq_logo_bw.svg"
+                src="/contextaiq_logo_bw.png"
                 alt="ContextAI Q"
                 className="h-8 w-auto"
               />
