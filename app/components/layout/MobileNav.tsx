@@ -49,7 +49,7 @@ export function MobileNav({ links, cta }: MobileNavProps) {
 
       {open ? (
         <div
-          className="fixed inset-0 z-[60] bg-background"
+          className="fixed inset-0 z-[1100] bg-background"
           role="dialog"
           aria-modal="true"
           aria-label="Mobile navigation"

@@ -16,7 +16,7 @@ const primaryCta = { href: "/audit", label: "Start the audit" };
 
 export function Header() {
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border shadow-subtle no-print">
+    <header className="fixed top-0 left-0 right-0 z-[1000] bg-background/95 backdrop-blur-sm border-b border-border shadow-subtle no-print">
       <div className="container-wide">
         <nav className="flex items-center justify-between h-16 md:h-20">
           <BrandLogo />
