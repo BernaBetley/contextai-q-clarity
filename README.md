@@ -20,7 +20,9 @@ npm run dev
 
 - `NEXT_PUBLIC_SITE_URL`: Canonical site URL used for metadata (default: https://contextaiq.com)
 - `NEXT_PUBLIC_GA4_MEASUREMENT_ID`: Enables GA4 tracking
-- `NEXT_PUBLIC_STRIPE_CHECKOUT_URL`: Audit checkout link
+- `NEXT_PUBLIC_STRIPE_CHECKOUT_URL`: Optional Stripe Payment Link for the audit (direct link override)
+- `STRIPE_SECRET_KEY`: Stripe secret key (used to create Checkout Sessions)
+- `STRIPE_AUDIT_PRICE_ID`: Stripe Price ID for the €500 audit (used to create Checkout Sessions)
 - `NEXT_PUBLIC_AUDIT_INTAKE_URL`: Intake form link shown after purchase
 - `NEXT_PUBLIC_CALENDLY_URL`: Scheduling link on Contact
 - `CONTACT_WEBHOOK_URL`: Server-side webhook endpoint for contact form submissions

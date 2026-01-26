@@ -77,6 +77,7 @@ const faqs = [
 export default function AuditPage() {
   const stripeCheckoutUrl = env.NEXT_PUBLIC_STRIPE_CHECKOUT_URL;
   const intakeUrl = env.NEXT_PUBLIC_AUDIT_INTAKE_URL;
+  const hasDirectStripe = Boolean(env.STRIPE_SECRET_KEY && env.STRIPE_AUDIT_PRICE_ID);
 
   return (
     <>
@@ -114,6 +115,15 @@ export default function AuditPage() {
                   external
                   target="_blank"
                   rel="noopener noreferrer"
+                  className="btn btn-primary btn-lg"
+                  eventName="cta_click"
+                  eventParams={{ location: "audit_hero", cta: "Purchase audit" }}
+                >
+                  Purchase audit <ArrowRight size={18} />
+                </TrackedLink>
+              ) : hasDirectStripe ? (
+                <TrackedLink
+                  href="/api/stripe/checkout?product=audit"
                   className="btn btn-primary btn-lg"
                   eventName="cta_click"
                   eventParams={{ location: "audit_hero", cta: "Purchase audit" }}
@@ -260,7 +270,7 @@ export default function AuditPage() {
         <div className="container-wide text-center">
           <h2 className="mb-6">Ready to see where you stand?</h2>
           <p className="lead max-w-xl mx-auto mb-10">€500. Fixed scope. Delivered in 5–7 business days.</p>
-          {stripeCheckoutUrl ? (
+              {stripeCheckoutUrl ? (
             <TrackedLink
               href={stripeCheckoutUrl}
               external
@@ -272,6 +282,15 @@ export default function AuditPage() {
             >
               Start your audit <ArrowRight size={18} />
             </TrackedLink>
+              ) : hasDirectStripe ? (
+                <TrackedLink
+                  href="/api/stripe/checkout?product=audit"
+                  className="btn btn-primary btn-lg"
+                  eventName="cta_click"
+                  eventParams={{ location: "audit_final", cta: "Start your audit" }}
+                >
+                  Start your audit <ArrowRight size={18} />
+                </TrackedLink>
           ) : (
             <TrackedLink
               href="/contact"
