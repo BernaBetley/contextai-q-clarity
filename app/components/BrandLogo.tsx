@@ -14,11 +14,9 @@ export function BrandLogo({ className = "", showWordmark = true }: BrandLogoProp
       </span>
       {showWordmark && (
         <div className="leading-none">
-          <span className="block text-sm uppercase tracking-[0.3em] text-muted-foreground">
-            ContextAI
-          </span>
-          <span className="block text-lg font-serif font-semibold tracking-tight">
-            Q
+          <span className="inline-flex items-baseline gap-2 text-sm uppercase tracking-[0.3em] text-muted-foreground">
+            <span>ContextAI</span>
+            <span className="font-serif font-semibold text-foreground tracking-tight">Q</span>
           </span>
         </div>
       )}
