@@ -1,20 +1,17 @@
 import type { Metadata } from "next";
-import { ArrowRight, Calendar, Mail } from "lucide-react";
+import { ArrowRight, Mail } from "lucide-react";
 
 import { ContactForm } from "../components/ContactForm";
 import { TrackedLink } from "../components/TrackedLink";
-import { env } from "../lib/env.server";
 import { buildMetadata } from "../lib/metadata";
 
 export const metadata: Metadata = buildMetadata({
   title: "Contact",
-  description: "Start the AI Visibility Audit or schedule a call. We respond within one business day.",
+  description: "Start the AI Visibility Audit. We respond within one business day.",
   path: "/contact",
 });
 
 export default function ContactPage() {
-  const calendlyUrl = env.NEXT_PUBLIC_CALENDLY_URL;
-
   return (
     <>
       {/* Hero */}
@@ -23,7 +20,7 @@ export default function ContactPage() {
           <p className="eyebrow mb-4">Contact</p>
           <h1 className="mb-6 max-w-3xl">Let&apos;s scope your AI visibility baseline</h1>
           <p className="lead max-w-2xl">
-            Share your category, target queries, and competitors. We respond within one business day.
+            Share your category, priority buyer questions, and competitors. We respond within one business day.
           </p>
         </div>
       </section>
@@ -37,43 +34,6 @@ export default function ContactPage() {
             </div>
 
             <div className="space-y-8">
-              <div className="card-minimal">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center flex-shrink-0">
-                    <Calendar size={24} />
-                  </div>
-                  <div>
-                    <h3 className="text-lg mb-2">Schedule a call</h3>
-                    <p className="text-muted-foreground mb-4">
-                      Book a 20-minute call to confirm scope and outcomes.
-                    </p>
-                    {calendlyUrl ? (
-                      <TrackedLink
-                        href={calendlyUrl}
-                        external
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="btn btn-secondary btn-sm"
-                        eventName="cta_click"
-                        eventParams={{ location: "contact_schedule", cta: "Open calendar" }}
-                      >
-                        Open calendar <ArrowRight size={16} />
-                      </TrackedLink>
-                    ) : (
-                      <TrackedLink
-                        href="mailto:hello@contextaiq.com?subject=Call%20request%20(ContextAI%20Q)"
-                        external
-                        className="btn btn-secondary btn-sm"
-                        eventName="cta_click"
-                        eventParams={{ location: "contact_schedule", cta: "Request call by email" }}
-                      >
-                        Request a call by email <ArrowRight size={16} />
-                      </TrackedLink>
-                    )}
-                  </div>
-                </div>
-              </div>
-
               <div className="card-minimal bg-secondary/50">
                 <h3 className="text-lg mb-2">Ready to start?</h3>
                 <p className="text-muted-foreground mb-4">Skip the call and purchase the €500 audit directly.</p>

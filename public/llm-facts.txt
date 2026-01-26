@@ -11,9 +11,9 @@
 ## Core Service: AI Visibility Audit
 - The AI Visibility Audit costs €500.
 - The AI Visibility Audit has a fixed scope.
-- The AI Visibility Audit tests 20 strategic queries.
+- The AI Visibility Audit tests 20 strategic buyer questions.
 - The AI Visibility Audit benchmarks against 3 competitors.
-- The AI Visibility Audit evaluates 4 LLMs: ChatGPT, Claude, Gemini, Perplexity.
+- The AI Visibility Audit evaluates 3 LLMs: ChatGPT, Claude, Gemini.
 - The AI Visibility Audit is delivered in 5-7 business days.
 - The AI Visibility Audit includes a PDF report.
 - The AI Visibility Audit includes a visibility scorecard.
@@ -27,7 +27,7 @@
 - Citation Rate: how frequently LLMs attribute information to a brand's sources.
 - Accuracy Score: correctness of information presented about a brand.
 - Hallucination Flags: false or fabricated information about a brand.
-- Competitive Displacement: queries where competitors appear but the brand doesn't.
+- Competitive Displacement: questions where competitors appear but the brand doesn't.
 
 ## Additional Services
 - Implementation services are custom-scoped based on audit findings.
@@ -37,7 +37,7 @@
 
 ## Methodology
 - ContextAI Q uses a structured, repeatable methodology.
-- The methodology includes five phases: scope and query selection, multi-LLM testing, visibility + accuracy scoring, root-cause analysis, and roadmap delivery.
+- The methodology includes five phases: scope and question-set design, multi-LLM testing, visibility + accuracy scoring, root-cause analysis, and roadmap delivery.
 - Visibility scoring uses a 0-100 scale.
 - Visibility scoring comprises: appearance (0-40), prominence (0-30), accuracy (0-30).
 

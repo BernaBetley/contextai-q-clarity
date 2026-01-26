@@ -39,14 +39,14 @@ function Section({
 
 const phases = [
   {
-    title: "Scope & query selection",
-    description: "Define 20 strategic queries across brand, category, and use-case intent.",
-    output: "Validated query set and success criteria.",
+    title: "Scope & question-set design",
+    description: "Define 20 strategic buyer questions across brand, category, and use-case intent.",
+    output: "Validated question set and success criteria.",
     icon: Search,
   },
   {
     title: "Multi-LLM testing",
-    description: "Run queries across ChatGPT, Claude, Gemini, and Perplexity.",
+    description: "Run the question set across ChatGPT, Claude, and Gemini.",
     output: "Response archive with screenshots and metadata.",
     icon: Activity,
   },
@@ -73,7 +73,7 @@ const phases = [
 const deliverables = [
   {
     title: "Visibility scorecard",
-    description: "Query-level scores by model with clear baselines.",
+    description: "Question-level scores by model with clear baselines.",
   },
   {
     title: "Evidence snapshots",
@@ -108,7 +108,7 @@ const faqs = [
   {
     question: "What makes this different from a traditional SEO audit?",
     answer:
-      "We measure visibility inside LLM answers, not search rankings. The audit focuses on how AI systems cite and describe your brand, with evidence and scoring per query.",
+      "We measure visibility inside LLM answers, not search rankings. The audit focuses on how AI systems cite and describe your brand, with evidence and scoring per question.",
   },
   {
     question: "How long does the audit take?",
@@ -116,7 +116,7 @@ const faqs = [
   },
   {
     question: "Which models do you test?",
-    answer: "ChatGPT, Claude, Gemini, and Perplexity are included in the standard audit.",
+    answer: "ChatGPT, Claude, and Gemini are included in the standard audit.",
   },
   {
     question: "What do you deliver?",
@@ -135,7 +135,7 @@ export default function HomePage() {
     <>
       <ServiceSchema
         name="AI Visibility Audit"
-        description="Fixed-scope audit measuring your brand's visibility and accuracy across ChatGPT, Claude, Gemini, and Perplexity."
+        description="Fixed-scope audit measuring your brand's visibility and accuracy across ChatGPT, Claude, and Gemini."
         price="500"
         url="/audit"
       />
@@ -146,12 +146,12 @@ export default function HomePage() {
           <p className="eyebrow mb-4">AI Visibility Audit for B2B teams</p>
           <h1 className="mb-6 text-balance">Know exactly how LLMs describe your brand — and what to fix.</h1>
           <p className="lead max-w-2xl mb-8">
-            We test 20 strategic queries across ChatGPT, Claude, Gemini, and Perplexity, score visibility and accuracy, and
-            deliver a prioritized roadmap in 5–7 business days.
+            We test 20 strategic buyer questions across ChatGPT, Claude, and Gemini, score visibility and accuracy,
+            and deliver a prioritized roadmap in 5–7 business days.
           </p>
           <ul className="list-check mb-10 max-w-2xl text-muted-foreground">
             <li>Fixed-scope €500 audit with documented methodology.</li>
-            <li>Query-level evidence, not generic SEO claims.</li>
+            <li>Evidence at the question level, not generic SEO claims.</li>
             <li>Designed for founders, CMOs, growth leaders, and AI/SEO leads.</li>
           </ul>
           <div className="flex flex-wrap gap-4">
@@ -181,8 +181,8 @@ export default function HomePage() {
             <p className="eyebrow mb-4">Definition</p>
             <h2 className="mb-6">What “AI visibility” actually means</h2>
             <p className="text-muted-foreground">
-              AI visibility is the share of category-relevant queries where your brand appears and is described accurately in
-              AI-generated answers. It is not traffic; it is whether you make the shortlist inside the model response.
+              AI visibility is the share of category-relevant questions where your brand appears and is described accurately
+              in AI-generated answers. It is not traffic; it is whether you make the shortlist inside the model response.
             </p>
           </div>
           <div className="card-minimal bg-background">
@@ -190,7 +190,7 @@ export default function HomePage() {
             <ul className="space-y-3 text-sm text-muted-foreground">
               <li className="flex items-start gap-3">
                 <CheckCircle2 size={16} className="text-foreground mt-0.5" />
-                Visibility score by query and model (0–100).
+                Visibility score by question and model (0–100).
               </li>
               <li className="flex items-start gap-3">
                 <CheckCircle2 size={16} className="text-foreground mt-0.5" />

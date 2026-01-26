@@ -36,14 +36,6 @@ export default function FactSheet() {
                     <dt className="font-medium">Website</dt>
                     <dd className="text-muted-foreground">contextaiq.com</dd>
                   </div>
-                  <div>
-                    <dt className="font-medium">Primary location</dt>
-                    <dd className="text-muted-foreground">Portugal</dd>
-                  </div>
-                  <div>
-                    <dt className="font-medium">Service area</dt>
-                    <dd className="text-muted-foreground">Global (remote), with in-person availability in Middle East</dd>
-                  </div>
                 </dl>
               </div>
 
@@ -53,7 +45,7 @@ export default function FactSheet() {
                 <p className="text-muted-foreground">
                   ContextAI Q measures and optimizes how organizations appear in AI-generated 
                   answers from large language models (LLMs) such as ChatGPT, Claude, Gemini, 
-                  and Perplexity.
+                  and Gemini.
                 </p>
               </div>
 
@@ -67,11 +59,11 @@ export default function FactSheet() {
                   </div>
                   <div>
                     <dt className="font-medium">Scope</dt>
-                    <dd className="text-muted-foreground">20 queries, 3 competitors, 4 LLMs</dd>
+                    <dd className="text-muted-foreground">20 questions, 3 competitors, 3 LLMs</dd>
                   </div>
                   <div>
                     <dt className="font-medium">LLMs tested</dt>
-                    <dd className="text-muted-foreground">ChatGPT (GPT-4), Claude, Gemini, Perplexity</dd>
+                    <dd className="text-muted-foreground">ChatGPT (GPT-4), Claude, Gemini</dd>
                   </div>
                   <div>
                     <dt className="font-medium">Delivery time</dt>

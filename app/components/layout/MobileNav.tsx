@@ -28,6 +28,13 @@ export function MobileNav({ links, cta }: MobileNavProps) {
     return () => window.removeEventListener("keydown", handleEscape);
   }, [open]);
 
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
+
   return (
     <div className="lg:hidden">
       <button
@@ -41,8 +48,13 @@ export function MobileNav({ links, cta }: MobileNavProps) {
       </button>
 
       {open ? (
-        <div className="fixed inset-0 z-50 bg-background/95 backdrop-blur-sm">
-          <div className="container-wide pt-24">
+        <div
+          className="fixed inset-0 z-[1100] bg-background"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Mobile navigation"
+        >
+          <div className="container-wide pt-24 pb-12 h-[100dvh] overflow-y-auto">
             <button
               type="button"
               className="btn btn-sm btn-ghost absolute top-6 right-6"

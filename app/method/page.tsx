@@ -6,7 +6,7 @@ import { buildMetadata } from "../lib/metadata";
 
 export const metadata: Metadata = buildMetadata({
   title: "Methodology",
-  description: "Five-phase methodology for the ContextAI Q AI Visibility Audit, from query selection to delivery.",
+  description: "Five-phase methodology for the ContextAI Q AI Visibility Audit, from question-set design to delivery.",
   path: "/method",
 });
 
@@ -14,18 +14,18 @@ export default function MethodPage() {
   const steps = [
     {
       number: "1",
-      title: "Scope & Query Selection",
+      title: "Scope & Question-Set Design",
       description:
-        "Define the 20 most strategic queries across brand, category, competitive, and use-case intent.",
-      inputs: ["Business context", "Query mapping", "Competitive landscape review"],
-      outputs: ["Validated query set", "Query categories", "Priority ranking"],
+        "Define the 20 most strategic buyer questions across brand, category, competitive, and use-case intent.",
+      inputs: ["Business context", "Question mapping", "Competitive landscape review"],
+      outputs: ["Validated question set", "Question categories", "Priority ranking"],
     },
     {
       number: "2",
       title: "Multi-LLM Testing",
       description:
-        "Run every query across ChatGPT, Claude, Gemini, and Perplexity with consistent prompts and timestamps.",
-      inputs: ["Query set", "LLM access", "Controlled testing process"],
+        "Run every question across ChatGPT, Claude, and Gemini with consistent prompts and timestamps.",
+      inputs: ["Question set", "LLM access", "Controlled testing process"],
       outputs: ["Response archive", "Screenshots", "Response metadata"],
     },
     {
@@ -34,7 +34,7 @@ export default function MethodPage() {
       description:
         "Score appearance, prominence, and accuracy on a 0–100 scale and identify hallucinations.",
       inputs: ["Response archive", "Brand fact sheet", "Scoring rubric"],
-      outputs: ["Per-query scores", "Per-LLM scores", "Accuracy flags"],
+      outputs: ["Per-question scores", "Per-LLM scores", "Accuracy flags"],
     },
     {
       number: "4",

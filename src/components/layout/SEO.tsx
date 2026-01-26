@@ -123,7 +123,7 @@ export function ServiceSchema() {
       "@type": "Organization",
       name: "ContextAI Q",
     },
-    description: "Comprehensive audit measuring your brand's visibility and accuracy across major LLMs including ChatGPT, Claude, Gemini, and Perplexity.",
+    description: "Comprehensive audit measuring your brand's visibility and accuracy across major LLMs including ChatGPT, Claude, and Gemini.",
     offers: {
       "@type": "Offer",
       price: "500",

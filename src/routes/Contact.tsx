@@ -3,13 +3,12 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { ArrowRight, Mail, Calendar } from "lucide-react";
+import { ArrowRight, Mail } from "lucide-react";
 import { SEO, WebPageSchema } from "@/components/layout/SEO";
 import { FormEvent, useMemo, useState } from "react";
 import { track } from "@/lib/analytics";
 
 export default function Contact() {
-  const calendlyUrl = (import.meta.env.VITE_CALENDLY_URL as string | undefined) ?? "";
   const contactEndpoint = (import.meta.env.VITE_CONTACT_FORM_ENDPOINT as string | undefined) ?? "";
 
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
@@ -67,7 +66,7 @@ export default function Contact() {
     <>
       <SEO
         title="Contact"
-        description="Get in touch with ContextAI Q. Schedule a call, send a message, or start your AI Visibility Audit."
+        description="Get in touch with ContextAI Q. Send a message or start your AI Visibility Audit."
         canonical="/contact"
       />
       <WebPageSchema
@@ -139,44 +138,6 @@ export default function Contact() {
 
             {/* Other Options */}
             <div className="space-y-8">
-              {/* Schedule Call */}
-              <div className="card-minimal">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center flex-shrink-0">
-                    <Calendar size={24} />
-                  </div>
-                  <div>
-                    <h3 className="text-lg mb-2">Schedule a call</h3>
-                    <p className="text-muted-foreground mb-4">
-                      Book a 30-minute introductory call to discuss your AI visibility needs.
-                    </p>
-                    {calendlyUrl ? (
-                      <a
-                        href={calendlyUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onClick={() => track("book_call_click", { provider: "calendly" })}
-                      >
-                        <Button variant="outline">
-                          Open calendar
-                          <ArrowRight size={16} />
-                        </Button>
-                      </a>
-                    ) : (
-                      <a
-                        href="mailto:hello@contextaiq.com?subject=Call%20request%20(ContextAI%20Q)"
-                        onClick={() => track("book_call_click", { provider: "email" })}
-                      >
-                        <Button variant="outline">
-                          Request a call by email
-                          <ArrowRight size={16} />
-                        </Button>
-                      </a>
-                    )}
-                  </div>
-                </div>
-              </div>
-
               {/* Email Direct */}
               <div className="card-minimal">
                 <div className="flex items-start gap-4">

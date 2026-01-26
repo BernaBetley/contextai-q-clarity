@@ -6,18 +6,20 @@ import { TrackedLink } from "../components/TrackedLink";
 import { env } from "../lib/env.server";
 import { buildMetadata } from "../lib/metadata";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = buildMetadata({
   title: "AI Visibility Audit — €500",
   description:
-    "Fixed-scope AI visibility audit: 20 queries, 4 LLMs, 3 competitors. Delivered in 5–7 business days with a prioritized action roadmap.",
+    "Fixed-scope AI visibility audit: 20 strategic questions, 3 LLMs, 3 competitors. Delivered in 5–7 business days with a prioritized action roadmap.",
   path: "/audit",
 });
 
 const included = [
-  "20 strategic queries across brand, category, and use-case intent",
-  "4 LLMs evaluated: ChatGPT, Claude, Gemini, Perplexity",
-  "3 competitors benchmarked using the same query set",
-  "Visibility scorecard (0–100) with query-level breakdowns",
+  "20 strategic buyer questions across brand, category, and use-case intent",
+  "3 LLMs evaluated: ChatGPT, Claude, Gemini",
+  "3 competitors benchmarked using the same question set",
+  "Visibility scorecard (0–100) with question-level breakdowns",
   "Accuracy and hallucination log with evidence",
   "Citation and source analysis to identify authority gaps",
   "Competitive positioning matrix",
@@ -39,7 +41,7 @@ const sampleOutputs = [
   },
   {
     title: "Visibility scorecard",
-    description: "Per-query scores across each LLM with clear baselines.",
+    description: "Question-level scores across each LLM with clear baselines.",
   },
   {
     title: "Evidence archive",
@@ -60,7 +62,7 @@ const faqs = [
   {
     question: "What do you need from us?",
     answer:
-      "Company context, priority queries, competitor list, and any existing fact sheets or source materials.",
+      "Company context, priority buyer questions, competitor list, and any existing fact sheets or source materials.",
   },
   {
     question: "Can we move directly to implementation?",
@@ -77,12 +79,13 @@ const faqs = [
 export default function AuditPage() {
   const stripeCheckoutUrl = env.NEXT_PUBLIC_STRIPE_CHECKOUT_URL;
   const intakeUrl = env.NEXT_PUBLIC_AUDIT_INTAKE_URL;
+  const hasDirectStripe = Boolean(env.STRIPE_SECRET_KEY);
 
   return (
     <>
       <ServiceSchema
         name="AI Visibility Audit"
-        description="Fixed-scope audit measuring your brand's visibility and accuracy across ChatGPT, Claude, Gemini, and Perplexity."
+        description="Fixed-scope audit measuring your brand's visibility and accuracy across ChatGPT, Claude, and Gemini."
         price="500"
         url="/audit"
       />
@@ -114,6 +117,15 @@ export default function AuditPage() {
                   external
                   target="_blank"
                   rel="noopener noreferrer"
+                  className="btn btn-primary btn-lg"
+                  eventName="cta_click"
+                  eventParams={{ location: "audit_hero", cta: "Purchase audit" }}
+                >
+                  Purchase audit <ArrowRight size={18} />
+                </TrackedLink>
+              ) : hasDirectStripe ? (
+                <TrackedLink
+                  href="/api/stripe/checkout?product=audit"
                   className="btn btn-primary btn-lg"
                   eventName="cta_click"
                   eventParams={{ location: "audit_hero", cta: "Purchase audit" }}
@@ -182,7 +194,7 @@ export default function AuditPage() {
                     <div>
                       <p className="font-medium mb-1">Intake</p>
                       <p className="text-small">
-                        Share company context, target queries, competitors, and priorities so we can scope the 20 queries
+                        Share company context, priority buyer questions, competitors, and priorities so we can scope the 20 questions
                         precisely.
                       </p>
                       {intakeUrl ? (
@@ -260,7 +272,7 @@ export default function AuditPage() {
         <div className="container-wide text-center">
           <h2 className="mb-6">Ready to see where you stand?</h2>
           <p className="lead max-w-xl mx-auto mb-10">€500. Fixed scope. Delivered in 5–7 business days.</p>
-          {stripeCheckoutUrl ? (
+              {stripeCheckoutUrl ? (
             <TrackedLink
               href={stripeCheckoutUrl}
               external
@@ -272,6 +284,15 @@ export default function AuditPage() {
             >
               Start your audit <ArrowRight size={18} />
             </TrackedLink>
+              ) : hasDirectStripe ? (
+                <TrackedLink
+                  href="/api/stripe/checkout?product=audit"
+                  className="btn btn-primary btn-lg"
+                  eventName="cta_click"
+                  eventParams={{ location: "audit_final", cta: "Start your audit" }}
+                >
+                  Start your audit <ArrowRight size={18} />
+                </TrackedLink>
           ) : (
             <TrackedLink
               href="/contact"

@@ -11,8 +11,8 @@ export default function Services() {
       priceNote: "Fixed scope",
       description: "Baseline measurement of your AI visibility position.",
       features: [
-        "20 strategic queries tested",
-        "4 LLMs evaluated",
+        "20 strategic buyer questions tested",
+        "3 LLMs evaluated",
         "3 competitors benchmarked",
         "Prioritized action roadmap",
         "PDF report + walkthrough",

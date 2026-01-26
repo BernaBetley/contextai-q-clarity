@@ -29,9 +29,16 @@ export function Header() {
     setIsMobileMenuOpen(false);
   }, [location.pathname]);
 
+  useEffect(() => {
+    document.body.style.overflow = isMobileMenuOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isMobileMenuOpen]);
+
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 no-print ${
+      className={`fixed top-0 left-0 right-0 z-[1000] transition-all duration-300 no-print ${
         isScrolled
           ? "bg-background/95 backdrop-blur-sm border-b border-border shadow-subtle"
           : "bg-transparent"
@@ -40,12 +47,26 @@ export function Header() {
       <div className="container-wide">
         <nav className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2 group">
-            <img
-              src="/contextaiq_logo_bw.svg"
-              alt="ContextAI Q"
-              className="h-8 md:h-9 w-auto"
-            />
+          <Link to="/" className="flex items-center gap-3 focus-ring">
+            <span className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background shadow-subtle">
+              <svg
+                aria-hidden
+                viewBox="0 0 24 24"
+                className="h-6 w-6 text-foreground"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <circle cx="11" cy="11" r="7" />
+                <path d="M20 20l-3.5-3.5" />
+              </svg>
+            </span>
+            <span className="hidden sm:inline-flex items-baseline gap-2">
+              <span className="text-sm uppercase tracking-[0.35em] text-muted-foreground">CONTEXTAI</span>
+              <span className="text-lg font-serif font-semibold text-foreground tracking-tight">Q</span>
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -86,8 +107,21 @@ export function Header() {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden absolute top-full left-0 right-0 bg-background border-b border-border shadow-elevated">
-            <div className="container-wide py-4">
+          <div
+            className="lg:hidden fixed inset-0 z-[1100] bg-background"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Mobile navigation"
+          >
+            <div className="container-wide pt-24 pb-12 h-[100dvh] overflow-y-auto">
+              <button
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="lg:hidden p-2 text-foreground absolute top-6 right-6"
+                aria-label="Close menu"
+              >
+                <X size={24} />
+              </button>
+
               <div className="flex flex-col gap-2">
                 {navLinks.map((link) => (
                   <Link

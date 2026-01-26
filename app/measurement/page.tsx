@@ -15,8 +15,8 @@ export default function MeasurementPage() {
   const kpis = [
     {
       name: "AI Share-of-Voice",
-      definition: "The percentage of category-relevant queries where your brand appears in AI-generated responses.",
-      measurement: "Query sampling across target LLMs, appearance tracking, position scoring.",
+      definition: "The percentage of category-relevant questions where your brand appears in AI-generated responses.",
+      measurement: "Question sampling across target LLMs, appearance tracking, position scoring.",
       benchmark: "Baseline established in your audit; tracked over time against your category.",
     },
     {
@@ -29,7 +29,7 @@ export default function MeasurementPage() {
       name: "Accuracy Score",
       definition: "Correctness of information presented about your brand in AI responses.",
       measurement: "Fact verification against authoritative sources, error categorization.",
-      benchmark: "Baseline set in audit; improvements tracked by query and model.",
+      benchmark: "Baseline set in audit; improvements tracked by question and model.",
     },
     {
       name: "Hallucination Flags",
@@ -39,9 +39,9 @@ export default function MeasurementPage() {
     },
     {
       name: "Competitive Displacement",
-      definition: "Queries where competitors appear but you don't, or vice versa.",
+      definition: "Questions where competitors appear but you don't, or vice versa.",
       measurement: "Head-to-head comparison, position tracking, trend analysis.",
-      benchmark: "Baseline established in your audit; tracked by query and by competitor.",
+      benchmark: "Baseline established in your audit; tracked by question and by competitor.",
     },
   ];
 
@@ -52,7 +52,7 @@ export default function MeasurementPage() {
           <p className="eyebrow mb-4">Measurement</p>
           <h1 className="mb-6 max-w-3xl">What gets measured gets managed</h1>
           <p className="lead max-w-2xl">
-            We define and track the KPIs that matter for AI visibility. Evidence-based, query-level, and repeatable.
+            We define and track the KPIs that matter for AI visibility. Evidence-based, question-level, and repeatable.
           </p>
         </div>
       </section>
