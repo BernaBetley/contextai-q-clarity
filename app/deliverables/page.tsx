@@ -80,7 +80,6 @@ export default function DeliverablesPage() {
                   <th className="py-3 pr-4 font-semibold">ChatGPT</th>
                   <th className="py-3 pr-4 font-semibold">Claude</th>
                   <th className="py-3 pr-4 font-semibold">Gemini</th>
-                  <th className="py-3 pr-4 font-semibold">Perplexity</th>
                 </tr>
               </thead>
               <tbody className="text-muted-foreground">
@@ -89,21 +88,18 @@ export default function DeliverablesPage() {
                   <td className="py-3 pr-4">62</td>
                   <td className="py-3 pr-4">58</td>
                   <td className="py-3 pr-4">41</td>
-                  <td className="py-3 pr-4">70</td>
                 </tr>
                 <tr className="border-b border-border">
                   <td className="py-3 pr-4">“Alternatives to [competitor]”</td>
                   <td className="py-3 pr-4">48</td>
                   <td className="py-3 pr-4">52</td>
                   <td className="py-3 pr-4">35</td>
-                  <td className="py-3 pr-4">61</td>
                 </tr>
                 <tr>
                   <td className="py-3 pr-4">“[Your category] pricing comparison”</td>
                   <td className="py-3 pr-4">55</td>
                   <td className="py-3 pr-4">49</td>
                   <td className="py-3 pr-4">38</td>
-                  <td className="py-3 pr-4">63</td>
                 </tr>
               </tbody>
             </table>

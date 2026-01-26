@@ -37,7 +37,7 @@ export default function FactSheetPage() {
               <h2 className="text-2xl mb-4">What we do</h2>
               <p className="text-muted-foreground">
                 ContextAI Q measures and optimizes how organizations appear in AI-generated answers from large language models
-                (LLMs) such as ChatGPT, Claude, Gemini, and Perplexity.
+                (LLMs) such as ChatGPT, Claude, and Gemini.
               </p>
             </div>
 
@@ -50,11 +50,11 @@ export default function FactSheetPage() {
                 </div>
                 <div>
                   <dt className="font-medium">Scope</dt>
-                  <dd className="text-muted-foreground">20 questions, 3 competitors, 4 LLMs</dd>
+                  <dd className="text-muted-foreground">20 questions, 3 competitors, 3 LLMs</dd>
                 </div>
                 <div>
                   <dt className="font-medium">LLMs tested</dt>
-                  <dd className="text-muted-foreground">ChatGPT, Claude, Gemini, Perplexity</dd>
+                  <dd className="text-muted-foreground">ChatGPT, Claude, Gemini</dd>
                 </div>
                 <div>
                   <dt className="font-medium">Delivery time</dt>

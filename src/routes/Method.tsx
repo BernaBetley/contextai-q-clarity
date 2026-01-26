@@ -17,7 +17,7 @@ export default function Method() {
       number: "2",
       title: "Multi-LLM Testing",
       description:
-        "Execute each question across ChatGPT (GPT-4), Claude, Gemini, and Perplexity. Capture full responses with timestamps.",
+        "Execute each question across ChatGPT (GPT-4), Claude, and Gemini. Capture full responses with timestamps.",
       inputs: ["Question set", "LLM access", "Controlled testing environment"],
       outputs: ["Raw response database", "Screenshot archive", "Response metadata"],
     },

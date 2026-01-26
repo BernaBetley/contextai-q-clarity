@@ -29,7 +29,7 @@ const resourceContent: Record<string, {
       },
       {
         heading: "How we measure it",
-        content: "We sample a set of category-relevant questions across multiple LLMs (ChatGPT, Claude, Gemini, Perplexity), track brand appearances, score for prominence and accuracy, and calculate visibility percentages over time. The methodology is transparent and repeatable.",
+        content: "We sample a set of category-relevant questions across multiple LLMs (ChatGPT, Claude, Gemini), track brand appearances, score for prominence and accuracy, and calculate visibility percentages over time. The methodology is transparent and repeatable.",
       },
       {
         heading: "Limitations",

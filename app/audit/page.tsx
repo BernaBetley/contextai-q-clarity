@@ -9,13 +9,13 @@ import { buildMetadata } from "../lib/metadata";
 export const metadata: Metadata = buildMetadata({
   title: "AI Visibility Audit — €500",
   description:
-    "Fixed-scope AI visibility audit: 20 strategic questions, 4 LLMs, 3 competitors. Delivered in 5–7 business days with a prioritized action roadmap.",
+    "Fixed-scope AI visibility audit: 20 strategic questions, 3 LLMs, 3 competitors. Delivered in 5–7 business days with a prioritized action roadmap.",
   path: "/audit",
 });
 
 const included = [
   "20 strategic buyer questions across brand, category, and use-case intent",
-  "4 LLMs evaluated: ChatGPT, Claude, Gemini, Perplexity",
+  "3 LLMs evaluated: ChatGPT, Claude, Gemini",
   "3 competitors benchmarked using the same question set",
   "Visibility scorecard (0–100) with question-level breakdowns",
   "Accuracy and hallucination log with evidence",
@@ -83,7 +83,7 @@ export default function AuditPage() {
     <>
       <ServiceSchema
         name="AI Visibility Audit"
-        description="Fixed-scope audit measuring your brand's visibility and accuracy across ChatGPT, Claude, Gemini, and Perplexity."
+        description="Fixed-scope audit measuring your brand's visibility and accuracy across ChatGPT, Claude, and Gemini."
         price="500"
         url="/audit"
       />

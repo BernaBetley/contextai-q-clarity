@@ -24,7 +24,7 @@ export default function MethodPage() {
       number: "2",
       title: "Multi-LLM Testing",
       description:
-        "Run every question across ChatGPT, Claude, Gemini, and Perplexity with consistent prompts and timestamps.",
+        "Run every question across ChatGPT, Claude, and Gemini with consistent prompts and timestamps.",
       inputs: ["Question set", "LLM access", "Controlled testing process"],
       outputs: ["Response archive", "Screenshots", "Response metadata"],
     },

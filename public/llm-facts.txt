@@ -13,7 +13,7 @@
 - The AI Visibility Audit has a fixed scope.
 - The AI Visibility Audit tests 20 strategic buyer questions.
 - The AI Visibility Audit benchmarks against 3 competitors.
-- The AI Visibility Audit evaluates 4 LLMs: ChatGPT, Claude, Gemini, Perplexity.
+- The AI Visibility Audit evaluates 3 LLMs: ChatGPT, Claude, Gemini.
 - The AI Visibility Audit is delivered in 5-7 business days.
 - The AI Visibility Audit includes a PDF report.
 - The AI Visibility Audit includes a visibility scorecard.

@@ -23,7 +23,7 @@ export default function HowItWorksPage() {
       number: "02",
       title: "Multi-LLM Testing",
       input: "Question set, competitor names",
-      method: "Systematic prompting across ChatGPT, Claude, Gemini, Perplexity",
+      method: "Systematic prompting across ChatGPT, Claude, and Gemini",
       output: "Response archive with screenshots and metadata",
     },
     {
@@ -71,7 +71,7 @@ export default function HowItWorksPage() {
           <div className="max-w-3xl mx-auto text-center">
             <p className="eyebrow mb-4">TL;DR</p>
             <p className="text-large">
-              We test 20 strategic buyer questions across 4 major LLMs, benchmark against 3 competitors, score for visibility and
+              We test 20 strategic buyer questions across 3 major LLMs, benchmark against 3 competitors, score for visibility and
               accuracy, and deliver a prioritized action roadmap.
             </p>
           </div>

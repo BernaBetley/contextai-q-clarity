@@ -20,7 +20,7 @@ export default function ServicesPage() {
       description: "Baseline measurement of AI visibility and accuracy.",
       features: [
         "20 strategic buyer questions tested",
-        "4 LLMs evaluated",
+        "3 LLMs evaluated",
         "3 competitors benchmarked",
         "Prioritized action roadmap",
         "PDF report + walkthrough",

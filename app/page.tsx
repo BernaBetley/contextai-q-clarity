@@ -46,7 +46,7 @@ const phases = [
   },
   {
     title: "Multi-LLM testing",
-    description: "Run the question set across ChatGPT, Claude, Gemini, and Perplexity.",
+    description: "Run the question set across ChatGPT, Claude, and Gemini.",
     output: "Response archive with screenshots and metadata.",
     icon: Activity,
   },
@@ -116,7 +116,7 @@ const faqs = [
   },
   {
     question: "Which models do you test?",
-    answer: "ChatGPT, Claude, Gemini, and Perplexity are included in the standard audit.",
+    answer: "ChatGPT, Claude, and Gemini are included in the standard audit.",
   },
   {
     question: "What do you deliver?",
@@ -135,7 +135,7 @@ export default function HomePage() {
     <>
       <ServiceSchema
         name="AI Visibility Audit"
-        description="Fixed-scope audit measuring your brand's visibility and accuracy across ChatGPT, Claude, Gemini, and Perplexity."
+        description="Fixed-scope audit measuring your brand's visibility and accuracy across ChatGPT, Claude, and Gemini."
         price="500"
         url="/audit"
       />
@@ -146,7 +146,7 @@ export default function HomePage() {
           <p className="eyebrow mb-4">AI Visibility Audit for B2B teams</p>
           <h1 className="mb-6 text-balance">Know exactly how LLMs describe your brand — and what to fix.</h1>
           <p className="lead max-w-2xl mb-8">
-            We test 20 strategic buyer questions across ChatGPT, Claude, Gemini, and Perplexity, score visibility and accuracy,
+            We test 20 strategic buyer questions across ChatGPT, Claude, and Gemini, score visibility and accuracy,
             and deliver a prioritized roadmap in 5–7 business days.
           </p>
           <ul className="list-check mb-10 max-w-2xl text-muted-foreground">

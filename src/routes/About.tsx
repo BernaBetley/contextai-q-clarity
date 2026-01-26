@@ -70,7 +70,7 @@ export default function About() {
             <h2 className="mb-8">The discovery landscape is shifting</h2>
             <div className="space-y-6 text-lg">
               <p>
-                ChatGPT, Claude, Perplexity, and other AI assistants are changing how people 
+                ChatGPT, Claude, Gemini, and other AI assistants are changing how people 
                 find information. Users increasingly ask AI directly rather than searching 
                 and clicking through results.
               </p>

@@ -186,7 +186,7 @@ function ProductOfferSection() {
   const scope = [
     "20 strategic buyer questions tested",
     "3 competitors benchmarked",
-    "4 LLMs evaluated (ChatGPT, Claude, Gemini, Perplexity)",
+    "3 LLMs evaluated (ChatGPT, Claude, Gemini)",
     "Accuracy and citation analysis",
     "Prioritized action roadmap",
   ];

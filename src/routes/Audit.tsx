@@ -16,7 +16,7 @@ export default function Audit() {
 
   const included = [
     "20 strategic buyer questions tested across your category",
-    "4 LLMs evaluated: ChatGPT, Claude, Gemini, Perplexity",
+    "3 LLMs evaluated: ChatGPT, Claude, Gemini",
     "3 competitors benchmarked",
     "Visibility scoring (0-100) per question",
     "Accuracy assessment with hallucination flagging",
@@ -41,7 +41,7 @@ export default function Audit() {
     },
     {
       question: "Which LLMs do you test?",
-      answer: "We test across ChatGPT (GPT-4), Claude (Anthropic), Gemini (Google), and Perplexity. These represent the majority of AI-assisted search and research usage.",
+      answer: "We test across ChatGPT (GPT-4), Claude (Anthropic), and Gemini (Google). These represent the majority of AI-assisted search and research usage.",
     },
     {
       question: "How do you score visibility?",
@@ -65,7 +65,7 @@ export default function Audit() {
     <>
       <SEO
         title="AI Visibility Audit - €500"
-        description="Fixed-scope AI visibility audit. 20 strategic questions, 4 LLMs, 3 competitors. Delivered in 5-7 business days. Actionable roadmap included."
+        description="Fixed-scope AI visibility audit. 20 strategic questions, 3 LLMs, 3 competitors. Delivered in 5-7 business days. Actionable roadmap included."
         canonical="/audit"
       />
       <WebPageSchema
@@ -151,7 +151,7 @@ export default function Audit() {
               <p className="text-small">Competitors</p>
             </div>
             <div className="text-center">
-              <p className="text-4xl font-serif font-semibold mb-2">4</p>
+              <p className="text-4xl font-serif font-semibold mb-2">3</p>
               <p className="text-small">LLMs</p>
             </div>
             <div className="text-center">
