@@ -15,7 +15,7 @@ export async function GET(request: Request) {
     return NextResponse.json({ error: "Unknown product." }, { status: 400 });
   }
 
-  if (!env.STRIPE_SECRET_KEY || !env.STRIPE_AUDIT_PRICE_ID) {
+  if (!env.STRIPE_SECRET_KEY) {
     return NextResponse.json(
       { error: "Stripe is not configured on this deployment." },
       { status: 501 }
@@ -30,11 +30,25 @@ export async function GET(request: Request) {
     apiVersion: "2025-12-15.clover",
   });
 
+  const lineItem = env.STRIPE_AUDIT_PRICE_ID
+    ? { price: env.STRIPE_AUDIT_PRICE_ID, quantity: 1 }
+    : {
+        price_data: {
+          currency: "eur",
+          unit_amount: 50000,
+          product_data: {
+            name: "AI Visibility Audit",
+          },
+        },
+        quantity: 1,
+      };
+
   const session = await stripe.checkout.sessions.create({
     mode: "payment",
-    line_items: [{ price: env.STRIPE_AUDIT_PRICE_ID, quantity: 1 }],
+    line_items: [lineItem],
     success_url: successUrl,
     cancel_url: cancelUrl,
+    invoice_creation: { enabled: true },
     metadata: {
       product,
       source: "website",

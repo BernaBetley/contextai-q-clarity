@@ -79,7 +79,7 @@ const faqs = [
 export default function AuditPage() {
   const stripeCheckoutUrl = env.NEXT_PUBLIC_STRIPE_CHECKOUT_URL;
   const intakeUrl = env.NEXT_PUBLIC_AUDIT_INTAKE_URL;
-  const hasDirectStripe = Boolean(env.STRIPE_SECRET_KEY && env.STRIPE_AUDIT_PRICE_ID);
+  const hasDirectStripe = Boolean(env.STRIPE_SECRET_KEY);
 
   return (
     <>
