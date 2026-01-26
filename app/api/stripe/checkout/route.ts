@@ -27,7 +27,7 @@ export async function GET(request: Request) {
   const cancelUrl = new URL("/audit?checkout=cancel", siteUrl).toString();
 
   const stripe = new Stripe(env.STRIPE_SECRET_KEY, {
-    apiVersion: "2024-06-20",
+    apiVersion: "2025-12-15.clover",
   });
 
   const session = await stripe.checkout.sessions.create({
