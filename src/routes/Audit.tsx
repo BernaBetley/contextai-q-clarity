@@ -15,10 +15,10 @@ export default function Audit() {
   const intakeUrl = import.meta.env.VITE_AUDIT_INTAKE_URL as string | undefined;
 
   const included = [
-    "20 strategic queries tested across your category",
+    "20 strategic buyer questions tested across your category",
     "4 LLMs evaluated: ChatGPT, Claude, Gemini, Perplexity",
     "3 competitors benchmarked",
-    "Visibility scoring (0-100) per query",
+    "Visibility scoring (0-100) per question",
     "Accuracy assessment with hallucination flagging",
     "Citation and source analysis",
     "Competitive positioning matrix",
@@ -26,14 +26,6 @@ export default function Audit() {
     "PDF report with screenshots",
     "Optional 30-minute walkthrough call",
   ];
-
-  const scope = {
-    queries: "20 queries",
-    competitors: "3 competitors",
-    llms: "4 LLMs (ChatGPT, Claude, Gemini, Perplexity)",
-    timeline: "5-7 business days",
-    format: "PDF report + walkthrough",
-  };
 
   const isNot = [
     "Not a one-time SEO audit",
@@ -44,8 +36,8 @@ export default function Audit() {
 
   const faqs = [
     {
-      question: "How do you select the 20 queries?",
-      answer: "We collaborate with you during a brief intake call to identify the most strategic queries for your business. These typically include brand queries, category queries, and competitive comparison queries.",
+      question: "How do you select the 20 questions?",
+      answer: "We collaborate with you during a brief intake call to identify the most strategic buyer questions for your business. These typically include brand questions, category questions, and competitive comparison questions.",
     },
     {
       question: "Which LLMs do you test?",
@@ -64,8 +56,8 @@ export default function Audit() {
       answer: "A 30-minute video walkthrough is included at no extra cost. We can also schedule a live call if preferred.",
     },
     {
-      question: "What if I need more than 20 queries?",
-      answer: "Extended scope is available. Contact us for custom pricing on larger query sets or additional competitors.",
+      question: "What if I need more than 20 questions?",
+      answer: "Extended scope is available. Contact us for custom pricing on larger question sets or additional competitors.",
     },
   ];
 
@@ -73,7 +65,7 @@ export default function Audit() {
     <>
       <SEO
         title="AI Visibility Audit - €500"
-        description="Fixed-scope AI visibility audit. 20 queries, 4 LLMs, 3 competitors. Delivered in 5-7 business days. Actionable roadmap included."
+        description="Fixed-scope AI visibility audit. 20 strategic questions, 4 LLMs, 3 competitors. Delivered in 5-7 business days. Actionable roadmap included."
         canonical="/audit"
       />
       <WebPageSchema
@@ -152,7 +144,7 @@ export default function Audit() {
           <div className="grid-4-col max-w-4xl">
             <div className="text-center">
               <p className="text-4xl font-serif font-semibold mb-2">20</p>
-              <p className="text-small">Queries</p>
+              <p className="text-small">Questions</p>
             </div>
             <div className="text-center">
               <p className="text-4xl font-serif font-semibold mb-2">3</p>
@@ -236,7 +228,7 @@ export default function Audit() {
                   <div>
                     <p className="font-medium mb-1">Intake</p>
                     <p className="text-small">
-                      Share company context, target queries, competitors, and priorities so we can scope the 20 queries precisely.
+                      Share company context, priority buyer questions, competitors, and priorities so we can scope the 20 questions precisely.
                     </p>
                     {intakeUrl ? (
                       <a

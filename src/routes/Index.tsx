@@ -131,7 +131,7 @@ function HowWeHelpSection() {
       icon: Search,
       phase: "Measure",
       title: "AI Visibility Audit",
-      deliverables: ["20-query visibility scan", "Accuracy scoring", "Competitive benchmarking"],
+      deliverables: ["20-question visibility benchmark", "Accuracy scoring", "Competitive benchmarking"],
     },
     {
       icon: BarChart3,
@@ -184,7 +184,7 @@ function HowWeHelpSection() {
 // Product Offer
 function ProductOfferSection() {
   const scope = [
-    "20 strategic queries tested",
+    "20 strategic buyer questions tested",
     "3 competitors benchmarked",
     "4 LLMs evaluated (ChatGPT, Claude, Gemini, Perplexity)",
     "Accuracy and citation analysis",
@@ -270,7 +270,7 @@ function ServicesPreview() {
 // KPIs Preview
 function KPIsPreview() {
   const kpis = [
-    { name: "AI Share-of-Voice", description: "How often you appear in category queries" },
+    { name: "AI Share-of-Voice", description: "How often you appear in category questions" },
     { name: "Citation Rate", description: "Frequency of source attribution to your content" },
     { name: "Accuracy Score", description: "Correctness of information presented about you" },
     { name: "Hallucination Flags", description: "False claims detected about your brand" },

@@ -7,8 +7,8 @@ export default function Measurement() {
   const kpis = [
     {
       name: "AI Share-of-Voice",
-      definition: "The percentage of category-relevant queries where your brand appears in AI-generated responses.",
-      measurement: "Query sampling across target LLMs, appearance tracking, position scoring.",
+      definition: "The percentage of category-relevant questions where your brand appears in AI-generated responses.",
+      measurement: "Question sampling across target LLMs, appearance tracking, position scoring.",
       benchmark: "Baseline established in your audit; tracked over time against your category.",
     },
     {
@@ -31,9 +31,9 @@ export default function Measurement() {
     },
     {
       name: "Competitive Displacement",
-      definition: "Queries where competitors appear but you don't, or vice versa.",
+      definition: "Questions where competitors appear but you don't, or vice versa.",
       measurement: "Head-to-head comparison, position tracking, trend analysis.",
-      benchmark: "Baseline established in your audit; tracked by query and by competitor.",
+      benchmark: "Baseline established in your audit; tracked by question and by competitor.",
     },
   ];
 

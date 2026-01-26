@@ -67,7 +67,7 @@ export default function FactSheet() {
                   </div>
                   <div>
                     <dt className="font-medium">Scope</dt>
-                    <dd className="text-muted-foreground">20 queries, 3 competitors, 4 LLMs</dd>
+                    <dd className="text-muted-foreground">20 questions, 3 competitors, 4 LLMs</dd>
                   </div>
                   <div>
                     <dt className="font-medium">LLMs tested</dt>

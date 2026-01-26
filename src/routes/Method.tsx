@@ -7,16 +7,18 @@ export default function Method() {
   const steps = [
     {
       number: "1",
-      title: "Query Selection",
-      description: "Identify the 20 most strategic queries for your brand. These include brand queries, category queries, competitive queries, and use-case queries.",
-      inputs: ["Business context interview", "Keyword research", "Competitive landscape review"],
-      outputs: ["Validated query set", "Query categorization", "Priority ranking"],
+      title: "Question-Set Design",
+      description:
+        "Identify the 20 most strategic buyer questions for your brand. These include brand questions, category questions, competitive comparisons, and use-case intent.",
+      inputs: ["Business context interview", "Buyer intent mapping", "Competitive landscape review"],
+      outputs: ["Validated question set", "Question categories", "Priority ranking"],
     },
     {
       number: "2",
       title: "Multi-LLM Testing",
-      description: "Execute each query across ChatGPT (GPT-4), Claude, Gemini, and Perplexity. Capture full responses with timestamps.",
-      inputs: ["Query set", "LLM access", "Controlled testing environment"],
+      description:
+        "Execute each question across ChatGPT (GPT-4), Claude, Gemini, and Perplexity. Capture full responses with timestamps.",
+      inputs: ["Question set", "LLM access", "Controlled testing environment"],
       outputs: ["Raw response database", "Screenshot archive", "Response metadata"],
     },
     {
@@ -24,7 +26,7 @@ export default function Method() {
       title: "Visibility Scoring",
       description: "Score each response for brand appearance (0-40), prominence position (0-30), and information accuracy (0-30). Total score: 0-100.",
       inputs: ["Response database", "Brand fact sheet", "Scoring rubric"],
-      outputs: ["Per-query scores", "Per-LLM scores", "Aggregate visibility index"],
+      outputs: ["Per-question scores", "Per-LLM scores", "Aggregate visibility index"],
     },
     {
       number: "4",
@@ -37,7 +39,7 @@ export default function Method() {
       number: "5",
       title: "Competitive Benchmarking",
       description: "Apply the same methodology to 3 named competitors. Generate head-to-head comparison matrix.",
-      inputs: ["Competitor names", "Same query set", "Same LLMs"],
+      inputs: ["Competitor names", "Same question set", "Same LLMs"],
       outputs: ["Competitive matrix", "Gap analysis", "Position rankings"],
     },
     {
@@ -67,7 +69,7 @@ export default function Method() {
     <>
       <SEO
         title="Methodology"
-        description="Step-by-step methodology for the ContextAI Q AI Visibility Audit. From query selection through report delivery."
+        description="Step-by-step methodology for the ContextAI Q AI Visibility Audit. From question-set design through report delivery."
         canonical="/method"
       />
       <WebPageSchema

@@ -8,14 +8,14 @@ export default function HowItWorks() {
     {
       number: "01",
       title: "Discovery & Scoping",
-      input: "Business context, target queries, competitor list",
-      method: "Stakeholder interview, query mapping, baseline measurement",
-      output: "Audit scope document, 20 validated queries",
+      input: "Business context, priority buyer questions, competitor list",
+      method: "Stakeholder interview, question mapping, baseline measurement",
+      output: "Audit scope document, 20 validated questions",
     },
     {
       number: "02",
       title: "Multi-LLM Testing",
-      input: "Query set, competitor names, current content",
+      input: "Question set, competitor names, current content",
       method: "Systematic prompting across ChatGPT, Claude, Gemini, Perplexity",
       output: "Raw response data, visibility scores, accuracy flags",
     },
@@ -106,7 +106,7 @@ export default function HowItWorks() {
           <div className="max-w-3xl mx-auto text-center">
             <p className="eyebrow mb-4">TL;DR</p>
             <p className="text-large">
-              We test 20 strategic queries across 4 major LLMs, benchmark against 3 competitors, 
+              We test 20 strategic buyer questions across 4 major LLMs, benchmark against 3 competitors, 
               score for visibility and accuracy, and deliver a prioritized action roadmap.
             </p>
           </div>
