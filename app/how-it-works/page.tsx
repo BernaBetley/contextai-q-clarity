@@ -14,15 +14,15 @@ export default function HowItWorksPage() {
   const layers = [
     {
       number: "01",
-      title: "Scope & Query Selection",
-      input: "Business context, target queries, competitor list",
-      method: "Stakeholder intake, query mapping, baseline criteria",
-      output: "Audit scope document, 20 validated queries",
+      title: "Scope & Question-Set Design",
+      input: "Business context, priority buyer questions, competitor list",
+      method: "Stakeholder intake, question mapping, baseline criteria",
+      output: "Audit scope document, 20 validated questions",
     },
     {
       number: "02",
       title: "Multi-LLM Testing",
-      input: "Query set, competitor names",
+      input: "Question set, competitor names",
       method: "Systematic prompting across ChatGPT, Claude, Gemini, Perplexity",
       output: "Response archive with screenshots and metadata",
     },
@@ -71,7 +71,7 @@ export default function HowItWorksPage() {
           <div className="max-w-3xl mx-auto text-center">
             <p className="eyebrow mb-4">TL;DR</p>
             <p className="text-large">
-              We test 20 strategic queries across 4 major LLMs, benchmark against 3 competitors, score for visibility and
+              We test 20 strategic buyer questions across 4 major LLMs, benchmark against 3 competitors, score for visibility and
               accuracy, and deliver a prioritized action roadmap.
             </p>
           </div>

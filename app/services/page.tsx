@@ -19,7 +19,7 @@ export default function ServicesPage() {
       priceNote: "Fixed scope",
       description: "Baseline measurement of AI visibility and accuracy.",
       features: [
-        "20 strategic queries tested",
+        "20 strategic buyer questions tested",
         "4 LLMs evaluated",
         "3 competitors benchmarked",
         "Prioritized action roadmap",

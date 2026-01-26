@@ -23,7 +23,7 @@ export default function ContactPage() {
           <p className="eyebrow mb-4">Contact</p>
           <h1 className="mb-6 max-w-3xl">Let&apos;s scope your AI visibility baseline</h1>
           <p className="lead max-w-2xl">
-            Share your category, target queries, and competitors. We respond within one business day.
+            Share your category, priority buyer questions, and competitors. We respond within one business day.
           </p>
         </div>
       </section>

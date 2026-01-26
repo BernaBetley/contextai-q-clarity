@@ -9,15 +9,15 @@ import { buildMetadata } from "../lib/metadata";
 export const metadata: Metadata = buildMetadata({
   title: "AI Visibility Audit — €500",
   description:
-    "Fixed-scope AI visibility audit: 20 queries, 4 LLMs, 3 competitors. Delivered in 5–7 business days with a prioritized action roadmap.",
+    "Fixed-scope AI visibility audit: 20 strategic questions, 4 LLMs, 3 competitors. Delivered in 5–7 business days with a prioritized action roadmap.",
   path: "/audit",
 });
 
 const included = [
-  "20 strategic queries across brand, category, and use-case intent",
+  "20 strategic buyer questions across brand, category, and use-case intent",
   "4 LLMs evaluated: ChatGPT, Claude, Gemini, Perplexity",
-  "3 competitors benchmarked using the same query set",
-  "Visibility scorecard (0–100) with query-level breakdowns",
+  "3 competitors benchmarked using the same question set",
+  "Visibility scorecard (0–100) with question-level breakdowns",
   "Accuracy and hallucination log with evidence",
   "Citation and source analysis to identify authority gaps",
   "Competitive positioning matrix",
@@ -39,7 +39,7 @@ const sampleOutputs = [
   },
   {
     title: "Visibility scorecard",
-    description: "Per-query scores across each LLM with clear baselines.",
+    description: "Question-level scores across each LLM with clear baselines.",
   },
   {
     title: "Evidence archive",
@@ -60,7 +60,7 @@ const faqs = [
   {
     question: "What do you need from us?",
     answer:
-      "Company context, priority queries, competitor list, and any existing fact sheets or source materials.",
+      "Company context, priority buyer questions, competitor list, and any existing fact sheets or source materials.",
   },
   {
     question: "Can we move directly to implementation?",
@@ -192,7 +192,7 @@ export default function AuditPage() {
                     <div>
                       <p className="font-medium mb-1">Intake</p>
                       <p className="text-small">
-                        Share company context, target queries, competitors, and priorities so we can scope the 20 queries
+                        Share company context, priority buyer questions, competitors, and priorities so we can scope the 20 questions
                         precisely.
                       </p>
                       {intakeUrl ? (
