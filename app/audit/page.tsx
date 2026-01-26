@@ -6,6 +6,8 @@ import { TrackedLink } from "../components/TrackedLink";
 import { env } from "../lib/env.server";
 import { buildMetadata } from "../lib/metadata";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = buildMetadata({
   title: "AI Visibility Audit — €500",
   description:
