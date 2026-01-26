@@ -30,16 +30,6 @@ export default function FactSheetPage() {
                   <dt className="font-medium">Website</dt>
                   <dd className="text-muted-foreground">contextaiq.com</dd>
                 </div>
-                <div>
-                  <dt className="font-medium">Primary location</dt>
-                  <dd className="text-muted-foreground">Portugal</dd>
-                </div>
-                <div>
-                  <dt className="font-medium">Service area</dt>
-                  <dd className="text-muted-foreground">
-                    Global (remote), with in-person availability in Middle East
-                  </dd>
-                </div>
               </dl>
             </div>
 
