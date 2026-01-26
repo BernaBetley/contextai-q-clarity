@@ -29,6 +29,13 @@ export function Header() {
     setIsMobileMenuOpen(false);
   }, [location.pathname]);
 
+  useEffect(() => {
+    document.body.style.overflow = isMobileMenuOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isMobileMenuOpen]);
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 no-print ${
@@ -86,8 +93,21 @@ export function Header() {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden absolute top-full left-0 right-0 bg-background border-b border-border shadow-elevated">
-            <div className="container-wide py-4">
+          <div
+            className="lg:hidden fixed inset-0 z-[60] bg-background"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Mobile navigation"
+          >
+            <div className="container-wide pt-24 pb-12 h-[100dvh] overflow-y-auto">
+              <button
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="lg:hidden p-2 text-foreground absolute top-6 right-6"
+                aria-label="Close menu"
+              >
+                <X size={24} />
+              </button>
+
               <div className="flex flex-col gap-2">
                 {navLinks.map((link) => (
                   <Link
