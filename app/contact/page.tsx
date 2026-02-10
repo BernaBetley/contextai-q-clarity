@@ -21,9 +21,9 @@ export default function ContactPage() {
       <section className="section-slide pt-24 md:pt-32">
         <div className="container-wide">
           <p className="eyebrow mb-4">Contact</p>
-          <h1 className="mb-6 max-w-3xl">Let&apos;s scope your AI visibility baseline</h1>
+          <h1 className="mb-6 max-w-3xl">Tell us about your category and we&apos;ll show you where you stand</h1>
           <p className="lead max-w-2xl">
-            Share your category, target queries, and competitors. We respond within one business day.
+            Share your category, target queries, and competitors. We respond within one business day with next steps.
           </p>
         </div>
       </section>

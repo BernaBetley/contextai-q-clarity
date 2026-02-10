@@ -96,8 +96,8 @@ export default function AuditPage() {
               <p className="eyebrow mb-4">Start Here</p>
               <h1 className="mb-6">AI Visibility Audit</h1>
               <p className="lead mb-8">
-                Quantify how your brand appears in AI-generated answers, with evidence and a prioritized roadmap. Fixed scope,
-                delivered in 5–7 business days.
+                Find out how AI assistants describe your brand today — with query-level evidence, competitive benchmarks, and a
+                prioritized roadmap you can act on immediately. Fixed scope, delivered in 5–7 business days.
               </p>
               <div className="flex items-baseline gap-3 mb-8">
                 <span className="text-6xl font-serif font-semibold">€500</span>

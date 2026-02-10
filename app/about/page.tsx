@@ -36,10 +36,10 @@ export default function AboutPage() {
       <section className="section-slide pt-24 md:pt-32">
         <div className="container-wide">
           <p className="eyebrow mb-4">About</p>
-          <h1 className="mb-6 max-w-3xl">AI visibility advisory for teams who need accuracy, not hype</h1>
+          <h1 className="mb-6 max-w-3xl">AI visibility advisory for teams who need evidence, not hype</h1>
           <p className="lead max-w-2xl">
-            ContextAI Q helps organizations measure and improve how they appear in AI-generated answers — with evidence,
-            benchmarks, and a clear implementation path.
+            ContextAI Q helps organizations understand and improve how they appear in AI-generated answers. We measure what
+            matters, benchmark against competitors, and deliver a roadmap grounded in evidence — not speculation.
           </p>
         </div>
       </section>
@@ -49,8 +49,8 @@ export default function AboutPage() {
           <div className="max-w-3xl mx-auto text-center">
             <p className="eyebrow mb-4">Mission</p>
             <p className="text-2xl md:text-3xl font-serif leading-relaxed">
-              “Ensure that when AI systems answer questions about your industry, your brand appears accurately and
-              credibly.”
+              &ldquo;When AI systems answer questions about your industry, your brand should appear — accurately, credibly,
+              and on your terms.&rdquo;
             </p>
           </div>
         </div>
@@ -61,28 +61,30 @@ export default function AboutPage() {
           <div className="grid-2-col items-start">
             <div>
               <p className="eyebrow mb-4">Why now</p>
-              <h2 className="mb-8">Discovery is moving inside AI answers</h2>
+              <h2 className="mb-8">The buyer journey now starts inside an AI response</h2>
               <div className="space-y-6 text-lg">
                 <p>
-                  Buyers increasingly ask AI assistants for recommendations. The shortlist is forming inside the model response,
-                  not on a search results page.
+                  A growing share of B2B research begins with a question to an AI assistant. The shortlist forms inside the model
+                  response — before a prospect visits any website. If your brand is absent or misrepresented at that moment, you
+                  are excluded from consideration without knowing it.
                 </p>
                 <p>
-                  Traditional SEO signals are still important, but they are insufficient for AI visibility. You need structured,
-                  citation-ready sources that LLMs can trust.
+                  Traditional SEO drives search rankings. GEO (Generative Engine Optimization) optimizes for AI citation. But
+                  neither discipline has a standard way to measure outcomes across models. That is the gap we close.
                 </p>
                 <p>
-                  ContextAI Q exists to close this gap with a repeatable measurement methodology and an implementation path that
-                  makes the output actionable.
+                  ContextAI Q provides the measurement layer: a repeatable methodology that quantifies your AI visibility,
+                  identifies root causes, and delivers a roadmap you can execute or hand to your team.
                 </p>
               </div>
             </div>
             <div className="card-minimal">
               <p className="eyebrow mb-4">What we do</p>
               <ul className="space-y-3 text-small">
-                <li>Measure visibility and accuracy across major LLMs.</li>
-                <li>Benchmark against named competitors.</li>
-                <li>Deliver a roadmap for citations, structure, and authority signals.</li>
+                <li>Measure visibility and accuracy across ChatGPT, Claude, Gemini, and Perplexity.</li>
+                <li>Benchmark your position against three named competitors.</li>
+                <li>Identify root causes: missing sources, structural gaps, citation patterns.</li>
+                <li>Deliver a prioritized roadmap sequenced by impact and effort.</li>
               </ul>
             </div>
           </div>
@@ -106,8 +108,8 @@ export default function AboutPage() {
 
       <section className="section-slide">
         <div className="container-wide text-center">
-          <h2 className="mb-6">Ready to work together?</h2>
-          <p className="lead max-w-xl mx-auto mb-10">Start with the audit to see where you stand.</p>
+          <h2 className="mb-6">See where your brand stands today</h2>
+          <p className="lead max-w-xl mx-auto mb-10">The €500 audit gives you a scored baseline, competitive comparison, and a clear next step.</p>
           <div className="flex flex-wrap justify-center gap-4">
             <TrackedLink
               href="/audit"
