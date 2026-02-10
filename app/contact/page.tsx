@@ -15,7 +15,7 @@ export default function ContactPage() {
   return (
     <>
       {/* Hero */}
-      <section className="section-slide pt-24 md:pt-32">
+      <section className="section-slide pt-20 md:pt-24">
         <div className="container-wide">
           <p className="eyebrow mb-4">Contact</p>
           <h1 className="mb-6 max-w-3xl">Tell us about your category and we&apos;ll show you where you stand</h1>

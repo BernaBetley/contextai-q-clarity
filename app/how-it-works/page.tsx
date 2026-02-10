@@ -58,7 +58,7 @@ export default function HowItWorksPage() {
 
   return (
     <>
-      <section className="section-slide pt-24 md:pt-32">
+      <section className="section-slide pt-20 md:pt-24">
         <div className="container-wide">
           <p className="eyebrow mb-4">Methodology</p>
           <h1 className="mb-6 max-w-3xl">How we measure AI visibility</h1>
@@ -81,7 +81,7 @@ export default function HowItWorksPage() {
       <section className="section-slide">
         <div className="container-wide">
           <p className="eyebrow mb-4">Five-layer method</p>
-          <h2 className="mb-12">Input → Method → Output</h2>
+          <h2 className="mb-8">Input → Method → Output</h2>
 
           <div className="space-y-8">
             {layers.map((layer) => (
@@ -111,7 +111,7 @@ export default function HowItWorksPage() {
       <section className="section-slide bg-secondary/30">
         <div className="container-wide">
           <p className="eyebrow mb-4">Deliverables</p>
-          <h2 className="mb-12">What you receive</h2>
+          <h2 className="mb-8">What you receive</h2>
 
           <div className="grid-2-col">
             {deliverables.map((item) => (
@@ -136,7 +136,7 @@ export default function HowItWorksPage() {
             <span>Delivered in 5–7 business days</span>
           </div>
           <h2 className="mb-6">Ready to start?</h2>
-          <p className="lead max-w-xl mx-auto mb-10">The €500 audit is the fastest way to establish your baseline.</p>
+          <p className="lead max-w-xl mx-auto mb-8">The €500 audit is the fastest way to establish your baseline.</p>
           <TrackedLink
             href="/audit"
             className="btn btn-primary btn-lg"

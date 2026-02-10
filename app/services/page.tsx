@@ -84,7 +84,7 @@ export default function ServicesPage() {
 
   return (
     <>
-      <section className="section-slide pt-24 md:pt-32">
+      <section className="section-slide pt-20 md:pt-24">
         <div className="container-wide">
           <p className="eyebrow mb-4">Pricing</p>
           <h1 className="mb-6 max-w-3xl">Fixed scope, clear outcomes, no surprises</h1>
@@ -150,7 +150,7 @@ export default function ServicesPage() {
       <section className="section-slide bg-secondary/30">
         <div className="container-wide">
           <p className="eyebrow mb-4">Engagement path</p>
-          <h2 className="mb-12">How clients typically progress</h2>
+          <h2 className="mb-8">How clients typically progress</h2>
           <div className="grid-3-col">
             {[
               {
@@ -178,7 +178,7 @@ export default function ServicesPage() {
       <section className="section-slide bg-secondary/30">
         <div className="container-wide">
           <p className="eyebrow mb-4">Pricing philosophy</p>
-          <h2 className="mb-12">How we price</h2>
+          <h2 className="mb-8">How we price</h2>
 
           <div className="grid-2-col max-w-4xl">
             {pricingPrinciples.map((item) => (
@@ -194,7 +194,7 @@ export default function ServicesPage() {
       <section className="section-slide">
         <div className="container-wide text-center">
           <h2 className="mb-6">Every engagement starts with the audit</h2>
-          <p className="lead max-w-xl mx-auto mb-10">The €500 audit gives you the evidence base for every decision that follows. No commitment beyond that.</p>
+          <p className="lead max-w-xl mx-auto mb-8">The €500 audit gives you the evidence base for every decision that follows. No commitment beyond that.</p>
           <div className="flex flex-wrap justify-center gap-4">
             <TrackedLink
               href="/audit"

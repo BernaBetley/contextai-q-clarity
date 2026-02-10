@@ -30,7 +30,7 @@ const resources = [
 export default function ResourcesPage() {
   return (
     <>
-      <section className="section-slide pt-24 md:pt-32">
+      <section className="section-slide pt-20 md:pt-24">
         <div className="container-wide">
           <p className="eyebrow mb-4">Resources</p>
           <h1 className="mb-6 max-w-3xl">Educational content</h1>
@@ -59,7 +59,7 @@ export default function ResourcesPage() {
       <section className="section-slide bg-secondary/30">
         <div className="container-wide text-center">
           <h2 className="mb-6">Apply these concepts to your brand</h2>
-          <p className="lead max-w-xl mx-auto mb-10">The audit turns theory into a quantified baseline.</p>
+          <p className="lead max-w-xl mx-auto mb-8">The audit turns theory into a quantified baseline.</p>
           <TrackedLink
             href="/audit"
             className="btn btn-primary btn-lg"

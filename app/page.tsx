@@ -146,7 +146,7 @@ export default function HomePage() {
       />
       <FaqSchema items={faqs} />
 
-      <Section className="pt-24 md:pt-32">
+      <Section className="pt-20 md:pt-24">
         <div className="max-w-4xl">
           <p className="eyebrow mb-4">The discovery layer has shifted</p>
           <h1 className="mb-6 text-balance">Your buyers are asking AI for recommendations. Is your brand in the answer?</h1>
@@ -154,7 +154,7 @@ export default function HomePage() {
             We audit how ChatGPT, Claude, Gemini, and Perplexity describe your brand across 20 strategic queries — then
             deliver a scored baseline and a prioritized roadmap to fix what&apos;s wrong.
           </p>
-          <ul className="list-check mb-10 max-w-2xl text-muted-foreground">
+          <ul className="list-check mb-8 max-w-2xl text-muted-foreground">
             <li>Fixed-scope €500 audit. Methodology documented end to end.</li>
             <li>Query-level evidence with screenshots, not generic SEO claims.</li>
             <li>Built for founders, CMOs, and growth leaders making resource decisions.</li>
@@ -222,7 +222,7 @@ export default function HomePage() {
       <Section>
         <p className="eyebrow mb-4">What&apos;s at stake</p>
         <h2 className="mb-4 max-w-3xl">The shortlist is forming before anyone visits your website</h2>
-        <p className="lead max-w-2xl mb-12">
+        <p className="lead max-w-2xl mb-8">
           When a buyer asks an AI assistant &ldquo;What are the best tools for [your category]?&rdquo; — the answer shapes their shortlist. Three risks compound if you are not managing this.
         </p>
         <div className="grid-3-col">
@@ -250,7 +250,7 @@ export default function HomePage() {
 
       <Section>
         <p className="eyebrow mb-4">Methodology</p>
-        <h2 className="mb-12 max-w-2xl">Five phases, one clear outcome</h2>
+        <h2 className="mb-8 max-w-2xl">Five phases, one clear outcome</h2>
         <div className="grid-3-col">
           {phases.map((phase) => (
             <div key={phase.title} className="card-minimal">
@@ -277,7 +277,7 @@ export default function HomePage() {
 
       <Section className="bg-secondary/30">
         <p className="eyebrow mb-4">Sample output</p>
-        <h2 className="mb-12 max-w-2xl">What the audit delivers</h2>
+        <h2 className="mb-8 max-w-2xl">What the audit delivers</h2>
         <div className="grid-2-col">
           {deliverables.map((item) => (
             <div key={item.title} className="card-minimal bg-background">
@@ -307,7 +307,7 @@ export default function HomePage() {
 
       <Section>
         <p className="eyebrow mb-4">Use cases</p>
-        <h2 className="mb-12 max-w-2xl">Built for the decisions you are making right now</h2>
+        <h2 className="mb-8 max-w-2xl">Built for the decisions you are making right now</h2>
         <div className="grid-3-col">
           {useCases.map((item) => (
             <div key={item.title} className="card-minimal">
@@ -320,7 +320,7 @@ export default function HomePage() {
 
       <Section>
         <p className="eyebrow mb-4">FAQ</p>
-        <h2 className="mb-12 max-w-2xl">Common questions</h2>
+        <h2 className="mb-8 max-w-2xl">Common questions</h2>
         <div className="grid-2-col">
           {faqs.map((item) => (
             <div key={item.question} className="card-minimal">
@@ -335,7 +335,7 @@ export default function HomePage() {
         <div className="text-center max-w-2xl mx-auto">
           <p className="eyebrow mb-4">Next step</p>
           <h2 className="mb-6">Know where you stand before deciding what to build</h2>
-          <p className="lead mb-10">
+          <p className="lead mb-8">
             €500. Fixed scope. A scored baseline, competitive comparison, and a sequenced roadmap — delivered in 5–7 business days.
           </p>
           <div className="flex flex-wrap justify-center gap-4">

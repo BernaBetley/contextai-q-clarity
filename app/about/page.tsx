@@ -33,7 +33,7 @@ export default function AboutPage() {
 
   return (
     <>
-      <section className="section-slide pt-24 md:pt-32">
+      <section className="section-slide pt-20 md:pt-24">
         <div className="container-wide">
           <p className="eyebrow mb-4">About</p>
           <h1 className="mb-6 max-w-3xl">AI visibility advisory for teams who need evidence, not hype</h1>
@@ -94,7 +94,7 @@ export default function AboutPage() {
       <section className="section-slide bg-secondary/30">
         <div className="container-wide">
           <p className="eyebrow mb-4">Values</p>
-          <h2 className="mb-12">How we operate</h2>
+          <h2 className="mb-8">How we operate</h2>
           <div className="grid-2-col max-w-4xl">
             {values.map((value) => (
               <div key={value.title} className="card-minimal bg-background">
@@ -109,7 +109,7 @@ export default function AboutPage() {
       <section className="section-slide">
         <div className="container-wide text-center">
           <h2 className="mb-6">See where your brand stands today</h2>
-          <p className="lead max-w-xl mx-auto mb-10">The €500 audit gives you a scored baseline, competitive comparison, and a clear next step.</p>
+          <p className="lead max-w-xl mx-auto mb-8">The €500 audit gives you a scored baseline, competitive comparison, and a clear next step.</p>
           <div className="flex flex-wrap justify-center gap-4">
             <TrackedLink
               href="/audit"

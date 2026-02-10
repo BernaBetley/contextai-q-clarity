@@ -47,7 +47,7 @@ export default function MeasurementPage() {
 
   return (
     <>
-      <section className="section-slide pt-24 md:pt-32">
+      <section className="section-slide pt-20 md:pt-24">
         <div className="container-wide">
           <p className="eyebrow mb-4">Measurement</p>
           <h1 className="mb-6 max-w-3xl">You can&apos;t improve what you don&apos;t measure</h1>
@@ -60,7 +60,7 @@ export default function MeasurementPage() {
       <section className="section-slide">
         <div className="container-wide">
           <p className="eyebrow mb-4">Core KPIs</p>
-          <h2 className="mb-12">What we measure</h2>
+          <h2 className="mb-8">What we measure</h2>
 
           <div className="space-y-6">
             {kpis.map((kpi) => (
@@ -89,7 +89,7 @@ export default function MeasurementPage() {
       <section className="section-slide">
         <div className="container-wide text-center">
           <h2 className="mb-6">Establish your baseline across all five KPIs</h2>
-          <p className="lead max-w-xl mx-auto mb-10">The €500 audit scores your brand on every metric above — per query, per model, with evidence.</p>
+          <p className="lead max-w-xl mx-auto mb-8">The €500 audit scores your brand on every metric above — per query, per model, with evidence.</p>
           <TrackedLink
             href="/audit"
             className="btn btn-primary btn-lg"

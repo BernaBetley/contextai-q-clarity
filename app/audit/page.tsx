@@ -89,7 +89,7 @@ export default function AuditPage() {
       <FaqSchema items={faqs} />
 
       {/* Hero */}
-      <section className="section-slide pt-24 md:pt-32">
+      <section className="section-slide pt-20 md:pt-24">
         <div className="container-wide">
           <div className="grid-2-col items-center">
             <div>
@@ -228,7 +228,7 @@ export default function AuditPage() {
       <section className="section-slide bg-secondary/30">
         <div className="container-wide">
           <p className="eyebrow mb-4">Sample output</p>
-          <h2 className="mb-12">What you receive</h2>
+          <h2 className="mb-8">What you receive</h2>
           <div className="grid-2-col">
             {sampleOutputs.map((item) => (
               <div key={item.title} className="card-minimal bg-background">
@@ -243,7 +243,7 @@ export default function AuditPage() {
       <section className="section-slide">
         <div className="container-wide">
           <p className="eyebrow mb-4">FAQ</p>
-          <h2 className="mb-12">Questions we hear often</h2>
+          <h2 className="mb-8">Questions we hear often</h2>
           <div className="grid-2-col">
             {faqs.map((item) => (
               <div key={item.question} className="card-minimal">
@@ -259,7 +259,7 @@ export default function AuditPage() {
       <section className="section-slide bg-secondary/30">
         <div className="container-wide text-center">
           <h2 className="mb-6">Ready to see where you stand?</h2>
-          <p className="lead max-w-xl mx-auto mb-10">€500. Fixed scope. Delivered in 5–7 business days.</p>
+          <p className="lead max-w-xl mx-auto mb-8">€500. Fixed scope. Delivered in 5–7 business days.</p>
           {stripeCheckoutUrl ? (
             <TrackedLink
               href={stripeCheckoutUrl}

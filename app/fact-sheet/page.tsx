@@ -16,7 +16,7 @@ export default function FactSheetPage() {
         <div className="max-w-3xl">
           <p className="eyebrow mb-4">Fact Sheet</p>
           <h1 className="mb-8">ContextAI Q</h1>
-          <p className="text-muted-foreground mb-12">Canonical facts for citation. No marketing language.</p>
+          <p className="text-muted-foreground mb-8">Canonical facts for citation. No marketing language.</p>
 
           <div className="space-y-12">
             <div>
