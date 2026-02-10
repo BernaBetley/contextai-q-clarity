@@ -50,9 +50,9 @@ export default function MeasurementPage() {
       <section className="section-slide pt-24 md:pt-32">
         <div className="container-wide">
           <p className="eyebrow mb-4">Measurement</p>
-          <h1 className="mb-6 max-w-3xl">What gets measured gets managed</h1>
+          <h1 className="mb-6 max-w-3xl">You can&apos;t improve what you don&apos;t measure</h1>
           <p className="lead max-w-2xl">
-            We define and track the KPIs that matter for AI visibility. Evidence-based, query-level, and repeatable.
+            Five KPIs that define your AI visibility posture. Each is measured per query, per model, and benchmarked against your competitors.
           </p>
         </div>
       </section>
@@ -88,8 +88,8 @@ export default function MeasurementPage() {
 
       <section className="section-slide">
         <div className="container-wide text-center">
-          <h2 className="mb-6">Start with measurement</h2>
-          <p className="lead max-w-xl mx-auto mb-10">The €500 audit establishes your baseline across all KPIs.</p>
+          <h2 className="mb-6">Establish your baseline across all five KPIs</h2>
+          <p className="lead max-w-xl mx-auto mb-10">The €500 audit scores your brand on every metric above — per query, per model, with evidence.</p>
           <TrackedLink
             href="/audit"
             className="btn btn-primary btn-lg"

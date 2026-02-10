@@ -33,13 +33,13 @@ export default function ServicesPage() {
       name: "Implementation Sprint",
       price: "Starting at €2,500",
       priceNote: "Scope-based",
-      description: "Turn audit findings into citation-ready assets and fixes.",
+      description: "Turn audit findings into citation-ready assets using GEO-aligned techniques.",
       features: [
-        "Content architecture design",
-        "Schema markup implementation",
-        "Fact-sheet and citation optimization",
+        "Content architecture for AI citation",
+        "Schema markup and structured data",
+        "Fact-sheet and source optimization",
         "Knowledge graph strategy",
-        "Technical SEO alignment",
+        "Technical SEO and GEO alignment",
       ],
       cta: "Discuss scope",
       href: "/contact",
@@ -87,9 +87,9 @@ export default function ServicesPage() {
       <section className="section-slide pt-24 md:pt-32">
         <div className="container-wide">
           <p className="eyebrow mb-4">Pricing</p>
-          <h1 className="mb-6 max-w-3xl">Clear packages, measurable outcomes</h1>
+          <h1 className="mb-6 max-w-3xl">Fixed scope, clear outcomes, no surprises</h1>
           <p className="lead max-w-2xl">
-            From initial audit to implementation and monitoring. Start with the audit, then scale as needed.
+            Start with the audit to understand where you stand. Scale into implementation and monitoring when you are ready.
           </p>
         </div>
       </section>
@@ -154,16 +154,16 @@ export default function ServicesPage() {
           <div className="grid-3-col">
             {[
               {
-                title: "Audit",
-                description: "Establish visibility baseline, evidence, and priority fixes.",
+                title: "1. Audit",
+                description: "Establish your visibility baseline with query-level evidence and a scored competitive comparison.",
               },
               {
-                title: "Implementation",
-                description: "Build citation-ready content and fix structural gaps.",
+                title: "2. Implementation",
+                description: "Build citation-ready content, fix structural gaps, and align your sources for AI discovery.",
               },
               {
-                title: "Monitoring",
-                description: "Track visibility changes and adjust as models evolve.",
+                title: "3. Monitoring",
+                description: "Track visibility changes over time and adjust your strategy as models evolve.",
               },
             ].map((item) => (
               <div key={item.title} className="card-minimal bg-background">
@@ -193,8 +193,8 @@ export default function ServicesPage() {
 
       <section className="section-slide">
         <div className="container-wide text-center">
-          <h2 className="mb-6">Not sure where to start?</h2>
-          <p className="lead max-w-xl mx-auto mb-10">The €500 audit gives you the baseline for every next decision.</p>
+          <h2 className="mb-6">Every engagement starts with the audit</h2>
+          <p className="lead max-w-xl mx-auto mb-10">The €500 audit gives you the evidence base for every decision that follows. No commitment beyond that.</p>
           <div className="flex flex-wrap justify-center gap-4">
             <TrackedLink
               href="/audit"

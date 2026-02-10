@@ -91,16 +91,16 @@ const deliverables = [
 
 const useCases = [
   {
-    title: "Category leadership defense",
-    description: "Protect visibility when buyers ask LLMs for category recommendations.",
+    title: "Category leaders protecting position",
+    description: "You rank well in search, but AI assistants recommend three competitors and omit you. The audit shows exactly where the gap is and what to fix first.",
   },
   {
-    title: "New category creation",
-    description: "Define how LLMs describe your category and who they cite first.",
+    title: "Teams entering or defining a category",
+    description: "You are building a new category or repositioning. AI models have no structured source to draw from yet. The audit identifies the content and citation strategy to establish your narrative early.",
   },
   {
-    title: "Competitive displacement",
-    description: "Identify where competitors appear and why you do not.",
+    title: "Growth teams tracking competitive threats",
+    description: "A competitor suddenly appears in every AI recommendation in your space. The audit benchmarks your position against three named competitors and shows what they are doing differently.",
   },
 ];
 
@@ -108,25 +108,30 @@ const faqs = [
   {
     question: "What makes this different from a traditional SEO audit?",
     answer:
-      "We measure visibility inside LLM answers, not search rankings. The audit focuses on how AI systems cite and describe your brand, with evidence and scoring per query.",
+      "SEO audits measure search rankings. We measure whether your brand appears and is described accurately inside AI-generated answers — a fundamentally different surface. The audit includes per-query evidence, not keyword reports.",
+  },
+  {
+    question: "How does this relate to GEO (Generative Engine Optimization)?",
+    answer:
+      "GEO is the practice of optimizing content so it is cited by AI systems. Our audit measures the outcome of your current GEO posture — how visible and accurate your brand is across major LLMs — and the roadmap tells you where to focus GEO efforts for the highest impact.",
   },
   {
     question: "How long does the audit take?",
-    answer: "5–7 business days from intake completion to delivery.",
+    answer: "5–7 business days from intake completion to delivery. Intake itself is a short questionnaire.",
   },
   {
     question: "Which models do you test?",
-    answer: "ChatGPT, Claude, Gemini, and Perplexity are included in the standard audit.",
+    answer: "ChatGPT, Claude, Gemini, and Perplexity are included in the standard audit. Each query is tested across all four.",
   },
   {
     question: "What do you deliver?",
     answer:
-      "A PDF report, visibility scorecard, competitive matrix, and a prioritized action roadmap. A walkthrough call is included.",
+      "A PDF report with screenshots, a visibility scorecard, competitive matrix, and a prioritized action roadmap. A walkthrough call is included.",
   },
   {
     question: "Can you implement the recommendations?",
     answer:
-      "Yes. Implementation and monitoring are available as separate engagements after the audit.",
+      "Yes. Implementation sprints and monitoring retainers are available as separate engagements after the audit. The audit becomes the scoping brief.",
   },
 ];
 
@@ -143,25 +148,25 @@ export default function HomePage() {
 
       <Section className="pt-24 md:pt-32">
         <div className="max-w-4xl">
-          <p className="eyebrow mb-4">AI Visibility Audit for B2B teams</p>
-          <h1 className="mb-6 text-balance">Know exactly how LLMs describe your brand — and what to fix.</h1>
+          <p className="eyebrow mb-4">The discovery layer has shifted</p>
+          <h1 className="mb-6 text-balance">Your buyers are asking AI for recommendations. Is your brand in the answer?</h1>
           <p className="lead max-w-2xl mb-8">
-            We test 20 strategic queries across ChatGPT, Claude, Gemini, and Perplexity, score visibility and accuracy, and
-            deliver a prioritized roadmap in 5–7 business days.
+            We audit how ChatGPT, Claude, Gemini, and Perplexity describe your brand across 20 strategic queries — then
+            deliver a scored baseline and a prioritized roadmap to fix what&apos;s wrong.
           </p>
           <ul className="list-check mb-10 max-w-2xl text-muted-foreground">
-            <li>Fixed-scope €500 audit with documented methodology.</li>
-            <li>Query-level evidence, not generic SEO claims.</li>
-            <li>Designed for founders, CMOs, growth leaders, and AI/SEO leads.</li>
+            <li>Fixed-scope €500 audit. Methodology documented end to end.</li>
+            <li>Query-level evidence with screenshots, not generic SEO claims.</li>
+            <li>Built for founders, CMOs, and growth leaders making resource decisions.</li>
           </ul>
           <div className="flex flex-wrap gap-4">
             <TrackedLink
               href="/audit"
               className="btn btn-primary btn-lg"
               eventName="cta_click"
-              eventParams={{ location: "home_hero", cta: "Start the audit" }}
+              eventParams={{ location: "home_hero", cta: "Get your baseline" }}
             >
-              Start the audit <ArrowRight size={18} />
+              Get your baseline <ArrowRight size={18} />
             </TrackedLink>
             <TrackedLink
               href="/method"
@@ -179,10 +184,15 @@ export default function HomePage() {
         <div className="grid-2-col items-start">
           <div>
             <p className="eyebrow mb-4">Definition</p>
-            <h2 className="mb-6">What “AI visibility” actually means</h2>
-            <p className="text-muted-foreground">
+            <h2 className="mb-6">What &ldquo;AI visibility&rdquo; actually means</h2>
+            <p className="text-muted-foreground mb-4">
               AI visibility is the share of category-relevant queries where your brand appears and is described accurately in
-              AI-generated answers. It is not traffic; it is whether you make the shortlist inside the model response.
+              AI-generated answers. It is not traffic — it is whether you make the shortlist inside the model response.
+            </p>
+            <p className="text-muted-foreground">
+              Traditional SEO optimizes for search rankings. Generative Engine Optimization (GEO) optimizes for inclusion in
+              AI-generated answers. We measure the outcome of both: whether your brand is actually present, accurate, and
+              recommended when buyers ask.
             </p>
           </div>
           <div className="card-minimal bg-background">
@@ -200,27 +210,34 @@ export default function HomePage() {
                 <CheckCircle2 size={16} className="text-foreground mt-0.5" />
                 Competitive displacement across 3 named competitors.
               </li>
+              <li className="flex items-start gap-3">
+                <CheckCircle2 size={16} className="text-foreground mt-0.5" />
+                Citation quality and source attribution patterns.
+              </li>
             </ul>
           </div>
         </div>
       </Section>
 
       <Section>
-        <p className="eyebrow mb-4">What’s at stake</p>
-        <h2 className="mb-12 max-w-2xl">The AI discovery gap is widening</h2>
+        <p className="eyebrow mb-4">What&apos;s at stake</p>
+        <h2 className="mb-4 max-w-3xl">The shortlist is forming before anyone visits your website</h2>
+        <p className="lead max-w-2xl mb-12">
+          When a buyer asks an AI assistant &ldquo;What are the best tools for [your category]?&rdquo; — the answer shapes their shortlist. Three risks compound if you are not managing this.
+        </p>
         <div className="grid-3-col">
           {[
             {
-              title: "Invisibility",
-              description: "Your brand is absent from AI-generated recommendations in your category.",
+              title: "Invisible",
+              description: "A prospect asks ChatGPT for recommendations in your category. Four competitors are named. You are not. The deal starts without you in the room.",
             },
             {
-              title: "Inaccuracy",
-              description: "LLMs present outdated or incorrect information about your product or positioning.",
+              title: "Inaccurate",
+              description: "An LLM describes your product with outdated pricing, a discontinued feature, or a wrong integration. The buyer moves on before you can correct it.",
             },
             {
-              title: "Displacement",
-              description: "Competitors are recommended because their sources are more citation-ready.",
+              title: "Displaced",
+              description: "A competitor publishes structured, citation-ready content. AI assistants start recommending them by default. You lose position without knowing it.",
             },
           ].map((risk) => (
             <div key={risk.title} className="card-minimal">
@@ -290,7 +307,7 @@ export default function HomePage() {
 
       <Section>
         <p className="eyebrow mb-4">Use cases</p>
-        <h2 className="mb-12 max-w-2xl">Built for teams under pressure to be cited correctly</h2>
+        <h2 className="mb-12 max-w-2xl">Built for the decisions you are making right now</h2>
         <div className="grid-3-col">
           {useCases.map((item) => (
             <div key={item.title} className="card-minimal">
@@ -316,18 +333,19 @@ export default function HomePage() {
 
       <Section>
         <div className="text-center max-w-2xl mx-auto">
-          <h2 className="mb-6">Start with a €500 audit</h2>
+          <p className="eyebrow mb-4">Next step</p>
+          <h2 className="mb-6">Know where you stand before deciding what to build</h2>
           <p className="lead mb-10">
-            Get a quantified baseline, a clear competitive picture, and a roadmap you can execute.
+            €500. Fixed scope. A scored baseline, competitive comparison, and a sequenced roadmap — delivered in 5–7 business days.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <TrackedLink
               href="/audit"
               className="btn btn-primary btn-lg"
               eventName="cta_click"
-              eventParams={{ location: "home_final", cta: "Start the audit" }}
+              eventParams={{ location: "home_final", cta: "Get your baseline" }}
             >
-              Start the audit <ArrowRight size={18} />
+              Get your baseline <ArrowRight size={18} />
             </TrackedLink>
             <TrackedLink
               href="/contact"
