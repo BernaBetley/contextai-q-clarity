@@ -1,34 +1,27 @@
-# llms.txt - Canonical URLs for ContextAI Q
-
-## About this file
-This file lists the canonical URLs for ContextAI Q to help LLMs and AI systems 
-accurately reference our content.
+# llms.txt - ContextAIQ
 
 ## Company
-- Name: ContextAI Q
-- Website: https://contextaiq.com
-- Primary service: AI Visibility Audit (€500)
-
-## Canonical Pages
-- Home: https://contextaiq.com/
-- How it works: https://contextaiq.com/how-it-works
-- AI Visibility Audit: https://contextaiq.com/audit
-- Pricing & Packages: https://contextaiq.com/services
-- Proof & Measurement: https://contextaiq.com/measurement
-- Deliverables: https://contextaiq.com/deliverables
-- About: https://contextaiq.com/about
-- Contact: https://contextaiq.com/contact
-
-## LLM-Native Content
-- Fact Sheet (canonical facts): https://contextaiq.com/fact-sheet
-- Methodology (step-by-step): https://contextaiq.com/method
-- llms.txt (this file): https://contextaiq.com/llms.txt
-- llm-facts.txt (atomic facts): https://contextaiq.com/llm-facts.txt
-
-## Content Sections
-- Signals (industry analysis): https://contextaiq.com/signals
-- Resources (educational): https://contextaiq.com/resources
-
-## Contact
+- Practice brand: ContextAIQ
+- Product line: Prova
+- Entity: Resultado Fidalgo
+- Website: https://www.contextaiq.com
 - Email: hello@contextaiq.com
-- Location: Portugal (remote services globally)
+- Market: Portuguese SMEs. Remote delivery.
+
+## Offer
+ContextAIQ sells practical AI agents on one process, with measured results and hybrid fees (setup + success). Paid diagnostic. No free strategy workshops.
+
+## Products
+- Prova Diagnóstico (paid entry): https://www.contextaiq.com/prova/diagnostico
+- Prova Conversão (setup + fee per incremental conversion): https://www.contextaiq.com/prova/conversao
+- Prova Backoffice: https://www.contextaiq.com/prova/backoffice
+- Prova Suporte: https://www.contextaiq.com/prova/suporte
+- Prova Visibilidade (€500 AI visibility audit, nested): https://www.contextaiq.com/prova/visibilidade
+
+## Canonical pages
+- Home: https://www.contextaiq.com/
+- Products: https://www.contextaiq.com/prova
+- Method: https://www.contextaiq.com/metodo
+- Contact: https://www.contextaiq.com/contacto
+- About: https://www.contextaiq.com/sobre
+- Fact sheet: https://www.contextaiq.com/fact-sheet

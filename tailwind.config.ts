@@ -18,6 +18,12 @@ export default {
         serif: ['Merriweather', 'Georgia', 'Times New Roman', 'serif'],
       },
       colors: {
+        paper: "hsl(var(--paper))",
+        ink: "hsl(var(--ink))",
+        copper: {
+          DEFAULT: "hsl(var(--copper))",
+          bright: "hsl(var(--copper-bright))",
+        },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
