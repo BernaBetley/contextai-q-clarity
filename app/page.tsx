@@ -71,12 +71,12 @@ export default function HomePage() {
                 Vendemos Prova: agentes práticos para PME portuguesas. Setup mais sucesso sobre unidades
                 (conversão, ciclo, ticket). Diagnóstico pago. Recusamos estratégia gratuita.
               </p>
-              <ul className="list-check mb-8 max-w-2xl text-muted-foreground">
+              <CtaPair location="home_hero" />
+              <ul className="list-check mt-8 max-w-2xl text-muted-foreground">
                 <li>Do ChatGPT licenciado a um agente num fluxo, em 30-90 dias.</li>
                 <li>Honorários com pele no jogo. Não cobramos o que já convertiam sem nós.</li>
                 <li>Um processo de cada vez. Dono, volume e métrica à partida.</li>
               </ul>
-              <CtaPair location="home_hero" />
             </div>
 
             <aside className="card-ink">

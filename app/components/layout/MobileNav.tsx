@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
 
@@ -18,6 +19,11 @@ type MobileNavProps = {
 
 export function MobileNav({ links, cta }: MobileNavProps) {
   const [open, setOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     if (!open) return;
@@ -32,6 +38,50 @@ export function MobileNav({ links, cta }: MobileNavProps) {
     };
   }, [open]);
 
+  const overlay =
+    open && mounted
+      ? createPortal(
+          <div className="fixed inset-0 z-[60] bg-paper lg:hidden">
+            <div className="container-wide pt-20">
+              <button
+                type="button"
+                className="btn btn-sm btn-ghost absolute right-5 top-4"
+                aria-label="Fechar navegação"
+                onClick={() => setOpen(false)}
+              >
+                <X size={20} />
+              </button>
+
+              <nav className="space-y-5 text-lg">
+                <Link href="/" className="block font-serif text-2xl text-ink" onClick={() => setOpen(false)}>
+                  Início
+                </Link>
+                {links.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className="block text-ink"
+                    onClick={() => setOpen(false)}
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+                <TrackedLink
+                  href={cta.href}
+                  className="btn btn-primary btn-md w-full"
+                  eventName="cta_click"
+                  eventParams={{ location: "mobile_nav", cta: cta.label }}
+                  onClick={() => setOpen(false)}
+                >
+                  {cta.label}
+                </TrackedLink>
+              </nav>
+            </div>
+          </div>,
+          document.body
+        )
+      : null;
+
   return (
     <div className="lg:hidden">
       <button
@@ -43,46 +93,7 @@ export function MobileNav({ links, cta }: MobileNavProps) {
       >
         {open ? <X size={20} /> : <Menu size={20} />}
       </button>
-
-      {open ? (
-        <div className="fixed inset-0 z-50 bg-paper">
-          <div className="container-wide pt-20">
-            <button
-              type="button"
-              className="btn btn-sm btn-ghost absolute right-5 top-4"
-              aria-label="Fechar navegação"
-              onClick={() => setOpen(false)}
-            >
-              <X size={20} />
-            </button>
-
-            <nav className="space-y-5 text-lg">
-              <Link href="/" className="block font-serif text-2xl" onClick={() => setOpen(false)}>
-                Início
-              </Link>
-              {links.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="block text-foreground"
-                  onClick={() => setOpen(false)}
-                >
-                  {link.label}
-                </Link>
-              ))}
-              <TrackedLink
-                href={cta.href}
-                className="btn btn-primary btn-md w-full"
-                eventName="cta_click"
-                eventParams={{ location: "mobile_nav", cta: cta.label }}
-                onClick={() => setOpen(false)}
-              >
-                {cta.label}
-              </TrackedLink>
-            </nav>
-          </div>
-        </div>
-      ) : null}
+      {overlay}
     </div>
   );
 }
