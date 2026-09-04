@@ -21,7 +21,7 @@ export function OrganizationSchema() {
       "@type": "ContactPoint",
       email: siteConfig.contactEmail,
       contactType: "Sales",
-      areaServed: "Worldwide",
+      areaServed: "PT",
     },
   };
 
@@ -34,6 +34,7 @@ export function WebSiteSchema() {
     "@type": "WebSite",
     name: siteConfig.name,
     url: siteConfig.url,
+    inLanguage: "pt-PT",
   };
 
   return <JsonLd data={schema} />;
@@ -56,7 +57,7 @@ export function ServiceSchema({ name, description, price, priceCurrency = "EUR",
     description,
     url: url ? new URL(url, siteConfig.url).toString() : siteConfig.url,
     offers: price ? { "@type": "Offer", price, priceCurrency } : undefined,
-    areaServed: "Worldwide",
+    areaServed: "PT",
   };
 
   return <JsonLd data={schema} />;
@@ -77,6 +78,7 @@ export function ArticleSchema({ headline, description, url, datePublished, dateM
     headline,
     description,
     url: new URL(url, siteConfig.url).toString(),
+    inLanguage: "pt-PT",
     author: {
       "@type": "Organization",
       name: siteConfig.name,

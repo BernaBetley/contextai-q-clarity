@@ -17,19 +17,18 @@ export function Analytics() {
     const page_path = qs ? `${pathname}?${qs}` : pathname;
     window.gtag("event", "page_view", { page_path });
 
-    if (pathname === "/method" || pathname === "/how-it-works") {
+    if (pathname === "/metodo") {
       trackEvent("methodology_view", { page_path });
     }
 
-    if (pathname === "/services") {
+    if (pathname === "/prova" || pathname?.startsWith("/prova/")) {
       trackEvent("pricing_view", { page_path });
     }
 
-    if (pathname === "/deliverables") {
-      trackEvent("deliverables_view", { page_path });
+    if (pathname === "/contacto") {
+      trackEvent("contact_view", { page_path });
     }
   }, [pathname, searchParams]);
 
   return null;
 }
-

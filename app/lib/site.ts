@@ -3,12 +3,14 @@ import "server-only";
 import { env } from "./env.server";
 
 export const siteConfig = {
-  name: "ContextAI Q",
+  name: "ContextAIQ",
+  productLine: "Prova",
+  legalEntity: "Resultado Fidalgo",
   url: env.NEXT_PUBLIC_SITE_URL,
   description:
-    "ContextAI Q measures how brands appear in AI-generated answers and delivers a fixed-scope AI Visibility Audit with a clear action roadmap.",
+    "A ContextAIQ vende Prova: agentes de IA práticos para PME portuguesas, num processo, com resultados medidos e honorários híbridos (setup + sucesso).",
   ogImage: "/contextaiq_logo_bw.png",
-  logo: "/contextaiq_logo_bw.svg",
+  logo: "/mark.svg",
   contactEmail: "hello@contextaiq.com",
   location: "Portugal",
 };

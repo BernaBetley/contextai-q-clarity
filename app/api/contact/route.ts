@@ -6,11 +6,11 @@ import { env } from "../../lib/env.server";
 const payloadSchema = z.object({
   name: z.string().min(1).max(200),
   email: z.string().email().max(320),
-  company: z.string().max(200).optional(),
+  company: z.string().min(1).max(200),
+  process: z.string().min(1).max(80),
+  volume: z.string().min(1).max(400),
+  message: z.string().max(5000).optional().or(z.literal("")),
   role: z.string().max(200).optional(),
-  website: z.string().url().max(2000).optional().or(z.literal("")),
-  message: z.string().min(1).max(5000),
-  timeline: z.string().max(200).optional(),
 });
 
 const RATE_LIMIT_WINDOW_MS = 60_000;
@@ -33,22 +33,23 @@ export async function POST(request: Request) {
     "unknown";
 
   if (isRateLimited(ip)) {
-    return NextResponse.json(
-      { error: "Too many requests. Please try again later." },
-      { status: 429 }
-    );
+    return NextResponse.json({ error: "Demasiados pedidos. Tente mais tarde." }, { status: 429 });
   }
 
   const body = await request.json().catch(() => null);
   const parsed = payloadSchema.safeParse(body);
 
   if (!parsed.success) {
-    return NextResponse.json({ error: "Invalid form submission." }, { status: 400 });
+    return NextResponse.json({ error: "Pedido inválido. Verifique os campos obrigatórios." }, { status: 400 });
+  }
+
+  if (parsed.data.role && parsed.data.role.trim().length > 0) {
+    return NextResponse.json({ ok: true });
   }
 
   if (!env.CONTACT_WEBHOOK_URL) {
     return NextResponse.json(
-      { error: "Contact form is not configured. Email hello@contextaiq.com instead." },
+      { error: "Formulário sem destino configurado. Escreva para hello@contextaiq.com." },
       { status: 501 }
     );
   }
@@ -57,6 +58,7 @@ export async function POST(request: Request) {
   const timeout = setTimeout(() => controller.abort(), 10_000);
 
   try {
+    const { role: _honeypot, ...lead } = parsed.data;
     const response = await fetch(env.CONTACT_WEBHOOK_URL, {
       method: "POST",
       headers: {
@@ -64,7 +66,7 @@ export async function POST(request: Request) {
         ...(env.CONTACT_WEBHOOK_SECRET ? { "X-Contact-Secret": env.CONTACT_WEBHOOK_SECRET } : {}),
       },
       body: JSON.stringify({
-        ...parsed.data,
+        ...lead,
         receivedAt: new Date().toISOString(),
         source: "contextaiq.com",
       }),
@@ -72,12 +74,12 @@ export async function POST(request: Request) {
     });
 
     if (!response.ok) {
-      return NextResponse.json({ error: "Failed to send message. Please try again." }, { status: 502 });
+      return NextResponse.json({ error: "Falha no envio. Tente de novo." }, { status: 502 });
     }
 
     return NextResponse.json({ ok: true });
   } catch {
-    return NextResponse.json({ error: "Failed to send message. Please try again." }, { status: 502 });
+    return NextResponse.json({ error: "Falha no envio. Tente de novo." }, { status: 502 });
   } finally {
     clearTimeout(timeout);
   }

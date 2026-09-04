@@ -6,9 +6,20 @@ import { trackEvent } from "../lib/analytics";
 
 type FormStatus = "idle" | "submitting" | "success" | "error";
 
-export function ContactForm() {
+const processOptions = [
+  { value: "diagnostico", label: "Ainda não sei. Quero Prova Diagnóstico." },
+  { value: "conversao", label: "Comercial / conversão" },
+  { value: "backoffice", label: "Backoffice / operações" },
+  { value: "suporte", label: "Suporte a clientes" },
+  { value: "visibilidade", label: "Visibilidade em respostas de IA (€500)" },
+];
+
+export function ContactForm({ defaultProcess = "diagnostico" }: { defaultProcess?: string }) {
   const [status, setStatus] = useState<FormStatus>("idle");
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const validDefault = processOptions.some((item) => item.value === defaultProcess)
+    ? defaultProcess
+    : "diagnostico";
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -29,87 +40,90 @@ export function ContactForm() {
 
       if (!response.ok) {
         const data = (await response.json().catch(() => null)) as { error?: string } | null;
-        throw new Error(data?.error ?? "Something went wrong. Please try again.");
+        throw new Error(data?.error ?? "Não foi possível enviar. Tente de novo ou escreva para hello@contextaiq.com.");
       }
 
-      trackEvent("form_submit", { form: "contact" });
+      trackEvent("form_submit", { form: "contact", product: String(payload.process ?? "") });
       setStatus("success");
       event.currentTarget.reset();
     } catch (error) {
-      const message = error instanceof Error ? error.message : "Unable to submit the form.";
+      const message = error instanceof Error ? error.message : "Não foi possível enviar o pedido.";
       setErrorMessage(message);
       setStatus("error");
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6" aria-live="polite">
-      <div className="grid md:grid-cols-2 gap-4">
+    <form onSubmit={handleSubmit} className="space-y-5" aria-live="polite">
+      <div className="grid gap-4 md:grid-cols-2">
         <label className="space-y-2 text-sm font-medium">
-          <span>Name</span>
-          <input name="name" required className="input-field" placeholder="Your name" autoComplete="name" />
+          <span>Nome</span>
+          <input name="name" required className="input-field" placeholder="Nome e apelido" autoComplete="name" />
         </label>
         <label className="space-y-2 text-sm font-medium">
-          <span>Work email</span>
+          <span>Email de trabalho</span>
           <input
             name="email"
             type="email"
             required
             className="input-field"
-            placeholder="name@company.com"
+            placeholder="nome@empresa.pt"
             autoComplete="email"
           />
         </label>
       </div>
 
-      <div className="grid md:grid-cols-2 gap-4">
-        <label className="space-y-2 text-sm font-medium">
-          <span>Company</span>
-          <input name="company" className="input-field" placeholder="Company name" autoComplete="organization" />
-        </label>
-        <label className="space-y-2 text-sm font-medium">
-          <span>Role</span>
-          <input name="role" className="input-field" placeholder="Founder, CMO, Growth..." autoComplete="organization-title" />
-        </label>
-      </div>
-
       <label className="space-y-2 text-sm font-medium">
-        <span>Website</span>
-        <input name="website" className="input-field" placeholder="https://company.com" autoComplete="url" />
+        <span>Empresa</span>
+        <input name="company" required className="input-field" placeholder="Nome da empresa" autoComplete="organization" />
       </label>
 
       <label className="space-y-2 text-sm font-medium">
-        <span>What do you want to improve?</span>
-        <textarea
-          name="message"
+        <span>Processo a melhorar</span>
+        <select name="process" required className="input-field" defaultValue={validDefault}>
+          {processOptions.map((option) => (
+            <option key={option.value} value={option.value}>
+              {option.label}
+            </option>
+          ))}
+        </select>
+      </label>
+
+      <label className="space-y-2 text-sm font-medium">
+        <span>Volume mensal</span>
+        <input
+          name="volume"
           required
-          className="textarea-field"
-          placeholder="Share your category, target queries, competitors, and goals."
+          className="input-field"
+          placeholder="Ex.: 80 pedidos, 400 tickets, 200 facturas"
         />
       </label>
 
       <label className="space-y-2 text-sm font-medium">
-        <span>Timeline</span>
-        <select name="timeline" className="input-field">
-          <option value="This month">This month</option>
-          <option value="This quarter">This quarter</option>
-          <option value="This half">This half</option>
-          <option value="Exploring">Exploring</option>
-        </select>
+        <span>Contexto (opcional)</span>
+        <textarea
+          name="message"
+          className="textarea-field"
+          placeholder="Onde dói o processo hoje. Ferramentas em uso. O que já tentaram com ChatGPT."
+        />
       </label>
+
+      <input type="text" name="role" className="hidden" tabIndex={-1} autoComplete="off" />
 
       <div className="flex flex-wrap items-center gap-4">
         <button type="submit" className="btn btn-primary btn-md" disabled={status === "submitting"}>
-          {status === "submitting" ? "Sending..." : "Send message"}
+          {status === "submitting" ? "A enviar..." : "Pedir Prova Diagnóstico"}
         </button>
-        <span className="text-small text-muted-foreground">We reply within one business day.</span>
+        <span className="text-small">Resposta em um dia útil. Diagnóstico é pago.</span>
       </div>
 
       {status === "success" ? (
-        <p className="text-small text-foreground">Thanks — we received your message and will respond shortly.</p>
+        <p className="text-sm text-foreground">
+          Pedido recebido. Respondemos em um dia útil com o âmbito e o honorário do Diagnóstico.
+        </p>
       ) : null}
 
-      {status === "error" ? <p className="text-small text-destructive">{errorMessage}</p> : null}
+      {status === "error" ? <p className="text-sm text-destructive">{errorMessage}</p> : null}
     </form>
   );
 }
